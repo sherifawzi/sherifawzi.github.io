@@ -1,0 +1,206 @@
+:root {
+    --sClr01: rgb(27,30,62) ;
+    --sClr02: rgb(255,192,0) ;
+    --sClr03: Black ;
+    --sClr04: DarkGrey ;
+    --sClr05: rgb(247, 247, 247) ;
+    --sClr06: white ;
+
+    --sNavbarH: 100px ;
+    --sFooterH: 135px ;
+    --sSectionH: 300px ;
+    --sDividerH: 10px ;
+
+    --sContentW: 70% ;
+
+    --sFont: Arial ;
+    --sFontSizeXS: 12px ;
+    --sFontSizeS: 15px ;
+    --sFontSizeM: 18px ;
+    --sFontSizeL: 21px ;
+    --sFontSizeXL: 25px ;
+
+    --sBorderRadius: 10px ; }
+
+.sTxtClr01 { color: var(--sClr01) ; }
+.sTxtClr02 { color: var(--sClr02) ; }
+.sTxtClr03 { color: var(--sClr03) ; }
+.sTxtClr04 { color: var(--sClr04) ; }
+.sTxtClr05 { color: var(--sClr05) ; }
+.sTxtClr06 { color: var(--sClr06) ; }
+
+.sBgClr01 { background-color: var(--sClr01) ; }
+.sBgClr02 { background-color: var(--sClr02) ; }
+.sBgClr03 { background-color: var(--sClr03) ; }
+.sBgClr04 { background-color: var(--sClr04) ; }
+.sBgClr05 { background-color: var(--sClr05) ; }
+.sBgClr06 { background-color: var(--sClr06) ; }
+
+.sContentW { 
+        width: var(--sContentW) ;
+        margin-left: auto ;
+        margin-right: auto ; }    
+
+html, body, p {
+    margin: 0px ;
+    padding: 0px ; }
+    
+#MainDIV {
+    top: 0px ;
+    width: 100% ;
+    font-family: var(--sFont) ;
+    font-size: var(--sFontSizeS) ; }
+
+#NavbarDIV {
+    position: fixed ;
+    top: 0px ;
+    width: 100% ;
+    height: var(--sNavbarH) ;
+    margin-left: auto ;
+    margin-right: auto ;
+    box-sizing: border-box ;
+    box-shadow: 0 1px 2px 0 var(--sClr04) ;
+    z-index: 1 ; }
+
+.sNavItem {
+    font-size:  var(--sFontSizeM) ;
+    line-height: var(--sNavbarH) ;
+    text-align: center ; }
+
+#SectionDIV {
+    position: relative ;
+    top: var(--sNavbarH) ;
+    width: 100% ;
+    min-height: var(--sSectionH) ;
+    margin-left: auto ;
+    margin-right: auto ;
+    box-sizing: border-box ; }
+
+#FooterDIV {
+    position: relative ;
+    top: var(--sNavbarH) ;
+    width: 100% ;
+    height: var(--sFooterH) ;
+    margin-left: auto ;
+    margin-right: auto ;
+    box-sizing: border-box ; }
+
+.sFontB { font-weight: bold ; }
+
+.sFontXS { 
+    font-size: var(--sFontSizeXS) ; } 
+
+.sFontS { 
+    font-size: var(--sFontSizeS) ; } 
+
+.sFontM { 
+    font-size: var(--sFontSizeM) ; } 
+
+.sFontL { 
+    font-size: var(--sFontSizeL) ; } 
+
+.sFontXL { 
+    font-size: var(--sFontSizeXL) ; }
+    
+.FL { float: left ; }
+.FR { float: right ; }
+.FM {
+    margin-left: auto ;
+    margin-right: auto ; }
+
+.w1 { width: 1%; }
+.w2 { width: 2.5%; }
+.w5 { width: 5%; }
+.w7 { width: 7.5%; }
+.w10 { width: 10%; }
+.w15 { width: 15%; }
+.w20 { width: 20%; }
+.w25 { width: 25%; }
+.w30 { width: 30%; }
+.w33 { width: 33%; }
+.w40 { width: 40%; }
+.w45 { width: 45%; }
+.w47 { width: 47.5%; }
+.w50 { width: 50%; }
+.w60 { width: 60%; }
+.w70 { width: 70%; }
+.w80 { width: 80%; }
+.w90 { width: 90%; }
+.w100 { width: 100%; }
+
+.h10 { height: 10px; }
+.h20 { height: 20px; }
+.h100 { height: 100px; }
+
+.JM { text-align: center ; }
+.JL { text-align:left ; }
+.JR { text-align:right ; }
+
+.Divider {
+    clear: both;
+    height: var(--sDividerH) ; }
+
+.sLink { 
+    color: var(--sClr01) ; 
+    text-decoration: none ; }
+
+.sLink:hover { 
+    color: var(--sClr02) ; 
+    text-decoration: none ; 
+    transition: all .2s ease-in-out;}
+
+.sLandingTitle {
+    padding: 20px ;
+    font-size:50px ;
+    font-weight: bold;
+    color: var(--sClr01); }
+
+.sSectionTitle01 {
+    padding: 10px ;
+    font-size:30px ;
+    font-weight: bold;
+    color: var(--sClr01); }
+
+.sSectionTitle02 {
+    padding: 7px ;
+    font-size:25px ;
+    font-weight: bold; }
+
+.sLine {
+    box-sizing: border-box ;
+    box-shadow: 0 1px 0px 0 var(--sClr04) ; }
+
+.sButton01 {
+    margin-top: 20px ;
+    padding: 10px ;
+    font-size: var(--sFontSizeM) ;
+    color: var(--sClr06); 
+    background-color: var(--sClr01);
+    border-radius: var(--sBorderRadius); 
+    border-color: var(--sClr01); 
+    cursor: pointer; }
+
+.sButton01:hover {
+    font-weight: bold ; 
+    color: var(--sClr01);
+    background-color: var(--sClr02);
+    border-color: var(--sClr05);  
+    transition: all .3s ease-in-out; }
+
+.sBoxBorder01 {
+    margin: 10px;
+    padding: 10px ;
+    border-width : 1px ;
+    border-style: solid;
+    border-color: var(--sClr04);
+    background-color: var(--sClr06);
+    border-radius: var(--sBorderRadius); }
+
+.sBoxBorder02 {
+    margin: 10px;
+    padding: 10px ;
+    border-width : 1px ;
+    border-style: solid;
+    border-color: var(--sClr02);
+    background-color: var(--sClr06);
+    border-radius: var(--sBorderRadius); }
