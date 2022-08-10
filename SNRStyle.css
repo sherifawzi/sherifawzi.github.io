@@ -63,8 +63,9 @@ html, body, p {
     z-index: 1 ; }
 
 .sNavItem {
+    margin-top: 30px;
     font-size:  var(--sFontSizeM) ;
-    line-height: var(--sNavbarH) ;
+    line-height: 40px ;
     text-align: center ; }
 
 #SectionDIV {
