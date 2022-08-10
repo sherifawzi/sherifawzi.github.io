@@ -205,3 +205,16 @@ html, body, p {
     border-color: var(--sClr02);
     background-color: var(--sClr06);
     border-radius: var(--sBorderRadius); }
+
+.sTxtBox01 {
+    margin: 10px 0px;
+    padding: 10px ;
+    width: 100%;
+    font-family: var(--sFont) ;
+    font-size: var(--sFontSizeM) ;
+    background-color: var(--sClr06);
+    border-width : 1px ;
+    border-style: solid;
+    border-color: var(--sClr01);
+    box-sizing: border-box ;
+    border-radius: var(--sBorderRadius); }
