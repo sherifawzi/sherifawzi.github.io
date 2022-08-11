@@ -13,7 +13,7 @@
 
     --sContentW: 70% ;
 
-    --sFont: Arial ;
+    --sFont: 'DM Sans', Arial;
     --sFontSizeXS: 12px ;
     --sFontSizeS: 15px ;
     --sFontSizeM: 18px ;
@@ -21,6 +21,9 @@
     --sFontSizeXL: 25px ;
 
     --sBorderRadius: 10px ; }
+
+body, html {
+    font-family: var(--sFont); }
 
 .sTxtClr01 { color: var(--sClr01) ; }
 .sTxtClr02 { color: var(--sClr02) ; }
