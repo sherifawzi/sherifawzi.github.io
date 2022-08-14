@@ -236,3 +236,6 @@ html, body, p {
     border-color: var(--sClr01);
     box-sizing: border-box ;
     border-radius: var(--sBorderRadius); }
+
+.sShadow {
+    text-shadow: 2px 2px 4px #000000 ; }
