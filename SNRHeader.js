@@ -10,18 +10,18 @@ SNRHeaderTemplate.innerHTML = `
 		</a>
 	</div>
 	<div class="w12 FR JM sNavItem">
-		<a href = "index.html#FAQ" class="sLink" >
-			FAQs
+		<a href = "FAQ.html" class="sLink" >
+			FAQ
 		</a>
 	</div>
 	<div class="w12 FR JM sNavItem" >
 		<a href = "index.html#WHYSNR" class="sLink" >
-			Why SNR_ ?
+			WHY SNR_?
 		</a>
 	</div>
 	<div class="w12 FR JM sNavItem" >
 		<a href = "Bots.html" class="sLink" >
-			Our bots
+			OUR BOTS
 		</a>
 	</div>
 </div>
