@@ -34,7 +34,7 @@ SNRFooterTemplate.innerHTML = `
 							<div class="Divider"></div>
 							<p class="sFontM sTxtClr04">SNRobotiX Aps</p>
 							<div class="h5"></div>
-							<a href="https://goo.gl/maps/P3oWtd69eZsi5STQ7" class="sLink" target="_blank"><p class="sFontS sTxtClr04 h20">Skolegade 13a, Valby</p></a>
+							<a href="https://goo.gl/maps/P3oWtd69eZsi5STQ7" class="sLink" target="_blank"><p class="sFontS sTxtClr04 h20">Skolegade, Valby</p></a>
 							<p class="sFontS sTxtClr04 h20">Copenhagen, Denmark</p>
 							<p class="sFontS sTxtClr04 h20">CVR: 43344943</p>
 							<div class="Divider"></div>
@@ -56,7 +56,9 @@ SNRFooterTemplate.innerHTML = `
 							<a href="Cookies.html" class="sLink"><p class="sFontM sTxtClr04 h20">Cookies</p></a>
 							<div class="h7"></div>
 							<a href="DataPolicy.html" class="sLink"><p class="sFontM sTxtClr04 h20">Data Policy</p></a>
-						</div>
+							<div class="h7"></div>
+							<a href="FAQ.html" class="sLink"><p class="sFontM sTxtClr04 h20">FAQs</p></a>
+							</div>
 					</div>
 					<div class="Divider"></div>
 					<div class="Divider"></div>
