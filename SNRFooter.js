@@ -33,9 +33,11 @@ SNRFooterTemplate.innerHTML = `
 							<p class="sFontB">COMPANY INFORMATION</p>
 							<div class="Divider"></div>
 							<p class="sFontM sTxtClr04">SNRobotiX Aps</p>
-							<div class="h5"></div>
+							<div class="h3"></div>
 							<a href="https://goo.gl/maps/P3oWtd69eZsi5STQ7" class="sLink" target="_blank"><p class="sFontS sTxtClr04 h20">Skolegade, Valby</p></a>
+							<div class="h3"></div>
 							<p class="sFontS sTxtClr04 h20">Copenhagen, Denmark</p>
+							<div class="h3"></div>
 							<p class="sFontS sTxtClr04 h20">CVR: 43344943</p>
 							<div class="Divider"></div>
 							<div class="Divider"></div>
@@ -48,16 +50,25 @@ SNRFooterTemplate.innerHTML = `
 						</div>
 						<div class="FR w50 JR">
 							<p class="sFontB">LINKS</p>
+
 							<div class="h10"></div>
 							<a href="Blog.html" class="sLink"><p class="sFontM sTxtClr04 h20">Our Blog</p></a>
+							
 							<div class="h7"></div>
 							<a href="Privacy.html" class="sLink"><p class="sFontM sTxtClr04 h20">Privacy Policy</p></a>
+							
 							<div class="h7"></div>
 							<a href="Cookies.html" class="sLink"><p class="sFontM sTxtClr04 h20">Cookies</p></a>
+							
 							<div class="h7"></div>
 							<a href="DataPolicy.html" class="sLink"><p class="sFontM sTxtClr04 h20">Data Policy</p></a>
+							
 							<div class="h7"></div>
 							<a href="FAQ.html" class="sLink"><p class="sFontM sTxtClr04 h20">FAQs</p></a>
+
+							<div class="h7"></div>
+							<a href="AboutUS.html" class="sLink"><p class="sFontM sTxtClr04 h20">About Us</p></a>
+
 							</div>
 					</div>
 					<div class="Divider"></div>
