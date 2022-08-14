@@ -67,9 +67,9 @@ SNRFooterTemplate.innerHTML = `
 							<a href="FAQ.html" class="sLink"><p class="sFontM sTxtClr04 h20">FAQs</p></a>
 
 							<div class="h7"></div>
-							<a href="AboutUS.html" class="sLink"><p class="sFontM sTxtClr04 h20">About Us</p></a>
+							<a href="AboutUs.html" class="sLink"><p class="sFontM sTxtClr04 h20">About Us</p></a>
 
-							</div>
+						</div>
 					</div>
 					<div class="Divider"></div>
 					<div class="Divider"></div>
