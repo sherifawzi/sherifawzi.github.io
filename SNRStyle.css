@@ -22,9 +22,6 @@
 
     --sBorderRadius: 10px ; }
 
-body, html {
-    font-family: var(--sFont); }
-
 .sTxtClr01 { color: var(--sClr01) ; }
 .sTxtClr02 { color: var(--sClr02) ; }
 .sTxtClr03 { color: var(--sClr03) ; }
@@ -46,11 +43,7 @@ body, html {
 
 html, body, p {
     margin: 0px ;
-    padding: 0px ; }
-    
-#MainDIV {
-    top: 0px ;
-    width: 100% ;
+    padding: 0px ; 
     font-family: var(--sFont) ;
     font-size: var(--sFontSizeS) ; }
 
