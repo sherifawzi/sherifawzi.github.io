@@ -1,10 +1,9 @@
 :root {
-    --sClr01: rgb(27,30,62) ;
-    --sClr02: rgb(255,192,0) ;
-    --sClr03: Black ;
-    --sClr04: DarkGrey ;
-    --sClr05: rgb(247, 247, 247) ;
-    --sClr06: white ;
+    --sClrDark: rgb(27,30,62) ;
+    --sClrMedium: lightgrey ;
+    --sClrLight: rgb(247, 250, 252) ;
+    --sClrLightest: white ; 
+    --sClrCTA: rgb(255,192,0) ;
 
     --sNavbarH: 100px ;
     --sFooterH: 135px ;
@@ -20,33 +19,37 @@
     --sFontSizeL: 21px ;
     --sFontSizeXL: 25px ;
 
-    --sBorderRadius: 10px ; }
+    --sBorderRadius: 10px ;  }
 
-.sTxtClr01 { color: var(--sClr01) ; }
-.sTxtClr02 { color: var(--sClr02) ; }
-.sTxtClr03 { color: var(--sClr03) ; }
-.sTxtClr04 { color: var(--sClr04) ; }
-.sTxtClr05 { color: var(--sClr05) ; }
-.sTxtClr06 { color: var(--sClr06) ; }
+.sTxtClrDark { color: var(--sClrDark) ; }
+.sTxtClrMedium { color: var(--sClrMedium) ; }
+.sTxtClrLight { color: var(--sClrLight) ; }
+.sTxtClrLightest { color: var(--sClrLightest) ; }
+.sTxtClrCTA { color: var(--sClrCTA) ; }
 
-.sBgClr01 { background-color: var(--sClr01) ; }
-.sBgClr02 { background-color: var(--sClr02) ; }
-.sBgClr03 { background-color: var(--sClr03) ; }
-.sBgClr04 { background-color: var(--sClr04) ; }
-.sBgClr05 { background-color: var(--sClr05) ; }
-.sBgClr06 { background-color: var(--sClr06) ; }
+.sBgClrDark { background-color: var(--sClrDark) ; }
+.sBgClrMedium { background-color: var(--sClrMedium) ; }
+.sBgClrLight { background-color: var(--sClrLight) ; }
+.sBgClrLightest { background-color: var(--sClrLightest) ; }
+.sBgClrCTA { background-color: var(--sClrCTA) ; }
 
 .sContentW { 
         width: var(--sContentW) ;
         margin-left: auto ;
         margin-right: auto ; }    
 
-html, body, p {
+html, body {
     margin: 0px ;
     padding: 0px ; 
     font-family: var(--sFont) ;
-    font-size: var(--sFontSizeS) ; }
+    font-size: var(--sFontSizeS) ; 
+    color: var(--sClrLightest) ; 
+    background-color: var(--sClrDark) ; }
 
+p {
+    margin: 0px ;
+    padding: 0px ;  }
+    
 #NavbarDIV {
     position: fixed ;
     top: 0px ;
@@ -55,14 +58,18 @@ html, body, p {
     margin-left: auto ;
     margin-right: auto ;
     box-sizing: border-box ;
-    box-shadow: 0 1px 2px 0 var(--sClr04) ;
+    box-shadow: 0 1px 2px 0 var(--sClrCTA) ;
     z-index: 1 ; }
 
 .sNavItem {
     margin-top: 30px;
     font-size:  var(--sFontSizeM) ;
+    font-weight:  bold;
     line-height: 40px ;
-    text-align: center ; }
+    text-align: center ; 
+    width: 12% ;
+    float: right;
+    text-align: center; }
 
 #SectionDIV {
     position: relative ;
@@ -72,6 +79,18 @@ html, body, p {
     margin-left: auto ;
     margin-right: auto ;
     box-sizing: border-box ; }
+
+.sSectionDIVLight {
+    color: var(--sClrDark);    
+    background-color: var(--sClrLightest); }
+
+.sSectionDIVMedium {
+    color: var(--sClrDark);    
+    background-color: var(--sClrLight); }
+    
+.sSectionDIVDark {
+    color: var(--sClrLightest);    
+    background-color: var(--sClrDark); }
 
 #FooterDIV {
     position: relative ;
@@ -83,22 +102,12 @@ html, body, p {
     box-sizing: border-box ; }
 
 .sFontB { font-weight: bold ; }
-
-.sFontXS { 
-    font-size: var(--sFontSizeXS) ; } 
-
-.sFontS { 
-    font-size: var(--sFontSizeS) ; } 
-
-.sFontM { 
-    font-size: var(--sFontSizeM) ; } 
-
-.sFontL { 
-    font-size: var(--sFontSizeL) ; } 
-
-.sFontXL { 
-    font-size: var(--sFontSizeXL) ; }
-    
+.sFontXS { font-size: var(--sFontSizeXS) ; } 
+.sFontS { font-size: var(--sFontSizeS) ; } 
+.sFontM { font-size: var(--sFontSizeM) ; } 
+.sFontL { font-size: var(--sFontSizeL) ; } 
+.sFontXL { font-size: var(--sFontSizeXL) ; }
+   
 .FL { float: left ; }
 .FR { float: right ; }
 .FM {
@@ -149,26 +158,25 @@ html, body, p {
     clear: both;
     height: var(--sDividerH) ; }
 
-.sLink { 
-    color: var(--sClr01) ; 
-    text-decoration: none ; }
+a { text-decoration: none ; }
 
-.sLink:hover { 
-    color: var(--sClr02) ; 
-    text-decoration: none ; 
+.sLinkLight { color: var(--sClrLightest) ; }
+.sLinkDark { color: var(--sClrDark) ; }
+
+.sLinkLight:hover { 
+    color: var(--sClrCTA) ; 
     transition: all .2s ease-in-out;}
 
 .sLandingTitle {
     padding: 20px ;
     font-size:50px ;
     font-weight: bold;
-    color: var(--sClr01); }
+    color: var(--sClrDark); }
 
 .sSectionTitle01 {
     padding: 10px ;
     font-size:30px ;
-    font-weight: bold;
-    color: var(--sClr01); }
+    font-weight: bold; }
 
 .sSectionTitle02 {
     padding: 7px ;
@@ -176,57 +184,56 @@ html, body, p {
     font-size:25px ;
     font-weight: bold; }
 
-.sLine {
+.sLineLight {
     box-sizing: border-box ;
-    box-shadow: 0 1px 0px 0 var(--sClr04) ; }
+    box-shadow: 0 1px 0px 0 var(--sClrMedium) ; }
 
-.sButton01 {
+.sLineDark {
+    box-sizing: border-box ;
+    box-shadow: 0 1px 0px 0 var(--sClrDark) ; }
+
+button {
     margin-top: 20px ;
     padding: 10px ;
     font-size: var(--sFontSizeM) ;
-    color: var(--sClr06); 
-    background-color: var(--sClr01);
     border-radius: var(--sBorderRadius); 
-    border-color: var(--sClr01); 
     cursor: pointer; }
 
-.sButton01:hover {
+button:hover {
     font-weight: bold ; 
-    color: var(--sClr01);
-    background-color: var(--sClr02);
-    border-color: var(--sClr05);  
+    color:var(--sClrDark);
+    border-color: var(--sClrCTA);  
+    background-color: var(--sClrCTA); 
     transition: all .3s ease-in-out; }
+    
+.sButtonLight {
+    color:var(--sClrLightest);
+    background-color: var(--sClrCTA); }
 
-.sBoxBorder01 {
+.sButtonDark {
+    color:var(--sClrLightest);
+    background-color: var(--sClrDark); }
+    
+.sBoxBorderLight {
     margin: 10px;
     padding: 10px ;
     border-width : 1px ;
     border-style: solid;
-    border-color: var(--sClr04);
-    background-color: var(--sClr06);
+    border-color: var(--sClrMedium);
+    background-color: var(--sClrLightest);
     box-sizing: border-box ;
     border-radius: var(--sBorderRadius); }
-
-.sBoxBorder02 {
-    margin: 10px;
-    padding: 10px ;
-    border-width : 1px ;
-    border-style: solid;
-    border-color: var(--sClr02);
-    background-color: var(--sClr06);
-    box-sizing: border-box ;
-    border-radius: var(--sBorderRadius); }
-
-.sTxtBox01 {
+    
+.sTxtBoxLight {
     margin: 10px 0px;
     padding: 10px ;
     width: 100%;
     font-family: var(--sFont) ;
     font-size: var(--sFontSizeM) ;
-    background-color: var(--sClr06);
+    background-color: var(--sClrLightest);
     border-width : 1px ;
     border-style: solid;
-    border-color: var(--sClr01);
+    border-color: var(--sClrDark);
     box-sizing: border-box ;
     border-radius: var(--sBorderRadius); }
 
