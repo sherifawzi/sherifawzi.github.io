@@ -46,7 +46,7 @@ const SNRRobotData = document.createElement('Template');
             </div>
             <div class="w25 FR JL">
                 <div class="FM" >
-                    <a href="https://www.mql5.com/en" >
+                    <a href="" id="BOTURL" >
                         <button class="w70 sButtonDark" >START COPYING</button>
                     </a>
                 </div>
@@ -95,3 +95,4 @@ const SNRRobotData = document.createElement('Template');
 	document.getElementById("SHARPIE").innerHTML = SHARPIE ;
 	document.getElementById("RECOVERY").innerHTML = RECOVERY ;
 	document.getElementById("PERIOD").innerHTML = PERIOD ;
+    document.getElementById("BOTURL").href = BOTURL ;
