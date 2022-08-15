@@ -1,6 +1,6 @@
-const SNRHeaderTemplate = document.createElement('Template');
+const SNRHeaderTemplateCTA = document.createElement('Template');
 
-SNRHeaderTemplate.innerHTML = `
+SNRHeaderTemplateCTA.innerHTML = `
 
 <div id="NavbarDIV" class="sBgClr06 sTxtClr03 sFontB">
 <div class="sContentW" >
@@ -32,4 +32,4 @@ SNRHeaderTemplate.innerHTML = `
 </div>
 </div>
 
-` ; document.body.appendChild(SNRHeaderTemplate.content) ;
+` ; document.body.appendChild(SNRHeaderTemplateCTA.content) ;
