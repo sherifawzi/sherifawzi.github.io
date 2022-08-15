@@ -15,7 +15,7 @@ const SNRRobotData = document.createElement('Template');
                 <p class="w60 FM JM sFontM">INSTRUMENT</p>
             </div>
             <div class="w30 FL JM sBoxBorderLight">
-                <p class="sSectionTitle02"> <span id="GAIN"></span> </p>
+                <p class="sSectionTitle02"> <span id="TRADES"></span> </p>
                 <div class="Divider"></div>
                 <p class="w60 FM JM sFontM">TRADES PER WEEK</p>
             </div>
@@ -58,7 +58,7 @@ const SNRRobotData = document.createElement('Template');
                     <div class="h20"></div>
                     <p class="sSectionTitle02 "> <span class="sFontL">Gain on account</span> </p>
                     <div class="Divider"></div>
-                    <p> <span id="GAIN2"></span> </p>
+                    <p> <span id="GAIN"></span> </p>
                     <div class="h20"></div>
                     <p class="sSectionTitle02 "> <span class="sFontL">Largest drawdown</span> </p>
                     <div class="Divider"></div>
@@ -83,7 +83,7 @@ const SNRRobotData = document.createElement('Template');
 	document.body.appendChild(SNRRobotData.content) ;
 	document.getElementById("CURRENCYPAIR").innerHTML = CURRENCYPAIR ;
 	document.getElementById("GAIN").innerHTML = GAIN ;
-	document.getElementById("GAIN2").innerHTML = GAIN2 ;
+	document.getElementById("TRADES").innerHTML = TRADES ;
 	document.getElementById("DDP").innerHTML = DDP ;
 	document.getElementById("DDP2").innerHTML = DDP2 ;
 	document.getElementById("GDESC01").innerHTML = GDESC01 ;
