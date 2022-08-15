@@ -43,10 +43,10 @@ const SNRFooterTemplate = document.createElement('Template');
 					<div class="Divider"></div>
 					<p class="sFontB">SOCIAL MEDIA</p>
 					<div class="Divider"></div>
-					<div class="w7 FL" ><a href = "https://www.instagram.com/snrobotix/" target="_blank"><img src="Pics/Instagram.svg" style="width:60%"></a></div>
-					<div class="w7 FL" ><a href = "https://twitter.com/snrobotix/" target="_blank"><img src="Pics/Twitter.svg" style="width:60%"></a></div>
-					<div class="w7 FL" ><a href = "https://dk.linkedin.com/company/snrobotix/" target="_blank"><img src="Pics/LinkedIn.svg" style="width:60%"></a></div>
-					<div class="w7 FL" ><a href = "https://www.facebook.com/SNRobotiX-110072341725308/" target="_blank"><img src="Pics/facebook.png" style="width:60%"></a></div>
+					<div class="w7 FL" ><a href = "https://www.instagram.com/snrobotix/" target="_blank"><img src="Pics/cInsta.svg" style="width:60%"></a></div>
+					<div class="w7 FL" ><a href = "https://twitter.com/snrobotix/" target="_blank"><img src="Pics/cTwitter.svg" style="width:60%"></a></div>
+					<div class="w7 FL" ><a href = "https://dk.linkedin.com/company/snrobotix/" target="_blank"><img src="Pics/cLinked.svg" style="width:60%"></a></div>
+					<div class="w7 FL" ><a href = "https://www.facebook.com/SNRobotiX-110072341725308/" target="_blank"><img src="Pics/cFB.svg" style="width:60%"></a></div>
 				</div>
 				<div class="FR w50 JR">
 					<p class="sFontB">LINKS</p>
