@@ -7,7 +7,15 @@
 		<title>Algorithmic Trading for Everyone</title>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM Sans">
 		<link rel="stylesheet" type="text/css" href="SNRStyle.css" />
-		<script>var BOTNAME=params.get("botname")</script>
+
+
+
+		<script>
+			function get () {
+				var params = new URLSearchParams(window.location.search),BOTNAME = params.get("botname") ;
+		  		console.log(botname); }
+		</script>		
+
 		<script >	
 			let tit01 = "RobotName";
 			let tit02 = "[+GAIN%]";
