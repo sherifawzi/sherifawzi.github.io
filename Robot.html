@@ -8,7 +8,15 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM Sans">
 		<link rel="stylesheet" type="text/css" href="Style/SNRStyle.css" />
 		<script src="Bots/Template.txt" type="text/javascript" ></script>
-	</head>
+
+		<script>
+			var params = new URLSearchParams(window.location.search),sfilename = params.get("botname");
+			console.log(sfilename);
+			sfilename = "Bots/" + sfilename + ".txt" ;
+			console.log(sfilename);
+		</script>
+
+</head>
 
    	<body>
 
