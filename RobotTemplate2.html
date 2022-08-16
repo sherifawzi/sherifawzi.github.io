@@ -11,13 +11,17 @@
 
 
 		<script>
-			function get () {
-				var params = new URLSearchParams(window.location.search), tit01a = params.get("botname") ;
-		  		console.log(botname); }
-		</script>		
+			var params = new URLSearchParams(window.location.search),first = params.get("first");
+			console.log(first);  // Foo Bar
+		</script>
+			
+			
+
+
 
 		<script >	
-			let tit01 = tit01a ;
+			let tit01 = first ;
+			console.log(tit01);  // Foo Bar
 			let tit02 = "[+GAIN%]";
 			let CURRENCYPAIR = "USDUSD" ;
 			let TRADES = "1" ;
@@ -40,12 +44,13 @@
 	</head>
 
    	<body>
-
+		<input type="button" value="Get" onclick="get()"/>
+<!--
 		<script src="SNRHeader.js" type="text/javascript" ></script>
 		<script src="SNRPageTitle.js" type="text/javascript" ></script>
 		<script src="SNRRobotData.js" type="text/javascript" ></script>
 		<script src="SNRFooter.js" type="text/javascript" defer></script>
-
+-->
 	</body>
 
 </html>
