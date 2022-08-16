@@ -1,2 +1,15 @@
-// This becomes the content of your foo.txt file
-let text = `My test text goes here!`;
+let tit01 = "SAFGER";
+let tit02 = "[+46%]";
+let CURRENCYPAIR = "KAFGER" ;
+let TRADES = "SADAM" ;
+let DDP = "[-DD%]" ;
+let GDESC01 = "GN" ;
+let GDESC02 = "g2" ;
+let GDESC03 = "g3" ;
+let SDESC01 = "s1" ;
+let SDESC02 = "s2" ;
+let SDESC03 = "s3" ;
+let PERIOD = "P1" ;
+let SHARPIE = "S" ;
+let RECOVERY = "R" ;
+let BOTURL = "https://www.mql5.com/en/signals/1645887" ;
