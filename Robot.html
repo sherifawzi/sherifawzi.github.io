@@ -8,8 +8,10 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM Sans">
 		<link rel="stylesheet" type="text/css" href="Style/SNRStyle.css" />
 		<script>
-			var params = new URLSearchParams(window.location.search),sfilename = params.get("botname");
-			document.write("<script type='text/javascript' src='Bots/" + sfilename + "/" + "Content.txt'><\/scr" + "ipt>");
+			var params = new URLSearchParams(window.location.search),sbotname = params.get("botname");
+			document.write("<script type='text/javascript' src='Bots/" + sbotname + "/" + "Content.txt'><\/scr" + "ipt>");
+			let BOTGRAPH = "Bots/" + sbotname + "/Graph.png" ;
+			let BOTTABLE = "Bots/" + sbotname + "/Table.png" ;
 		</script>		
 	</head>
 

@@ -15,6 +15,3 @@ let RECOVERY = "5.57" ;
 let BOTURL = "https://www.mql5.com/en/signals/1645780" ;
 let GAIN = tit02 ;
 let DDP2 = DDP ;
-
-let BOTGRAPH = "Bots/MARV1N/Graph.png" ;
-let BOTTABLE = "Bots/MARV1N/Table.png" ;
