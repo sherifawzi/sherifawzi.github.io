@@ -1,0 +1,17 @@
+let tit01 = "ST33L";
+let tit02 = "[+42%]";
+let CURRENCYPAIR = "USDCAD" ;
+let TRADES = "2" ;
+let DDP = "[-12%]" ;
+let GDESC01 = "This bot trades USDCAD and employs five different strategies to identify market trends, three different ways to determine whether the market is trending upward or downward, one indicator to make sure there is sufficient volume supporting the movement, and a tried-and-tested Japanese indicator to determine the best entry and/or exit levels for your trades" ;
+let GDESC02 = "This bot establishes a level at which it closes your trades and works to maintain and increase your profit throughout the course of its existence" ;
+let GDESC03 = "" ;
+let SDESC01 = "This bot trades USDCAD and employs the trend indicators EMA, DEMA, TEMA, AMA, ADXW, as well as the oscillators: Chaikin, CCI, RVI to find the best entry and/or exit levels for your trades, it also uses the MFI indicator to check volumes and the tried and tested Ichimuko indicator" ;
+let SDESC02 = "This bot establishes a specific take profit for your trades, as well as a trailing stop loss at 1 ATR from the price once the trade breaks even, in order to maintain and maximize profit throughout the trade's lifetime" ;
+let SDESC03 = "" ;
+let PERIOD = "1 Jan 2022 to 5 Aug 2022" ;
+let SHARPIE = "4.40" ;
+let RECOVERY = "6.30" ;
+let BOTURL = "https://www.mql5.com/en/signals/1646809" ;
+let GAIN = tit02 ;
+let DDP2 = DDP ;

@@ -1,0 +1,20 @@
+let tit01 = "MARV1N";
+let tit02 = "[+83%]";
+let CURRENCYPAIR = "EURUSD" ;
+let TRADES = "3" ;
+let DDP = "[-20%]" ;
+let GDESC01 = "This bot trades EURUSD and compares the current price to its last 12 months average in order to determine the best entry and/or exit levels for your trades. It also uses six methods to identify market trends and a tried-and-tested Japanese indicator" ;
+let GDESC02 = "This bot establishes a level at which it closes your trades and strives to maintain and increase your profit throughout the course of its existence. The bot will automatically close your most profitable trade when you establish a new position in order to secure profit progressively" ;
+let GDESC03 = "" ;
+let SDESC01 = "To determine the best entry and/or exit levels for your trades, this bot trades EURUSD using the trend indicators SMA, EMA, SMMA, TEMA, Frama, AMA, and the tried-and-tested Ichimuko indicator. For confirmation, the bot looks at price position in relation to its 200 Daily moving average" ;
+let SDESC02 = "To keep and maximize profit during the life of the trade, this bot sets a precise take profit for your trades and trails a stop loss at 1 ATR from price once the transaction breaks even. The bot will automatically close your most profitable trade when you establish a new position in order to secure profit progressively" ;
+let SDESC03 = "" ;
+let PERIOD = "1 Jan 2022 to 5 Aug 2022" ;
+let SHARPIE = "2.18" ;
+let RECOVERY = "5.57" ;
+let BOTURL = "https://www.mql5.com/en/signals/1645780" ;
+let GAIN = tit02 ;
+let DDP2 = DDP ;
+
+let BOTGRAPH = "Bots/MARV1N/Graph.png" ;
+let BOTTABLE = "Bots/MARV1N/Table.png" ;
