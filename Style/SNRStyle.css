@@ -11,6 +11,7 @@
     --sDividerH: 10px ;
 
     --sContentW: 70% ;
+    --sContentWA: 0.7 ;
 
     --sFont: 'DM Sans', Arial;
     --sFontSizeXS: 12px ;
@@ -239,3 +240,7 @@ button:hover {
 
 .sShadow {
     text-shadow: 2px 2px 4px #aaa8a8 ; }
+
+.BotImg {
+    width: calc( 100vw * var(--sContentWA) * 0.9 );
+    Float: auto; }

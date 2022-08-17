@@ -71,12 +71,23 @@ const SNRRobotData = document.createElement('Template');
                     <p class="sSectionTitle02 "> <span class="sFontL">Sharpie ratio</span> </p>
                     <div class="Divider"></div>
                     <p> <span id="SHARPIE"></span> </p>						
-                    <div class="h20"></div>
+                    <div class="h50"></div>
                 </div>
             </div>
         </div>
         <div class="Divider"></div>
-        <div class="h50"></div>
+        <div class="sContentW" >
+            <p class="sSectionTitle02"> <span class="sFontL">Backtesting Graph</span> </p>
+            <div class="Divider"></div>
+            <img id="BOTGRAPH" class="sBoxBorderLight BotImg">
+            <div class="Divider"></div>
+            <div class="h50"></div>
+            <p class="sSectionTitle02"> <span class="sFontL">Backtesting Statistics</span> </p>
+            <div class="Divider"></div>
+            <img id="BOTTABLE" class="sBoxBorderLight BotImg">
+            <div class="Divider"></div>
+            <div class="h100"></div>
+        </div>        
     </div>	
 
 	` ; 
@@ -96,3 +107,5 @@ const SNRRobotData = document.createElement('Template');
 	document.getElementById("RECOVERY").innerHTML = RECOVERY ;
 	document.getElementById("PERIOD").innerHTML = PERIOD ;
     document.getElementById("BOTURL").href = BOTURL ;
+    document.getElementById("BOTGRAPH").src = BOTGRAPH ;
+    document.getElementById("BOTTABLE").src = BOTTABLE ;
