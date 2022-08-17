@@ -27,7 +27,7 @@ const SNRRobotData = document.createElement('Template');
             <div class="Divider"></div>
             <div class="h20"></div>
             <div class="w70 FL JL">
-                <p class="sSectionTitle02"> <span class="sFontL">General Description</span> </p>
+                <p class="sSectionTitle02"> <span class="sFontL">General description</span> </p>
                 <div class="Divider"></div>
                 <div class="JL sFontM">
                     <p> <span id="GDESC01"></span> </p> <br>
@@ -35,7 +35,7 @@ const SNRRobotData = document.createElement('Template');
                     <p> <span id="GDESC03"></span> </p> <br>
                 </div>
                 <div class="h20"></div>
-                <p class="sSectionTitle02"> <span class="sFontL">Description for traders</span> </p>
+                <p class="sSectionTitle02"> <span class="sFontL">More details for traders</span> </p>
                 <div class="Divider"></div>
                 <div class="JL sFontM">
                     <p> <span id="SDESC01"></span> </p> <br>
@@ -52,7 +52,7 @@ const SNRRobotData = document.createElement('Template');
                 </div>
                 <div class="h40"></div>			
                 <div class="JL sFontM">
-                    <p class="sSectionTitle02"> <span class="sFontL">Backtesting period</span> </p>
+                    <p class="sSectionTitle02"> <span class="sFontL">Testing window</span> </p>
                     <div class="Divider"></div>
                     <p> <span id="PERIOD"></span> </p>
                     <div class="h20"></div>
@@ -60,7 +60,7 @@ const SNRRobotData = document.createElement('Template');
                     <div class="Divider"></div>
                     <p> <span id="GAIN"></span> </p>
                     <div class="h20"></div>
-                    <p class="sSectionTitle02 "> <span class="sFontL">Largest drawdown</span> </p>
+                    <p class="sSectionTitle02 "> <span class="sFontL">Max recorded drawdown</span> </p>
                     <div class="Divider"></div>
                     <p> <span id="DDP2"></span> </p>						
                     <div class="h20"></div>
