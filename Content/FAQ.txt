@@ -1,2 +1,16 @@
 let tit01 = "Frequently Asked";
 let tit02 = "QUESTIONS";
+let Q001 = "01. What is an Algorithmic Trading Bot?" ;
+let A001 = "A computer program known as a bot is created by traders or programmers to start, maintain, and close trading positions at the appropriate price based on a trading strategy, also known as an algorithm" ;
+let Q002 = "02. How do bots trade for me?";
+let A002 = "Each bot has a unique trading strategy that is detailed on its page along with all the indicators it employs. Additionally, all back testing results are accessible, providing you with a comprehensive understanding of how the bot trades. You can always monitor the bot's trading history via the MT5 platform or our broker account";
+let Q003 = "03. How do I start copying a bot?";
+let A003 = "After choosing your preferred bot and clicking 'Start Copying,' you will be taken to our bots' MT5 marketplace website where you can subscribe to it";
+let Q004 = "04. How do I stop copying a bot?";
+let A004 = "To stop a bot, you simply choose to 'stop copying' it's signal on the MQL5 marketplace";
+let Q005 = "05. How does SNR handle my money?";
+let A005 = "SNR is a software development company that develops, deploys and optimizes trading bots. Therefore, we do not ask for a deposit, nor do we handle your money. We only provide trading signals which you can choose to follow";
+let Q006 = "06. My bot is not trading, what’s the problem?";
+let A006 = "The bots are programmed to open, manage, and close transactions based on predetermined technical indicators and algorithms, and they will only do so when certain conditions are met. If the bot isn't trading, it's because the market hasn't met these conditions. We always recommend that you use the trade frequency results from back testing as a guide";
+let Q007 = "07. My bot closed a trade at a loss, why?";
+let A007 = "Bots are primarily intended to manage risk and protect your account, therefore bots will occasionally close a trade at a loss based on preprogrammed algorithms to avoid larger losses";
