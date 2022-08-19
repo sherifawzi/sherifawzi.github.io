@@ -53,21 +53,18 @@ const SNRFooterTemplate = document.createElement('Template');
 
 					<div class="h10"></div>
 					<a href="Blog.html" class="sLinkLight"><p class="sFontM h20">Our Blog</p></a>
-					
+
 					<div class="h7"></div>
-					<a href="Privacy.html" class="sLinkLight"><p class="sFontM h20">Privacy Policy</p></a>
-					
+					<a href="Policy.html#Data" class="sLinkLight"><p class="sFontM h20">Data Policy</p></a>
+
 					<div class="h7"></div>
-					<a href="Cookies.html" class="sLinkLight"><p class="sFontM h20">Cookies</p></a>
-					
-					<div class="h7"></div>
-					<a href="DataPolicy.html" class="sLinkLight"><p class="sFontM h20">Data Policy</p></a>
-					
-					<div class="h7"></div>
-					<a href="FAQ.html" class="sLinkLight"><p class="sFontM h20">FAQs</p></a>
+					<a href="Policy.html#Cookies" class="sLinkLight"><p class="sFontM h20">Cookies</p></a>
 
 					<div class="h7"></div>
 					<a href="AboutUs.html" class="sLinkLight"><p class="sFontM h20">About Us</p></a>
+
+					<div class="h7"></div>
+					<a href="FAQ.html" class="sLinkLight"><p class="sFontM h20">FAQs</p></a>
 
 				</div>
 			</div>
