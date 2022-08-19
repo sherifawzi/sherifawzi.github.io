@@ -1,2 +1,0 @@
-let tit01 = "Cookies";
-let tit02 = "POLICY";
