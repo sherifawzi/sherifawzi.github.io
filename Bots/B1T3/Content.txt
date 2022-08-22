@@ -1,0 +1,17 @@
+let tit01 = "B1T3";
+let tit02 = "[+58%]";
+let CURRENCYPAIR = "UK100" ;
+let TRADES = "22" ;
+let DDP = "[-15%]" ;
+let GDESC01 = "This bot trades UK100 and uses 2 ways to catch a trending movement in the market, 5 methods to decide if the market is trending upwards or downwards and a tried and tested Japanese indicator to find the optimal entry and/or exit levels for your trades" ;
+let GDESC02 = "The bot trades only when the selected instrument’s main is open to cut out noise and focus where it matters" ;
+let GDESC03 = "This bot does not set a level at which it closes your trades, instead once you are in profit, it tries to keep and maximize that profit throughout the trade's lifetime" ;
+let SDESC01 = "This bot trades UK100 and uses the following trend indicators: SMA, Vidya, the following oscillators: RSI, Demarker, Force, Momentum, WPR and the tried and tested Ichimuko indicator to find the optimal entry and/or exit levels for your trades" ;
+let SDESC02 = "The bot trades only when the selected instrument is in session to avoid sideway markets" ;
+let SDESC03 = "This bot does not set a specific take profit, instead it trails stop losses at 1 ATR from price once the trade breaks even to keep and maximize profit throughout the trade's lifetime" ;
+let PERIOD = "1 Jan 2022 to 5 Aug 2022" ;
+let SHARPIE = "3.23" ;
+let RECOVERY = "3.51" ;
+let BOTURL = "https://fsquare.dk" ;
+let GAIN = tit02 ;
+let DDP2 = DDP ;

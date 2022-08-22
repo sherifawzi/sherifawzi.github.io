@@ -1,0 +1,17 @@
+let tit01 = "P1X3L";
+let tit02 = "[+40%]";
+let CURRENCYPAIR = "EURUSD" ;
+let TRADES = "2" ;
+let DDP = "[-16%]" ;
+let GDESC01 = "This bot trades EURUSD and uses 6 ways to catch a trending movement in the market, 2 methods to decide if the market is trending upwards or downwards, 1 indicator to ensure enough volume is behind the movement and a tried and tested Japanese indicator to find the optimal entry and/or exit levels for your trades" ;
+let GDESC02 = "The bot compares the current price to its last 12 months average and trades only when the selected currency pair's market(s) are open to cut out noise and focus where it matters. New positions are opened when your account is in profit to reduce performance volatility" ;
+let GDESC03 = "This bot sets a level at which it closes your trades, as well as trying to keep and maximize your profit throughout it's lifetime" ;
+let SDESC01 = "This bot trades EURUSD and uses the following trend indicators: SMA, EMA, Frama, Vidya, AMA, ADXW, the following oscillators: Demarker, Momentum, the MFI indicator and the tried and tested Ichimuko indicator to find the optimal entry and/or exit levels for your trades" ;
+let SDESC02 = "The bot uses price position in relation to its 200 Daily moving average and trades only when the selected currency pair is in session to avoid sideway markets. New positions are opened only when your account equity is above the account balance to reduce load volatility" ;
+let SDESC03 = "This bot sets a specific take profit for your trades, as well as trailing a stop loss at 1 ATR from price once the trade breaks even to keep and maximize profit throughout the trade's lifetime" ;
+let PERIOD = "1 Jan 2022 to 5 Aug 2022" ;
+let SHARPIE = "10.33" ;
+let RECOVERY = "2.30" ;
+let BOTURL = "https://fsquare.dk" ;
+let GAIN = tit02 ;
+let DDP2 = DDP ;

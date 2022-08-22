@@ -1,0 +1,17 @@
+let tit01 = "RU5TY";
+let tit02 = "[+23%]";
+let CURRENCYPAIR = "USDCAD" ;
+let TRADES = "7" ;
+let DDP = "[-8%]" ;
+let GDESC01 = "This bot trades USDCAD and uses 7 ways to catch a trending movement in the market, 4 methods to decide if the market is trending upwards or downwards, 1 indicator to ensure enough volume is behind the movement and a tried and tested Japanese indicator to find the optimal entry and/or exit levels for your trades" ;
+let GDESC02 = "New positions are opened when your account is in profit to reduce performance volatility" ;
+let GDESC03 = "This bot sets a level at which it closes your trades, as well as trying to keep and maximize your profit throughout it's lifetime. To secure profit incrementally, upon opening a new position, the bot will automatically close your most profitable trade" ;
+let SDESC01 = "This bot trades USDCAD and uses the following trend indicators: EMA, SMMA, DEMA, TEMA, SAR, AMA, ADX, the following oscillators: Chaikin, Force, RVI, Trix, the MFI indicator and the tried and tested Ichimuko indicator to find the optimal entry and/or exit levels for your trades" ;
+let SDESC02 = "New positions are opened only when your account equity is above the account balance to reduce load volatility" ;
+let SDESC03 = "This bot sets a specific take profit for your trades, as well as trailing a stop loss at 1 ATR from price once the trade breaks even to keep and maximize profit throughout the trade's lifetime. To secure profit incrementally, upon opening a new position, the bot will automatically close your most profitable trade" ;
+let PERIOD = "1 Jan 2022 to 5 Aug 2022" ;
+let SHARPIE = "2.32" ;
+let RECOVERY = "2.64" ;
+let BOTURL = "https://fsquare.dk" ;
+let GAIN = tit02 ;
+let DDP2 = DDP ;

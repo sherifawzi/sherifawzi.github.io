@@ -1,0 +1,17 @@
+let tit01 = "AK53L";
+let tit02 = "[+176%]";
+let CURRENCYPAIR = "USDJPY" ;
+let TRADES = "8-9" ;
+let DDP = "[-25%]" ;
+let GDESC01 = "This bot trades USDJPY and uses 5 ways to catch a trending movement in the market, 5 methods to decide if the market is trending upwards or downwards, 1 indicator to ensure enough volume is behind the movement to find the optimal entry and/or exit levels for your trades" ;
+let GDESC02 = "The bot compares the current price to its last 12 months average & trades only when the selected currency pair's market(s) are open to cut out noise and focus where it matters" ;
+let GDESC03 = "This bot does not set a level at which it closes your trades, instead once you are in profit, it tries to keep and maximize that profit throughout the trade's lifetime" ;
+let SDESC01 = "This bot trades USDJPY and uses the following trend indicators: SMA, EMA, SMMA, TEMA, Vidya, the following oscillators: RSI, Chaikin, Force, Momentum, WPR and the MFI indicator to find the optimal entry and/or exit levels for your trades" ;
+let SDESC02 = "The bot uses price position in relation to its 200 Daily moving average and trades only when the selected currency pair is in session to avoid sideway markets" ;
+let SDESC03 = "This bot does not set a specific take profit, instead it trails stop losses at 1 ATR from price once the trade breaks even to keep and maximize profit throughout the trade's lifetime" ;
+let PERIOD = "1 Jan 2022 to 5 Aug 2022" ;
+let SHARPIE = "2.59" ;
+let RECOVERY = "2.70" ;
+let BOTURL = "https://fsquare.dk" ;
+let GAIN = tit02 ;
+let DDP2 = DDP ;
