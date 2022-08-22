@@ -15,3 +15,4 @@ let RECOVERY = "2.35" ;
 let BOTURL = "https://fsquare.dk" ;
 let GAIN = tit02 ;
 let DDP2 = DDP ;
+let TOKEN = "2|40|2|5|1|4|2|25|false|false|true|false|true|false|false|true|false|false|true|true|false|false|false|false|false|true|false|false|false|false|false|false|false|2|true|true||||||||" ;

@@ -15,3 +15,4 @@ let RECOVERY = "2.49" ;
 let BOTURL = "https://www.mql5.com/en/signals/1646726" ;
 let GAIN = tit02 ;
 let DDP2 = DDP ;
+let TOKEN = "0|20|2|4|2|5|1|40|false|true|false|false|true|true|true|false|false|true|true|false|false|true|false|false|false|true|true|false|true|false|true|true|false|0|true|false|539|28.40|5.96294|2.18598|EURGBP|" ;
