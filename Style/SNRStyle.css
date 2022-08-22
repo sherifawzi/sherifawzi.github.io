@@ -224,6 +224,11 @@ button:hover {
     background-color: var(--sClrLightest);
     box-sizing: border-box ;
     border-radius: var(--sBorderRadius); }
+
+.sBoxBorderLight:hover {
+    background-color: var(--sClrLight);
+    box-shadow: 4px 4px 4px 4px #aaa8a8 ;
+    transition: all .3s ease-in-out; }
     
 .sTxtBoxLight {
     margin: 10px 0px;
