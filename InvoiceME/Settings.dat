@@ -1,0 +1,243 @@
+oldREMOVE-serverversion-versionerrorurl-passworderror-welcomemessage-password-remove-OTHERFORMATSEG-swidth-safSEARCHDEPTH-downupgrade-safwidth-safversionerrorurl-safwelcomemessage-gc88oldurl-height-width-allusersare-overwrite-picklast-superuser-saflognamedepth-safgc88url-saftabstrip
+REMOVE-oldremove-versionerrorurl-passworderror-welcomemessage-password-remove-OTHERFORMATSEG-swidth-safSEARCHDEPTH-downupgrade-safwidth-safversionerrorurl-safwelcomemessage-gc88oldurl-height-width-allusersare-overwrite-picklast-superuser-saflognamedepth-safgc88url-masSTDFormatFile-masCURRENCYFILE-masFREIGHTLINEFILE-masreportdatabaseloc-masuseraccessfile-customercodelogpath-vslvoyfilepath-customercodelogpath-masuserprofilesfile-saftabstrip
+SERVERVERSION7.27
+VERSIONCNTRYEG
+safWIDTH9930
+WIDTH7590
+HEIGHT9660
+FORCEDCLOSE120
+DOWNUPGRADE
+
+safSEARCHDEPTH99999
+SEARCHDEPTH4000
+
+NEWTABSTRIP1;2;3;4;5;11;34;35;37;341;38;342;36;343;344
+
+TABSTRIP   0  1320  180  7035  7515  Shipment;Search;Modules;GC88
+safTABSTRIP   0  1320  180  7035  7515  Shipment;Search;Modules;GC88;Admin
+TABSTRIP   1  1680  240  6615  7390  Invoice;Parties;Commodity;Equipment and Routing
+TABSTRIP   2  1680  240  6615  7390  Simple Search
+ TABSTRIP  3  1680  240  6615  7390  MANI/DELO;T.H.C;Amendments;Port Forms;STR/DMR;Doc Release;VSL Release
+TABSTRIP   4  1680  240  6615  7390  Importing
+safTABSTRIP   5  1680  240  6615  7390  .;.;.;.;.;.;.
+TABSTRIP  34  2040  300  6195  7265  Port Said;Alexandria;Damietta;Sokhna
+TABSTRIP  35  2040  300  6195  7265  Calculation;Result
+TABSTRIP  36  2040  300  6195  7265  Document Release;Historic Overview
+TABSTRIP  37  2040  300  6195  7265  Vessel Release Communication Module
+TABSTRIP  11  2040  300  6195  7265  Applicable;Other
+TABSTRIP  341  2400  360  5775  7140  Forms;Release Letter
+TABSTRIP  342  2400  360  5775  7140  Forms;Release Letter
+TABSTRIP  343  2400  360  5775  7140  Forms
+TABSTRIP  344  2400  360  5775  7140  Forms
+
+FRAME  12;13;14;21;22;31;32;33;41;42;15                    1990  300  6240  7265
+FRAME  111;112;351;352;361;362;371                         2350  360  5820  7145
+FRAME  3411;3412;3421;3422;3431;3432;3441;3442             2710  420  5400  7025
+
+BUTTON  0   1260  4065  300  815   &Calculate  Calculate Invoice Totals
+BUTTON  1   1260  4900  300  540   &Save  Master Save Button
+BUTTON  2   1260  5460  300  540   &Print  Print Invoice
+BUTTON  3   1260  6020  300  540   E&mail  Email Invoice
+BUTTON  4   1260  6580  300  540   C&lear  Master Clear Button
+BUTTON  5   1260  7140  300  540   E&xit  Exit Tool
+BUTTON  6   720   240   255  255   <  Move to Previous Search Result
+BUTTON  7   720   600   255  255   >  Move to Next Search Result
+BUTTON  8   3840  360   495  1500  Gate-Out Full for Delivery  Print Gate-Out Full for Delivery 
+BUTTON  9   4800  5160  375  1455  Print  PSD Print Stripping Form  
+BUTTON  10  3840  5160  495  1500  Return PSD Old to SCCT  Print Return PSD Old to SCCT
+BUTTON  11  3840  3560  495  1500  Gate-Out SCCT to PSD Old  Print Gate-Out SCCT to PSD Old
+BUTTON  12  3840  1960  495  1500  SOC Gate-Out Full for Delivery  Print SOC Gate-Out Full for Delivery
+BUTTON  13  1320  5280  375  1575  Print  ALY Print Receipt of Shipping Order Form
+BUTTON  14  4920  3360  375  1680  Tyre Inspection  Print Tyre Inspection 
+BUTTON  15  4920  1680  375  1560  Fire Brigade   Print Fire Brigade 
+BUTTON  16  4920  60   375  1485  AICT Gate-Out  Print AICT Gate-Out
+BUTTON  17  4920  5160  375  1680  OE Gate-In/Out  OE Gate-In/Out
+BUTTON  18  240   3360  375  1575  Retrieve Details  PSD Retreive Booking details from GCSS-CAM 
+BUTTON  19  240   5040  375  1695  Print Release Letter  Print Release Letter
+BUTTON  20  3920  6000  315  735   Create  PSD Create Seal Array in release letter 
+BUTTON  21  1320  1920  375  3255  Validate Export Booking Number  ALY Retreive Booking details from GCSS-CAM 
+BUTTON  22  720   5520  375  1215  Add Client  Add WayBill Customer
+BUTTON  23  2160  4200  375  2535  Print Receipt and WB Paper  Print WayBill Receipt and Serialed Paper 
+BUTTON  24  720   5520  375  1215  Add Client  Add OBL Customer
+BUTTON  25  2160  4200  375  2535  Print Receipt  Print OBL Receipt Format
+BUTTON  26  1140  5400  375  1455  Search  Search In OBL/WBL Paper Release Database
+BUTTON  27  3360  5280  495  1335  Export Results To Excel  Export Results To Excel
+BUTTON  32  2520  4320  375  2655   Get B/Ls for selected ManifestID 
+BUTTON  35  5760  5280  375  1575  Print  Print Other Formats
+BUTTON  36  5160  120   375  2175  Print Batch B/L Copies  Print Batch B/L Copies
+BUTTON  37  5160  2460  375  2175  Print Batch Invoices  Print Batch Invoices
+BUTTON  38  5160  4800  375  2175  Print Delivery Order  Print Delivery Order
+BUTTON  39  3000  5280  375  1575  Print  Print Manifest
+BUTTON  40  5760  2160  375  1695  Print Single  Print Single THC Letter 
+BUTTON  41  5280  360   375  3495  Re-Calculate Charges  Recalculate THC Letter Totals
+BUTTON  42  5760  360   375  1695  Print Batch  Print Batch THC Letters 
+BUTTON  43  3000  600   495  2655  Print Amendment Letter  Print amendment Letter 
+BUTTON  44  5760  5640  375  1215  Save  Save New Import Check Word List to Database
+BUTTON  45  300   120   375  2775  Goto GC88 Website  Goto the GC88 wensite
+BUTTON  47  5280  5640  315  1100  Add     Add Vessel Name to Database
+BUTTON  48  3360  5640  315  1100  Save    Save Vessel to release LOG
+BUTTON  49  1080  5640  315  1100  Search  Search For Vessel in release LOG
+BUTTON  52  660  5400  315  1335  Process  Run GC88 Analytical Report 2
+
+ComboGen2;Cairo;Alexandria;Port Said
+ComboGen6;Cairo;Alexandria;Port Said
+ComboGen3;25;50;100;150;200;250;300;350;400;450;500
+ComboGen0;25;50;100;150;200;250;300;350;400;450;500
+ComboGen4;25;50;100;150;200;250;300;350;400;450;500
+ComboGen8;Cairo;Alexandria;Port Said
+ComboGen9;OBL;WB
+ComboGen10;ML;SCL;SGL
+ComboGen12;Pending;Released
+ComboGen15;EGPSD;EGALY;EGDAM;EGPSW;Dekheila;Sokhna
+ComboGen16;EGPSD;EGALY;EGDAM;EGPSW;Dekheila;Sokhna
+ComboGen39;MSL;SCL;SGL
+ComboGen40;MSL;SCL;SGL
+ComboGen17Include;Exclude
+ComboGen18Include;Exclude
+ComboGen19Include;Exclude
+ComboGen20Include;Exclude
+ComboGen21Include;Exclude
+ComboGen22Include;Exclude
+ComboGen23Include;Exclude
+ComboGen24Include;Exclude
+ComboGen25Include;Exclude
+ComboGen26Include;Exclude
+ComboGen27Contains
+
+xPicture685001495010001500settings\Pictures\SEAGO Full.jpg
+xPicture185001030010001500settings\Pictures\SCL Full.jpg
+xPicture285001185010001500settings\Pictures\MSL Full.jpg
+xPicture385001340010001500settings\Pictures\Signature.jpg
+xPicture016060975975settings\Pictures\SEAGO.jpg
+xPicture416060975975settings\Pictures\SCL.jpg
+xPicture516060975975settings\Pictures\MSL.jpg
+
+VERSIONERRORURLhttps://www.dropbox.com/sh/9a5qx0bwxrba2ih/AADHSwjqvAbYynBje3yZ8KA7a?dl=0&lst=
+safVERSIONERRORURLhttp://group.apmoller.net/bu/mli/geo/clusters/Egypt/Process%20Excellence/Pages/default.aspx?View={64fa43cb-0559-4367-9434-404bbfe8accf}&SortField=Modified&SortDir=Desc
+safVERSIONERRORURLhttps://share.maersk.com/sites/InvoiceMe/SitePages/Home.aspx
+
+LOGFILEPATHLOG Files\Invoices\
+USERPROFILEPATHSettings\Profiles\
+PRINTFILEPATHLOG Files\Printing\
+USERLOGPATHLOG Files\Users\
+FORMATPATHSettings\Format\
+MANIIDLOGPATHLOG Files\GC88\ManifestIDs
+CUSTOMERCODELOGPATHLOG Files\CustomerCodes\
+VSLRELEASEPATHLOG Files\VesselRelease\
+VSLVOYFILEPATHLOG Files\VesselVoyage\
+ FOLDERSTOREMOVE  Database\Database;Pictures;ManifestIDs
+ FILESTOREMOVE  .JPG;.BMP;.EXE;.INV
+
+CURRENCYFILESettings\Currencies.dat
+STDFORMATFILESettings\STDFormat.dat
+FREIGHTLINEFILESettings\FreightLines.dat
+TRUCKERSNAMEFILESettings\Truckers.dat
+VESSELSNAMEFILESettings\Vessels.dat
+BLPAPERCLIENTSSettings\BLPaperClients.dat
+USERACCESSFILESettings\UserAccess.dat
+DETDMRTARIFFFileSettings\DetDmrTariff.dat
+TRANSLATIONFILESettings\CommCode.dat
+IMPORTLOGFILELOG Files\GC88\ImportLOG.dat
+REPORTDATABASELOCReporting\Report.mdb
+LOGFILENAMELogInvoiceME
+
+DMRSTR  
+DMRSTR ALY SGL 
+DMRSTR ATM SGL 
+DMRSTR NUB SGL 
+DMRSTR SUD SGL 
+DMRSTR ALY MSL 
+DMRSTR ATM MSL 
+DMRSTR NUB MSL 
+DMRSTR SUD MSL 
+DMRSTR SOK HNA 
+DMRSTR PSD MSL 
+DMRSTR PSD SGL 
+DMRSTR EUR PSD 
+DMRSTR DAM MSL 
+DMRSTR DAM SGL 
+
+INVOICEPLYCopy;Original;
+STRDMRPLYCopy;Copy;Original;
+STRDMRPLYALYCopy;Original;
+STRDMRPLYPSDCopy;Copy;Original;
+STRDMRPLYNUBCopy;Original;
+STRDMRPLYSUDCopy;Original;
+STRDMRPLYDAMCopy;Original;
+STRDMRPLYSOKCopy;Original;
+STRDMRPLYEURCopy;Original;
+STRDMRPLYATMCopy;Original;
+DELOPLY;;
+BLPLY;
+
+newADMINPASSWORD…‡‰O
+newDMRPASSWORDtprnpl:
+newMANIFESTPASSWORDŽ‰Œ‡Š…S
+newWORD CHECKPASSWORD™—•b
+newNEWS ADDPASSWORDomk7
+newADDCLIENTPASSWORDwy{A
+newDELOPASSWORD‹‰‡U
+newOVERWRITEPASSWORDegi/
+PASSWORDERRORIncorrect Login Password, Program Terminating
+
+ACCEPTEDabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+
+SEALPREFIXEG
+SEALENABLE0
+
+NOOFLINESEND18
+TAXPERCENT10
+LOGNUMBER500000
+
+safLOGNAMEDEPTH5
+LOGNAMEDEPTH6
+
+BLPAPERLIMIT500
+
+GC88INDEXOTHER0
+COMPACTGC880
+COMPACTGC88ONtrue
+GC88FULLno
+WRITERAWBLDATAN
+WRITE3LAYERN
+
+safGC88URLhttp://10.39.2.42/gc88web/Default.aspx
+safGC88URLhttp://sapmappitgoa002/gc88web/default.aspx
+GC88URLhttp://sapmappitgoa002/gc88web/default.aspx
+
+CAMMASDir\\10.20.0.21\scan\gcss cam\
+
+ReportingDocTypesAmend;DELO;FullDELO;FullMANI;GateOutFullReleasePSD;INVOCombined;INVOEGPOther;INVOSplit;LETTER;MANI;PSD2SCCT;SCCT2PSD;SOReceiptALY;SOReceiptDAM;SOReceiptSOKH;StrippingFormPSD;TyreInspection;EmailInvoice;SOCGateOutFullReleasePSD;FireBrigade;AICT ( Gate-Out Letter );AICT ( Stripping Letter );AICT ( Extension Letter );BatchInvoCombined;OEGateInOUT;STR/DMR Invoice;FullMANIArabic;MANIArabic;BatchBLCopy;PSDReleaseLetter;OBLPaper;WBPaper
+
+ContainerSize20;40;45
+ContainerTypeDry;High;Reefer;HReef;Flat;Tank;Starvent;OpenTop
+OTHERFORMATSEG;BL;WBL
+
+safWELCOMEMESSAGEPlease do not open more than one InvoiceME at the same time, doing so will result in data loss
+safWELCOMEMESSAGEPlease remember to change your account password when prompted to avoid lock-out and disruption of services
+
+SUPERUSERsfa008
+ALLUSERSAREU
+
+ OVERWRITE  No 
+PICKLASTno
+ADDCNTRTODESCYES
+ALYDEFAULT 5 
+PSDDEFAULT 6 
+TRANSLATELANGUAGEArabic
+PORTCODE EG 
+SEARCHTYPEOLD
+
+COMCODESEARCHVEHICLE004604,004607,004608,004609,004602,004603,004601,002201
+COMCODESEARCHTOBACCO004302,004301
+CUSTCODE211,211
+
+AICTEMAILalx-customerservice@aict.Com.eg
+AICTOPSEMAILOps-planning@aict.com.eg;ALYOPSGEN@maersk.com;ALYOPSTRM@maersk.com
+
+PSDYARDSQuick Trade International;South Port Said Drydock;Suez Canal Container Company;United Dry Port
+DELOCNTRHEADERLINEContainer  Size/type  Seal No.  Tare Weight  Gross weight  pkgs  measure
+
+NEWS22 Mar 2018: Please do not open more than one InvoiceME at the same time, doing so will result in data loss
+
+IMPORTCHECK;cars;tobacco;vehicle;personal;transit;buses;trucks;lorries;motorcycle;bicycle;used;Freetime;Free Time;Cigarette;Shortshipment;Short shipment;Shortshiped;Short shipped;Shortshipped;Consolidate;CONSOLIDATED;Consolidation;LCL;BB/BB;Lorry ;brightstar;bright star ;FREE OF DEMURRAGE ;21 FREE DAY;raw hide; skin;hide;leather;14 day;21 day;14 free day;10 day;apple;frozen;plum;banana ;peach ;CHERRIES; Kiwi;milk;casein;protein ;butter;biscuits;choclate;caiver;rani;cheese;peas;vegtal;Foodstuff;CAKES;BROWNIE;CROISSANTS;Foods;dietary ;NECTARINE ;TEA;Cream;nissan;toyota;ROMALEX
