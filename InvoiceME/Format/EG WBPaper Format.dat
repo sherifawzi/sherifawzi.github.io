@@ -1,0 +1,16 @@
+ PAPERSIZE  A4
+ ORIENTATION  PORTRAIT
+ PAGELOCATION  1 
+ FONTSIZE  12
+ FONTNAME  VERDANA
+ FONTBOLD  
+ TEXT  400  9600  Important Notice!  1  999  
+ FONTSIZE  8
+ FONTNORMAL  
+ TEXT  500  10200  This paper is intended only for the printing of XXX&OPERATOR&XXX's Sea Way Bills. Any engagement, undertaking, promise or other extension  1  999 
+ TEXT  500  10400  found on this piece of paper that is not a XXX&OPERATOR&XXX Sea Way Bill, cannot in any way commit, hold liable or engage XXX&OPERATOR&XXX,  1  999 
+ TEXT  500  10600  A.P. Moller-Maersk, Maersk Egypt S.A.E. or any of their affiliates or subsidiaries in commitments be they financial or other.    1  999 
+ TEXT  500  11000  Should you receive this piece of paper used for any other purpose than the printing of a XXX&OPERATOR&XXX Sea Way Bill, please immediately    1  999 
+ TEXT  500  11200  inform Maersk Egypt Agency on phone number +202 24801010 or e-mail us at egycsemng@maersk.com of the nature of the usage  1  999 
+ TEXT  500  11400  and the serial number mentioned below.    1  999 
+ TEXT  500  11800  Serial Number: XXX&WBSERIAL&XXX     1  80 

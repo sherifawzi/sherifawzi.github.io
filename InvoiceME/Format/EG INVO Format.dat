@@ -1,0 +1,110 @@
+ PAPERSIZE  A4
+ ORIENTATION  PORTRAIT
+ FONTSIZE  26
+ FONTNAME  IMPACT
+ FONTBOLD  
+' TEXT  1550  600  XXX&OPERATOR&XXX  1  999
+ FONTSIZE  10
+ FONTNAME  COURIER NEW
+ DRAWIDTH  5
+ LINE      600    300    11000  Y      
+ LINE      300    1500   11000  Y      
+ LINE      300    11875  11000  Y      
+ LINE      300    14075  11000  Y      
+ LINE      9000    14075  X  15850      
+ LINE      300    15850  10700  Y      
+ LINE      300    3050   11000  Y      
+ LINE      300    4050   10700  Y      
+ LINE      600    4150   11000  Y      
+ LINE      300    600    X      4050   
+ LINE      300    4450   X      15850  
+ LINE      11000  300    X      3750   
+ LINE      11000  4150   X      15550  
+ CIRCLE    600    4450   300    1.57    3.14   
+ CIRCLE    10700  3750   300    4.71    0      
+ CIRCLE    600    600    300    1.57    3.14   
+ CIRCLE    10700  15550  300    4.71    0      
+ TEXT      5700    1750 Payer Details    1  999
+ TEXT      5700    450  Proforma XXX&INVOICETYPE&XXX:  1  999
+ TEXT      5700    700  Printing Date:   1  999
+ TEXT      5700    950  Bill Of Lading:  1  999
+ TEXT      5700    1200 Reference No.:   1  999
+ TEXT      1000    3350 Place Of Receipt:  1  999
+ TEXT      4250    3350 Place Of Delivery:  1  999
+ TEXT      7500    3350 Vessel / Voyage:  1  999
+ FONTSIZE  8
+ TEXT      9100  14225  S.Code:   1  14
+ TEXT      9100  14725  C.Code:   1  14
+ TEXT      9100  15225  N.Code:   1  14
+ FONTSIZE  10
+ TEXT      1000  1650  XXX&OPERATOR&XXX  1  999 
+ TEXT      1000  1900  Omar Ibn El Khattab Street  1  999 
+ TEXT      1000  2150  Star Capital A2, 13th Floor  1  999 
+ TEXT      1000  2400  City Stars  1  999 
+ TEXT      1000  2650  Heliopolis - Cairo 11771  1  999 
+ FONTNORMAL  
+ FONTSIZE  8
+ TEXT      9200  14450  XXX&SHIPPERCODE&XXX   1  18
+ TEXT      9200  14975  XXX&CONSIGNEECODE&XXX   1  18
+ TEXT      9200  15475  XXX&NOTIFYCODE&XXX   1  18
+ FONTSIZE  10
+ TEXT      8700    450   XXX&INVOICENUM&XXX  1  999
+ TEXT      7700    700   XXX&NOW&XXX  1  999
+ TEXT      7700    950   XXX&BLNUM&XXX  1  999
+ TEXT      7700    1200  XXX&REFNO&XXX  1  999
+ TEXT      1000    3650  XXX&FROM&XXX  1  25
+ TEXT      4250    3650  XXX&TO&XXX  1  25
+ TEXT      7500    3650  XXX&VSL&XXX/XXX&VOY&XXX  1  27
+ TEXT      5700    2050  XXX&INVOICEE&XXX  1  40
+ TEXT      5700    2263  XXX&INVOICEE&XXX  41  40
+ TEXT      5700    2476  XXX&INVOICEE&XXX  81  40
+ TEXT      5700    2689  XXX&INVOICEE&XXX  121  40
+ TEXT      600  12000  XXX&COMMENTS&XXX  1  84
+ TEXT      600  12213  XXX&COMMENTS&XXX  85  84
+ TEXT      600  12426  XXX&COMMENTS&XXX  169  84
+ TEXT      600  12639  XXX&COMMENTS&XXX  253  84
+ TEXT      900  13000  Currency of payment must be according to the totals. If payment is done by bank  1  999
+ TEXT      900  13200  transfer. Please include our reference no. XXX&BLNUM&XXX  1  999
+ TEXT      850  13500  Beneficiary: Maersk Egypt Shipping Agency - Bank: HSBC Egypt, Heliopolis Branch  1  999
+
+ TEXTML    1400  13700  Maersk:       USD 002-338028-111   EGP 002-338028-002   Swift EBBKEGCX  1  999
+ TEXTSCL   1400  13700  Safmarine:    USD 002-338028-112   EGP 002-338028-003   Swift EBBKEGCX  1  999
+ TEXTTGO   1400  13700  SEALAND:      USD 002-338028-113   EGP 002-338028-004   Swift EBBKEGCX  1  999
+ TEXTMLL   1400  13700  ML Limited:   USD 002-338028-111   EGP 002-338028-002   Swift EBBKEGCX  1  999
+
+ TEXT  2600  14175                    Maersk Egypt Shipping Agency S.A.E                          1  999 
+
+ TEXT  1250  14550       Omar Ibn El Khattab St             5 Victor Bassily Street     1  999 
+ TEXT  1250  14775       Star Capital A2,                   Bab Sharq, 2nd floor,       1  999 
+ TEXT  1250  15000       13 Floor, City Stars               Azarita , Alexandria        1  999 
+ TEXT  1250  15225       Heliopolis, Cairo                  Tel: +20 3 4885100          1  999 
+ TEXT  1250  15450       Tel: + 20 2 2480 1010                                          1  999 
+
+ safTEXT      2950  14175                      Maersk Egypt Shipping Agency                       1  999
+
+ safTEXT         550   14550  2 El Hegaz Street       9 Victor Basili St     Resta Business Complex    1  999 
+ safTEXT         550   14775  Heliopolis              2nd floor, Azarita     Sultan Hussein St         1  999 
+ safTEXT         550   15000  Cairo, Egypt            Alexandria, Egypt      Port Said, Egypt          1  999 
+ safTEXT         550   15225  Tel: +2 02 24540509     Tel: +2 03 5432640     Tel: + 2 06 63200170      1  999 
+ safTEXT         550   15450  Fax: +2 02 24540511     Fax: +2 03 5432641     Fax: + 2 06 63200360      1  999 
+
+ safTEXT      650   14225  Maersk Egypt S.A.E          Maersk Egypt S.A.E   Maersk Egypt S.A.E    1  999
+ safTEXT      650   14450  Omar Ibn El Khattab St      9 El Batalsa St      2 Ahmed shawky off    1  999
+ safTEXT      650   14675  Star Capital A2, 13th fl.   Azarita              El Gomhourya St       1  999
+ safTEXT      650   14900  City Stars                  Alexandria           Port Said             1  999
+ safTEXT      650   15125  Heliopolis - Cairo 11771    Tel: 03 4848101      Tel: 066 3244235/6/7  1  999
+ safTEXT      650   15350  Tel: 02 24801010 / 16812    Fax: 03 4843319      Fax: 066 3244238      1  999
+ safTEXT      650   15575  Fax: 02 24801011                                                       1  999    
+ FRTBOX    1000    4500    245 
+ FONTSIZE  20
+ FONTBOLD  
+ TYPE    1000    10750   
+ SIGNATURE    5500    10550   
+ LOGO    500    500   
+
+ FONTSIZE  9
+ FONTNAME  COURIER NEW
+ FONTNORMAL  
+ TEXT      550  11400 PROFORMA CALCULATION: Charges that will be generated on the original invoice should be paid by  1  145
+ TEXT      3150  11600 the payer of this proforma calculation document  1  145
+

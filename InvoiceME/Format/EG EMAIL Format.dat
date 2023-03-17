@@ -1,0 +1,50 @@
+ EMAIL          Dear Client,   
+ EMAIL             
+ EMAIL          Kindly find attached our invoice for B/L number: XXX&BLNUM&XXX   
+ EMAIL             
+ EMAIL          Invoice Notes:   
+ EMAIL              
+ EMAIL          Currency of payment must be according to the totals. If payment is done by bank transfer, please   
+ EMAIL          include our reference no. XXX&BLNUM&XXX   
+ EMAIL             
+ EMAIL          Bank Details:   
+ EMAIL             
+ EMAILML        	Bank Account Name: Maersk Egypt Shipping Agency     
+ EMAILML        	Bank: HSBC Egypt, Heliopolis branch   
+ EMAILML        	Account: 	USD 002-338028-111   
+ EMAILML                               EGP 002-338028-002   
+ EMAILML        		        Swift Code: 	EBBKEGCX    
+ EMAILSCL       	Bank Account Name: Maersk Egypt Shipping Agency     
+ EMAILSCL       	Bank: HSBC Egypt, Heliopolis branch   
+ EMAILSCL       	Account: 	USD 002-338028-112   
+ EMAILSCL                              EGP 002-338028-003   
+ EMAILSCL       		        Swift Code: 	EBBKEGCX    
+ EMAIL             
+ EMAIL          We thank you for using XXX&OPERATOR&XXX,  in case of any further inquiries, please contact   
+ EMAIL          the undersigned.   
+ EMAIL              
+ EMAILML        Maersk Egypt Shipping Agency   
+ EMAILML        Citystars - Star Capital A2 - 13th Floor   
+ EMAILML        Omar Ibn El-Khattab Street - Heliopolis - Cairo - Egypt   
+ EMAILML        Registration Number: 144911   
+ EMAILML        Phone  :+202 24801010   
+ EMAILML        Fax    :+202 24801011   
+ EMAILML        www.maerskline.com   
+ EMAILSCL       Safmarine Egypt   
+ EMAILSCL       Citystars - Star Capital A2 - 13th Floor   
+ EMAILSCL       Omar Ibn El-Khattab Street - Heliopolis - Cairo - Egypt   
+ EMAILSCL       Registration Number: 144911   
+ EMAILSCL       Phone  :+202 24801030   
+ EMAILSCL       Fax    :+202 24801033   
+ EMAILSCL       Email: egysclcus@eg.safmarine.com   
+ EMAILSCL       www.safmarine.com   
+ EMAIL              
+ EMAIL          Track your cargo via SMS! Send a text message to 
+ EMAIL          +45 6099 10264 for Maersk Line 
+ EMAIL          +45 6099 10263 for Safmarine 
+ EMAIL                                             
+ EMAIL          BL tracking: 		BL 856123456   
+ EMAIL          Booking number: 	BN 751123456 
+ EMAIL          Container tracking: 	CN MSKU1234567 
+ EMAIL             
+ EMAIL             

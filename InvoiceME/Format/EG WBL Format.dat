@@ -1,0 +1,254 @@
+ PAGELOCATION  1 
+ PAPERSIZE  A4
+ ORIENTATION  PORTRAIT
+ LOGOBL    1100    700   
+
+ PICCOPY    4250    7000   
+
+ FONTNAME  Arial
+ FONTBOLD  
+ FONTSIZE  8
+ TEXT    6050   700    NON-NEGOTIABLE WAYBILL               1  40  
+ TEXT    4350  6415    PARTICULARS FURNISHED BY SHIPPER                 1  40  
+ FONTNORMAL  
+ TEXT    8100  15325    Maersk Egypt S.A.E                 1  40  
+ TEXT     725  15500    This transport document may have one or more numbered pages                 1  60  
+
+ DRAWIDTH  5
+ FONTSIZE  4.9
+
+' -----------------------------------------------------------
+' -------------- TOP BOX ------------------------------------
+' -----------------------------------------------------------
+
+' -------------------- Horizontals --------------------
+' ---------- Top Left circle
+ CIRCLE  950     950    300    1.57    3.14
+' ---------- Top Most Line
+ LINE    950     650    11350  Y
+ TEXT   9850     750    SCAC                      1  7  
+' ---------- BL Number
+ LINE    9800   1000    11350  Y
+ TEXT    9850   1100    B/L No.                   1  7  
+' ---------- Shipper
+ LINE    650    1350    11350  Y
+ TEXT    700    1360    Shipper                   1  7  
+ TEXT    6050   1360    Booking No.               1  11  
+' ---------- Export Reference
+ LINE    6000   1817    11350  Y
+ TEXT    6050   1827    Export references         1  22  
+ TEXT    10500  1827    Svc Contract              1  12  
+' ---------- text paragraph
+ LINE    6000   3150    11350  Y
+' ---------- Consignee
+ LINE    650    2750    6000  Y
+ TEXT    700    2760    Consignee                 1  10  
+' ---------- notify
+ LINE    650    4150    6000  Y
+ TEXT    700    4160    Notify Party (see clause 22)           1  30  
+' ---------- onward inland 
+ LINE    6000   5075    11350  Y
+ TEXT    6050   5085    Onward inland routing (Not part of Carriage as defined in clause 1. For account and risk of Merchant)           1  101  
+
+' ---------- vessel
+ LINE    650    5550    11350  Y
+ TEXT    700    5560    Vessel           1  10  
+ TEXT   3210    5560    Voyage No.           1  20  
+ TEXT   6050    5560    Place of Receipt. Applicable only when document used as Multimodal Waybill           1  80  
+
+' ---------- POL
+ LINE    650    6025    11350  Y
+ TEXT    700    6035    Port of Loading           1  20  
+ TEXT   3210    6035    Port of Discharge           1  20  
+ TEXT   6050    6035    Place of Delivery. Applicable only when document used as Multimodal Transport B/L. (see clause 1)           1  101  
+
+' ---------- bottom of top boxL
+ LINE    650    6400    11350  Y
+
+' -------------------- Verticals --------------------
+' ---------- after vessel vertical line of top box
+ LINE    3160     5550   X      6400 
+' ---------- middle vertical of top box
+ LINE    6000     650   X      6400 
+' ---------- bl no vertical line of top box
+ LINE    9800     650   X      1350 
+
+
+' -----------------------------------------------------------
+' -------------- MIDDLE BOX ---------------------------------
+' -----------------------------------------------------------
+
+' -------------------- Horizontals --------------------
+' ---------- Top of middle box
+ LINE    650    6605    11350  Y
+ TEXT    700    6615    Kind of Packages; Description of goods; Marks and Numbers; Container No./Seal No.           1  95  
+ TEXT   8200    6616    Weight           1  7  
+ TEXT   9970    6615    Measurement           1  12  
+' ---------- bottom of middle box
+ LINE    650    10900    11050  Y
+ TEXT    700    10750    Above particulars as declared by Shipper, but without responsibility of or representation by Carrier.           1  120  
+
+' ---------- bottom right circle of middle box
+ CIRCLE  11050    10600    300    4.71    0 
+
+' -------------------- Verticals --------------------
+' ---------- weight vertical line
+ LINE    8150     6605   X      10900 
+' ---------- measurement vertical line
+ LINE    9920     6605   X      10900 
+
+
+' -----------------------------------------------------------
+' -------------- BOTTOM BOX ------------------------------------
+' -----------------------------------------------------------
+
+' -------------------- Horizontals --------------------
+' ---------- Top Left circle of bottom box
+ CIRCLE  950    11260    300    1.57    3.14
+' ---------- Top of bottom box
+ LINE    950    10960    11350  Y
+ TEXT    900    10970    Freight & Charges           1  20  
+ TEXT   4650    10970    Rate                        1  5  
+ TEXT   6060    10970    Unit                        1  5  
+ TEXT   8000    10970    Currency                    1  10  
+ TEXT   8570    10970    Prepaid                     1  10  
+ TEXT   9985    10970    Collect                     1  10  
+' ---------- place of issue
+ LINE     650    12875    11350  Y
+ TEXT     700    12885    Carrier's Receipt. Total number of containers or                     1  55  
+ TEXT    700    13015    packages received by Carrier.                            1  55  
+ TEXT   3240    12885    Place of Issue of Waybill                     1  32  
+' ---------- date of issue
+ LINE    650    13342    5990  Y
+ TEXT    700    13352    Shipped on Board Date ( Local Time )                     1  55  
+ TEXT   3240    13352    Date Issue of Waybill                     1  32  
+' ---------- shipped on board
+ LINE    650    13808    5990  Y
+ TEXT    700    13818    Declared Value Charges (see clause 7.3 of the Maersk Line Bill of                     1  70  
+ TEXT    700    13948    Lading) for Declared Value of US$                     1  40  
+' ---------- bottom of declard value
+ LINE    650    14275    5990  Y
+' ---------- signature line
+ LINE    6400    15250    11225  Y
+' ---------- Bottom Most Line
+ LINE    650    15775    11050  Y
+' ---------- bottom right circle of bottom box
+ CIRCLE  11050    15475    300    4.71    0    
+
+' -------------------- Verticals --------------------
+' ---------- rate vertical line
+ LINE    4600     10970   X      12875 
+' ---------- unit vertical line
+ LINE    6010     10970   X      12875 
+' ---------- currency vertical line
+ LINE    7950     10970   X      12875 
+' ---------- prepaid vertical line
+ LINE    8520     10970   X      12875 
+' ---------- collect vertical line
+ LINE    9935     10970   X      12875 
+' ---------- before place of issue vertical 
+ LINE    3190     12875   X      13818 
+' ---------- after place of issue vessel vertical 
+ LINE    5990     12875   X      14275 
+
+ FONTSIZE  5.7
+ TEXT    6040     12925    Shipped, as far as ascertained by reasonable means of checking, in apparent good order and condition                     1  150  
+ TEXT    6040     13075    unless otherwise stated herein the total number or quantity of Containers or other packages or units                      1  150  
+ TEXT    6040     13225    indicated in the box opposite entitled “Carrier’s Receipt”                 1  150  
+
+
+
+ FONTSIZE  5.9
+ TEXT    6050     3160    This contract is subject to the terms, conditions and exceptions, including the law & jurisdiction clause                     1  150  
+ TEXT    6050     3310    and limitation of liability & declared value clauses, of the current Maersk Line Bill of Lading (available                     1  150  
+ TEXT    6050     3460    from the Carrier, its agents and at terms.maerskline.com/carriage), which are applicable with logical                     1  150  
+ TEXT    6050     3610    amendments (mutatis mutandis). To the extent necessary to enable the Consignee to sue and to be                     1  150  
+ TEXT    6050     3760    sued under this contract, the Shipper on entering into this contract does so on his own behalf and as                     1  150  
+ TEXT    6050     3910    agent for and on behalf of the Consignee and warrants that he has the authority to do so. The shipper                     1  150  
+ TEXT    6050     4060    shall be entitled to change the Consignee at any time before delivery of the goods provided he gives                     1  150  
+ TEXT    6050     4210    the Carrier reasonable notice in writing.                     1  150  
+ TEXT    6050     4360    Delivery will be made to the Consignee or his authorised agent on production of reasonable proof of                     1  150  
+ TEXT    6050     4510    identity (and, in the case of an agent, reasonable proof of authority) without production of this waybill.                     1  150  
+ TEXT    6050     4660    The Carrier shall be under no liability whatsoever for misdelivery unless caused by the Carrier's                     1  150  
+ TEXT    6050     4810    negligence.                     1  150  
+
+ FONTSIZE  4.9
+ TEXT    8320     14120    Signed for the Carrier Maersk Line A/S                     1  40  
+ TEXT    8570     15550    As Agent(s)                     1  12  
+
+
+' -----------------------------------------------------------
+' -------------- OVERALL VERTICALS --------------------------
+' -----------------------------------------------------------
+' ---------- left vertical line top
+ LINE    650     950   X      6400 
+' ---------- left vertical line middle
+ LINE    650     6605   X      10900 
+' ---------- left vertical line bottom
+ LINE    650     11260   X      15775 
+' ---------- right vertical line top
+ LINE    11350     650   X      6400 
+' ---------- right vertical line middle
+ LINE    11350     6605   X      10600 
+' ---------- right vertical line bottom
+ LINE    11350     10960   X      15475 
+
+
+' ------------------------------------------------------------
+' ------------- BL TEXT FROM GC88 HERE -----------------------
+' ------------------------------------------------------------
+
+ FONTNAME  IMPACT
+ FONTSIZE  126
+ FONTBOLD  
+ sTEXT  3250  7000  COPY  1  4
+
+ FONTNAME  COURIER NEW
+ FONTSIZE  10
+ FONTNORMAL  
+
+ TEXT   10200  1075   XXX&BLNUM&XXX      1  10 
+ TEXT   10200  725   MAEU      1  4 
+
+ TEXT  1100  1560  XXX&SHIPPER&XXX        1    36 
+ TEXT  1100  1760  XXX&SHIPPER&XXX        37   36 
+ TEXT  1100  1960  XXX&SHIPPER&XXX        73   36 
+ TEXT  1100  2160  XXX&SHIPPER&XXX        109  36 
+ TEXT  1100  2360  XXX&SHIPPER&XXX        145  36 
+
+ TEXT  1100  2960  XXX&CONSIGNEE&XXX        1    36 
+ TEXT  1100  3160  XXX&CONSIGNEE&XXX        37   36 
+ TEXT  1100  3360  XXX&CONSIGNEE&XXX        73   36 
+ TEXT  1100  3560  XXX&CONSIGNEE&XXX        109  36 
+ TEXT  1100  3760  XXX&CONSIGNEE&XXX        145  36 
+
+ TEXT  1100  4360  XXX&NOTIFY&XXX        1    36 
+ TEXT  1100  4560  XXX&NOTIFY&XXX        37   36 
+ TEXT  1100  4760  XXX&NOTIFY&XXX        73   36 
+ TEXT  1100  4960  XXX&NOTIFY&XXX        109  36 
+ TEXT  1100  5160  XXX&NOTIFY&XXX        145  36 
+
+ TEXT  700  5760  XXX&SAIVSL&XXX        1  20 
+ TEXT  3210  5760  XXX&SAIVOY&XXX        1  4 
+
+ TEXT  700  6170  XXX&FROM&XXX        1  20 
+ TEXT  3210  6170  XXX&TO&XXX        1  20 
+
+ TEXT  8200  6815  XXX&WEIGHT&XXX         1    14 
+ TEXT  8200  7015  XXX&WEIGHT&XXX         15   14 
+ TEXT  9970  6815  XXX&VOLUME&XXX         1    14 
+ TEXT  9970  7015  XXX&VOLUME&XXX         15   14 
+
+ TEXT  3240  13085  XXX&POLCNTRY&XXX       1    18 
+ TEXT    700    13552    XXX&SAIDATE&XXX    1  55  
+ TEXT   3240    13552    XXX&NOW&XXX    1  32  
+
+
+
+' ----- here we populate description : X - Y - Length - Line Spacing - End Y
+ DESCBOX   2700   6815    32   200  10450 
+
+' ----- here we populate containers : X - Y - Length - Line Spacing - End Y
+ CNTRBOX   700   6815    18   200  10450 
+
+

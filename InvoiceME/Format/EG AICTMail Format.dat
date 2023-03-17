@@ -1,0 +1,131 @@
+ PAGELOCATION  1 
+ PAPERSIZE  A4
+ ORIENTATION  PORTRAIT
+ DRAWIDTH  5
+ FONTNAME  COURIER NEW
+' -------------------- upper left corner circle
+ CIRCLE  1500    400    300    1.57    3.14
+' -------------------- top most line
+ LINE    1500  100  10600  Y
+' -------------------- left most line
+ LINE    1200  400   X      10900
+' -------------------- bottom most line
+ LINE    1200   10900  10300  Y
+' -------------------- right most
+ LINE     10600   100   X      10600
+' -------------------- lower right corner circle
+ CIRCLE  10300   10600  300    4.71    0
+ FONTBOLD 
+ FONTSIZE  10
+ FONTNORMAL 
+' -------------------- top line after apmoller
+ LINE    2125  625  9575  Y
+ FONTNAME  ARABIC TRANSPARENT
+ FONTSIZE  13
+' -------------------- wekalet maersk egypt lelmelaha
+ TEXT  5150  3300  Êﬂ«·… „Ì—”‹ﬂ «ÌÃ‹»  «·„·«ÕÌ…    1    162   
+ FONTSIZE  9
+' -------------------- sherka mosahma masreya
+ TEXT  3650  3375  ‘—ﬂ… „”«Â„… „’—Ì…   1    162   
+ FONTNAME  COURIER NEW
+ FONTSIZE  10
+ TEXT  3525  2380  T H E   A . P . M O L L E R   G R O U P   1    62   
+ FONTSIZE  23
+ FONTBOLD 
+ TEXT  4275  2650  MAERSK EGYPT   1    62   
+ FONTSIZE  10
+ TEXT  4650  3075  Shipping Agency S.A.E   1    62   
+ LOGOM    5350    1600   
+ FONTNAME  ARABIC TRANSPARENT
+ FONTSIZE  16
+ TEXT  4500  2500  XXX&AICTLETTER&XXX   1    62   
+ FONTSIZE  13
+ FONTNORMAL 
+' ---- alsadah sherket
+ TEXT  5700  3200  «·”«œ… / ‘—ﬂ… «·«”ﬂ‰œ—Ì… ·„Õÿ«  «·Õ«ÊÌ«  «·œÊ·Ì…  1    420   
+ TEXT  5000  3200  AICT  1    420   
+ LINE  4800  3600  10075  Y
+ TEXT  2000  3650   »—Ã«¡ «· ﬂ—„ »«·„Ê«›ﬁ… ⁄·Ì Œ—ÊÃ „‘„Ê· «·»Ê·Ì’… »„« ›ÌÂ« «·Õ«ÊÌ«  «Ê  ›—Ì€Â« œ«Œ· «·„Õÿ…     1    420   
+ TEXT  2300  3950   »⁄œ «‰  „ „⁄«Ì‰… «·Õ«ÊÌ«  Ê «·»÷«⁄… »„⁄—›… «·⁄„Ì· Ê ÊÃœ  ›Ì Õ«·… ÃÌœ… Ê ”·Ì„… Ê –·ﬂ         1    420   
+ TEXT  2325  4250   ··’—› Œ«—Ã «·œ«∆—… «·Ã„—ﬂÌ… Ê «⁄«œ Â« »„⁄—›… «·⁄„Ì· «·Ì ”«Õ…  Œ“Ì‰ «·›Ê«—€ Ê ﬁœ ﬁ«„        1    420   
+ TEXT  2550  4550   «·⁄„Ì· »”œ«œ ﬂ«›… „” Õﬁ« ‰« »«·«÷«›… «·Ì „’«—Ì› «· Œ“Ì‰ Õ Ì  «—ÌŒ ’—› «·Õ«ÊÌ«               1    420   
+ CIRCLE  2000  5400    300    1.57    3.14
+ CIRCLE  9700  8400   300    4.71    0
+ LINE    2000  5100  10000  Y
+ LINE    1700  5500  10000  Y
+ LINE    1700  5900  10000  Y
+ LINE    1700  6300  10000  Y
+ LINE    1700  6700  10000   Y
+ LINE    1700  7100  10000   Y
+ LINE    1700  7500  10000   Y
+ LINE    1700  7900  10000   Y
+ LINE    1700  8300  10000   Y
+ LINE    1700  8700  9700   Y
+ LINE    1700  5400  X  8700
+ LINE    10000  5100  X  8400
+ LINE    7900  5100  X  8700
+ LINE    3767  8300  X  8700 
+ LINE    5834  8300  X  8700 
+ LINE    3017  8300  X  8700 
+ LINE    5084  8300  X  8700 
+ LINE    7150  8300  X  8700 
+ CIRCLE  2000  9200   300    1.57    3.14
+ CIRCLE  9700  9400   300    4.71    0
+ LINE    2000  8900  10000   Y
+ LINE    1700  9300  10000   Y
+ LINE    1700  9700  9700   Y
+ LINE    1700   9200  X  9700
+ LINE    10000  8900   X  9400
+ LINE    6900  8900  X  9700
+' --------- tareekh el youm
+ TEXT  8550  5150   «—ÌŒ «·ÌÊ„  1    420   
+' --------- al bakhera
+ TEXT  8900  5550  «·»«Œ—…       1    420   
+' --------- rehla
+ TEXT  8950  5950  «·—Õ·…        1    420   
+' --------- tareek al rehla
+ TEXT  8375  6350   «—ÌŒ «·—Õ·…      1    420   
+' --------- rakam al bolisa
+ TEXT  8825  6750  »Ê·Ì’…       1    420   
+' --------- esm el 3ameel
+ TEXT  8600  7150  «”„ «·⁄„Ì·       1    420   
+' --------- mekawel el nakl
+ TEXT  8525  7550  „ﬁ«Ê· «·‰ﬁ·    1    420   
+' --------- mena'el shahn
+ TEXT  8550  7950  „Ì‰«˙ «·‘Õ‰    1    420   
+' --------- 3ada el hawyat
+ TEXT  8350  8350  ⁄œœ «·Õ«ÊÌ«        1    420   
+' --------- gate out full
+ TEXT  7125  8950  «ﬁ’Ì  «—ÌŒ ··Œ—ÊÃ „„·Ê¡  1    420   
+' --------- gate in empty
+ TEXT  7225  9350  «ﬁ’Ì  «—ÌŒ ··—ÃÊ⁄ ›«—€   1    420   
+ FONTBOLD 
+ TEXT  2500  5175  XXX&NOW&XXX  1    420   
+ TEXT  2500  5575  XXX&VSL&XXX   1    420   
+ TEXT  2500  5975  XXX&VOY&XXX  1    420   
+ TEXT  2500  6375  XXX&ALYARRDATE&XXX        1    25 
+ TEXT  2500  6775  XXX&BLNUM&XXX  1    420   
+ TEXT  2500  7175  XXX&ALYCNEE&XXX     1    35   
+ TEXT  2500  7575  XXX&ALYTRUCKER&XXX     1    35   
+ TEXT  2500  7975  XXX&FROM&XXX     1    35   
+ TEXT  6045  8400  XXX&20&XXX XXX&20OOG&XXX     1    35   
+ TEXT  3975  8400  XXX&40&XXX XXX&40OOG&XXX     1    35   
+ TEXT  1933  8400  XXX&45&XXX XXX&45OOG&XXX     1    35   
+ TEXT  2500  8975  XXX&ALYGATEOUTDATE&XXX     1    30   
+ TEXT  2500  9375  XXX&ALYGATEINDATE&XXX     1    30   
+ FONTSIZE  11
+ FONTNORMAL 
+ TEXT  3122  8415  45'HC       1    420   
+ TEXT  5189  8415  40'DC       1    420   
+ TEXT  7255  8415  20'DC       1    420   
+' --------- malhouza
+ FONTSIZE  10
+ TEXT  9600  99000  „·ÕÊŸ…   1    420   
+ TEXT  7600  10100  ‰Â«Ì… «·ÌÊ„ «·”«⁄… «·À«‰Ì… ⁄‘—… „”«¡   1    420   
+ TEXT  4675  10300  ›Ì Õ«·… ’—› «·„„·Ê¡ «Ê —ÃÊ⁄ «·›Ê«—€ »⁄œ «· Ê«—ÌŒ «·„»Ì‰… ⁄«·Ì… ·« Ì „ Œ—ÊÃ    1    420   
+ TEXT  5275  10500   «Ê œŒÊ· «·Õ«ÊÌ«  «·« »⁄œ «·—ÃÊ⁄ ·· ÊﬂÌ· Ê ”œ«œ ﬂ«›Â „’«—Ì› «· ÃœÌœ   1    420   
+' ------------------ signature
+ FONTSIZE  13
+ TEXT  2000  10250  Ê ·”Ì«œ ﬂ„ Ã“Ì· «·‘ﬂ—      1    420   
+ TEXT  2250  10550  „Ì—”‹ﬂ «ÌÃ‹»    1    162   
+

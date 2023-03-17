@@ -1,0 +1,59 @@
+ PAPERSIZE  A4
+ ORIENTATION  PORTRAIT
+ FONTSIZE  26
+ FONTNAME  IMPACT
+ FONTBOLD  
+' TEXT  1550  600  XXX&OPERATOR&XXX  1  999
+ FONTSIZE  10
+ FONTNAME  COURIER NEW
+ DRAWIDTH  5
+ LINE      600    300    11000  Y      
+ LINE      300    1500   11000  Y      
+ LINE      300    11300  10700  Y      
+ LINE      300    3050   11000  Y      
+ LINE      300    4050   10700  Y      
+ LINE      600    4150   11000  Y      
+ LINE      300    600    X      4050   
+ LINE      300    4450   X      11300  
+ LINE      11000  300    X      3750   
+ LINE      11000  4150   X      11000  
+ CIRCLE    600    4450   300    1.57    3.14   
+ CIRCLE    10700  3750   300    4.71    0      
+ CIRCLE    600    600    300    1.57    3.14   
+ CIRCLE    10700  11000  300    4.71    0      
+ TEXT      5700    1750 Payer Details    1  999
+ TEXT      5700    450  Invoice Number:  1  999
+ TEXT      5700    700  Printing Date:   1  999
+ TEXT      5700    950  Bill Of Lading:  1  999
+ TEXT      5700    1200 Reference No.:   1  999
+ TEXT      1000    3350 Place Of Receipt:  1  999
+ TEXT      4250    3350 Place Of Delivery:  1  999
+ TEXT      7500    3350 Vessel / Voyage:  1  999
+ FONTSIZE  10
+ TEXT      1000  1650  XXX&OPERATOR&XXX  1  999 
+ TEXT      1000  1900  Omar Ibn El Khattab Street  1  999 
+ TEXT      1000  2150  Star Capital A2, 13th Floor  1  999 
+ TEXT      1000  2400  City Stars  1  999 
+ TEXT      1000  2650  Heliopolis - Cairo 11771  1  999 
+ FONTNORMAL  
+ FONTSIZE  8
+ TEXT      9200  14450  XXX&SHIPPERCODE&XXX   1  18
+ TEXT      9200  14975  XXX&CONSIGNEECODE&XXX   1  18
+ TEXT      9200  15475  XXX&NOTIFYCODE&XXX   1  18
+ FONTSIZE  10
+ TEXT      7700    450   XXX&INVOICENUM&XXX  1  999
+ TEXT      7700    700   XXX&NOW&XXX  1  999
+ TEXT      7700    950   XXX&BLNUM&XXX  1  999
+ TEXT      7700    1200  XXX&REFNO&XXX  1  999
+ TEXT      1000    3650  XXX&FROM&XXX  1  25
+ TEXT      4250    3650  XXX&TO&XXX  1  25
+ TEXT      7500    3650  XXX&VSL&XXX/XXX&VOY&XXX  1  27
+ TEXT      5700    2050  XXX&INVOICEE&XXX  1  40
+ TEXT      5700    2263  XXX&INVOICEE&XXX  41  40
+ TEXT      5700    2476  XXX&INVOICEE&XXX  81  40
+ TEXT      5700    2689  XXX&INVOICEE&XXX  121  40
+ FRTBOX    1000    4500    245 
+ FONTSIZE  20
+ FONTBOLD  
+ TYPE    1000    10350   
+ LOGO    500    500   

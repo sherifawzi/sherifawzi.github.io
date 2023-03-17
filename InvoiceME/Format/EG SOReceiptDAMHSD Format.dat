@@ -1,0 +1,122 @@
+ DRAWIDTH  5
+ LINE  1500   1500   10600  Y      UBTL
+ LINE  1200   1800   X      13400  UBLL
+ LINE  1200   13400  10300  Y      UBBL
+ LINE  10600  1500   X      13100  UBRL
+ LINE  1500   13600  10600  Y      BBTL
+ LINE  1200   15375  10300  Y      BBBL
+ LINE  1200   13900  X      15375  BBLL
+ LINE  10600  13600  X      15075  BBRL
+ LINE  2125   2575   9575   Y      Below APMOLLER
+ CIRCLE  10300  13100  300  4.71  0     UBLR
+ CIRCLE  1500   1800   300  1.57  3.14  UBTL
+ CIRCLE  1500   13900  300  1.57  3.14  LBTL
+ CIRCLE  10300  15075  300  4.71  0     LBLR
+ FONTNAME  COURIER NEW
+ FONTNORMAL  
+ FONTSIZE  10
+ safTEXT  4200  13700                      Maersk Egypt Shipping Agency                           1  999 
+ safTEXT  1650  13925  Omar Ibn El Khattab St        9 El Batalsa St        2 Ahmed shawky off    1  999 
+ safTEXT  1650  14150  Star Capital A2, 13th fl.     Azarita                El Gomhourya St       1  999 
+ safTEXT  1650  14375  City Stars                    Alexandria             Port Said             1  999 
+ safTEXT  1650  14600  Heliopolis - Cairo 11771      Tel: 03 4848101        Tel: 066 3244235/6/7  1  999 
+ safTEXT  1650  14825  Tel: 02 24801010 / 16812      Fax: 03 4843319        Fax: 066 3244238      1  999 
+ safTEXT  1650  15050  Fax: 02 24801011              Port Office: 03 4866627/28                   1  999 
+ safTEXT  1500  14025  2 El Hegaz Street         9 Victor Basili St       Resta Business Complex    1  999 
+ safTEXT  1500  14250  Heliopolis                2nd floor, Azarita       Sultan Hussein St         1  999 
+ safTEXT  1500  14475  Cairo, Egypt              Alexandria, Egypt        Port Said, Egypt          1  999 
+ safTEXT  1500  14700  Tel: +2 02 24540509       Tel: +2 03 5432640       Tel: + 2 06 63200170      1  999 
+ safTEXT  1500  14925  Fax: +2 02 24540511       Fax: +2 03 5432641       Fax: + 2 06 63200360      1  999 
+
+ TEXT  3900  13700                    Maersk Egypt Shipping Agency S.A.E                          1  999 
+
+ TEXT  2400  14025       Omar Ibn El Khattab St             5 Victor Bassily Street     1  999 
+ TEXT  2400  14250       Star Capital A2,                   Bab Sharq, 2nd floor,       1  999 
+ TEXT  2400  14475       13 Floor, City Stars               Azarita , Alexandria        1  999 
+ TEXT  2400  14700       Heliopolis, Cairo                  Tel: +20 3 4885100          1  999 
+ TEXT  2400  14925       Tel: + 20 2 2480 1010                                          1  999 
+
+
+ TEXT  3525  2380   T H E   A . P . M O L L E R   G R O U P                                    1  62  
+ FONTBOLD 
+ TEXT  4900  3075  A Maersk Company                                                      1  62  
+ FONTSIZE  23
+ TEXT  4375  2650  HAMBURG SUD                                                               1  62  
+ FONTNAME  ARABIC TRANSPARENT
+ FONTSIZE  13
+' -------------------- hamburg sud egypt leltawkelat al mela7eya 
+ TEXT  4150  3300  Â«„»Ê—Ã ”Êœ «ÌÃ»‹  ·· ÊﬂÌ·«  «·„·«ÕÌ…                                               1  162 
+ FONTNORMAL  
+ FONTSIZE  7
+
+
+
+" PAGELOCATION  1 "
+" PAPERSIZE  A4"
+" ORIENTATION  PORTRAIT"
+" DRAWIDTH  5"
+" LOGOHS    5350    3600   "
+" FONTNAME  ARABIC TRANSPARENT"
+" FONTSIZE  15"
+" FONTBOLD "
+"' -------------------- ta3deel"
+" TEXT  4425  4650   ( «Œÿ«—  ”·Ì„ «–Ê‰«  ‘Õ‰ )  1    42   "
+"' --------- bayan arkam ozonat"
+" TEXT  4650  8000  »Ì«‰ «—ﬁ«„ «–Ê‰«  «·‘Õ‰  1    420   "
+" FONTSIZE  13"
+" FONTNORMAL "
+"' -------------------- upper left corner circle"
+" CIRCLE  2000  5700    300    1.57    3.14"
+" CIRCLE  9700  7100    300    4.71    0"
+"' -------------------- line"
+" LINE    2000  5400  10000  Y"
+" LINE    1700  5900  10000  Y"
+" LINE    1700  6400  10000  Y"
+" LINE    1700  6900  10000  Y"
+" LINE    1700  7400  9700   Y"
+" LINE    1700  5700  X  7400"
+" LINE    10000  5400  X  7100"
+" LINE    7900  5400  X  7400"
+"' --------- rakam mosalsal"
+" TEXT  8500  5500  —ﬁ„ «·„”·”·  1    420   "
+"' --------- tareekh el youm"
+" TEXT  8600  6000   «—ÌŒ «·ÌÊ„  1    420   "
+"' --------- esm el 3ameel"
+" TEXT  8650  6500  «”„ «·⁄„Ì·  1    420   "
+"' --------- tareekh el tasleem"
+" TEXT  8450  7000   «—ÌŒ «· ”·Ì„  1    420   "
+"' -------------------- upper left corner circle"
+" CIRCLE  2000  8800    300    1.57    3.14"
+" CIRCLE  9700  9950    300    4.71    0"
+"' -------------------- line"
+" LINE    2000  8500  10000  Y"
+" LINE    1700  9000  10000  Y"
+" LINE    1700  9750  10000  Y"
+" LINE    1700  10250  9700  Y"
+" LINE    1700   8800  X  10250"
+" LINE    10000  8500  X  10000"
+" LINE    7900   8500  X  9750"
+" LINE    5975   9750  X  10250"
+"' ------------------- mosalsal"
+" TEXT  8700  8600  „”·”·  1    420   "
+"' ------------------- rakam el ezn"
+" TEXT  4500  8600  —ﬁ„ «·«–‰  1    420   "
+"' ------------------- egmaly 3adad al ozonat"
+" TEXT  7100  9850  «Ã„«·Ì ⁄œœ «·«–Ê‰«   1    420   "
+"' ----------------- first line of text"
+
+" TEXT  1900  10700  ›Ì Õ«·… ÊÃÊœ «Œ ·«› ›Ì «·⁄œœ «Ê «·Ê“‰ «·„‰Ÿ— „‰ «·Ã„«—ﬂ Ê »Ì‰ «·„œ—Ã »«·„” ‰œ«  «·Ã„—ﬂÌ…   1    420   "
+" TEXT  1650  11000  «·„”·„… „‰ «·⁄„Ì· ”Ì „  Õ„Ì· «·⁄„Ì· €—«„… ·Õ”«» „’·Õ… «·Ã„«—ﬂ ﬁœ—Â« 30.000 Ã‰ÌÂ« „’—Ì«   1    420   "
+" TEXT  7150  11300   ÿ»ﬁ« ··„«œ… 71 „‰ ﬁ«‰Ê‰ «·Ã„«—ﬂ    1    420   "
+
+" TEXT  7000  12000  „‰œÊ» ‘—ﬂ… Â«„»Ê—Ã ”Êœ  1    420   "
+" TEXT  3000  12000  „‰œÊ» «·⁄„Ì·  1    420   "
+" FONTBOLD "
+" TEXT  2500  5500  XXX&SORECEIPTSERIAL&XXX  1    420   "
+" TEXT  2500  6500  XXX&TEXTBOX0035  1    35  "
+" TEXT  2500  6000  XXX&NOW&XXX  1    420   "
+" TEXT  2500  7000  XXX&SODATEDAM&XXX  1    420   "
+"' ------------------- wahed"
+" TEXT  8900  9250  1  1    420   "
+" TEXT  4250  9250  XXX&TEXTBOX0066  1    420   "
+" TEXT  3750  9850  1  1    420   "

@@ -1,0 +1,96 @@
+ PAPERSIZE  A4
+ ORIENTATION  LANDSCAPE
+ FONTNAME  COURIER NEW
+ DRAWIDTH  5
+ FONTSIZE  14
+ FONTBOLD  
+ TEXT      4500  750  Storage and Demurrage Proforma Invoice   1  999
+ FONTSIZE  10
+ FONTNAME  COURIER NEW
+ LINE      600    300    16000  Y      
+ LINE      300    1500   16000  Y      
+ LINE      300    3050   15700  Y      
+ LINE      600    3150   16000  Y      
+ LINE      300    600    X      3050   
+ 'LINE      4700   300    X      1500   
+ 'LINE      10700  300    X      1500   
+ 'LINE      5200   1500    X      3050   
+ 'LINE      10200  1500    X      3050   
+ LINE      16000  300    X      2750   
+ LINE      300    11050  15700  Y      
+
+ LINE      300    9950   16000  Y      
+ LINE      300    10550  16000  Y      
+ LINE      3000   9950   X      10550  
+
+ LINE      300    3450   X      11050 
+ LINE      16000  3150   X      10750 
+ CIRCLE    600    3450   300    1.57    3.14   
+ CIRCLE    15700  2750   300    4.71    0      
+ CIRCLE    600    600    300    1.57    3.14   
+ CIRCLE    15700  10750  300    4.71    0      
+ TEXT      5300  1750 Payer Details     Cnee Code:  1  999
+ TEXT      11200    450  Proforma Invoice:  1  999
+ TEXT      11200    700  Printing Date:   1  999
+ TEXT      11200    950  Bill Of Lading:  1  999
+ TEXT      11200    1200 Reference No.:   1  999
+ TEXT      2450     3750  Type          From         To           Size     Type    No.  Days    Rate          Total Curr.   1  999
+ TEXT      11200    1700  Discharge Date:   1  999
+ TEXT      11200    1950  XXX&STRIPOUTHEADER&XXX  1  999
+ TEXT      11200    2200  XXX&RETURNHEADER&XXX   1  999
+ TEXT      11200    2450  Storage Days:   1  999
+ TEXT      11200    2700  Demurrage Days:   1  999
+
+ safTEXT   1000  1650  XXX&OPERATOR&XXX  1  999 
+ TEXT      800  1650  Maersk Egypt Shipping Agency  1  999 
+
+ TEXTML    800  1900  (agent for Maersk)  1  999 
+ TEXTSCL   800  1900  (agent for Safmarine)  1  999 
+ TEXTTGO   800  1900  (agent for Sealand-A Maersk Company)  1  999 
+ TEXTMLL   800  1900  (agent for Maersk Line Limited)  1  999 
+
+ TEXT      800  2150  Omar Ibn El Khattab Street  1  999 
+ TEXT      800  2400  Star Capital A2, 13th Floor  1  999 
+ TEXT      800  2650  City Stars, Heliopolis, Cairo 11771  1  999 
+
+ TEXT      850  10700 PROFORMA CALCULATION: Charges that will be generated on the original invoice should be paid by the payer of this document  1  145
+
+ safTEXTML   3200  10200  Maersk Line Bank Details:  USD 002-338028-111   EGP 002-338028-002   Swift EBBKEGCX  1  999
+ safTEXTSCL  3200  10200  Safmarine Bank Details:    USD 002-338028-112   EGP 002-338028-003   Swift EBBKEGCX  1  999
+ safTEXTTGO  3200  10200  SEAGO Bank Details:        USD 002-338028-113   EGP 002-338028-004   Swift EBBKEGCX  1  999
+
+ TEXTML    3025  10200  Bank Details: USD 002-338028-111 EGP 002-338028-002 Swift EBBKEGCX Beneficiary: Maersk Egypt Shipping Agency  1  999
+ TEXTSCL   3025  10200  Bank Details: USD 002-338028-112 EGP 002-338028-003 Swift EBBKEGCX Beneficiary: Maersk Egypt Shipping Agency  1  999
+ TEXTTGO   3025  10200  Bank Details: USD 002-338028-113 EGP 002-338028-004 Swift EBBKEGCX Beneficiary: Maersk Egypt Shipping Agency  1  999
+ TEXTMLL   3025  10200  Bank Details: USD 002-338028-111 EGP 002-338028-002 Swift EBBKEGCX Beneficiary: Maersk Egypt Shipping Agency  1  999
+
+ FONTNORMAL  
+ TEXT      13500    450   XXX&INVOICENUM&XXX  1  999
+ TEXT      8800  1750  XXX&CONSIGNEECODE&XXX   1  18
+ TEXT      13200    700   XXX&NOW&XXX  1  999
+ TEXT      13200    950   XXX&BLNUM&XXX  1  999
+ TEXT      13200    1200  XXX&REFNO&XXX  1  999
+ TEXT      13200    1700  XXX&STRDETDISC&XXX  1  999
+ TEXT      13200    1950  XXX&STRDETGATEOUT&XXX    1  999
+ TEXT      13200    2200  XXX&STRDETGATEIN&XXX    1  999
+ FONTBOLD  
+ TEXT      13200    2450  XXX&STRDAYCOUNT&XXX Days    1  999
+ TEXT      13200    2700  XXX&DMRDAYCOUNT&XXX Days    1  999
+ FONTNORMAL  
+ TEXT      5300  2050  XXX&INVOICEE&XXX  1  40
+ TEXT      5300  2263  XXX&INVOICEE&XXX  41  40
+ TEXT      5300  2476  XXX&INVOICEE&XXX  81  40
+ TEXT      5300  2689  XXX&INVOICEE&XXX  121  40
+ 'RECT  2350    3650    13900  4000  
+ LINE  2350    4100   13900  Y  
+ FONTBOLD  
+ STRDMRBOX  2450    3850    200  13900   9550  n  12000  
+ FONTSIZE  20
+ FONTBOLD  
+ TYPE    700    10000   
+ LOGO    500    500   
+
+ FONTSIZE  9
+ FONTNAME  COURIER NEW
+ FONTNORMAL  
+

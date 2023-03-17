@@ -1,0 +1,182 @@
+ PAPERSIZE  A4
+ ORIENTATION  LANDSCAPE
+ PAGELOCATION  1 
+ PAPERSIZE  A4
+ ORIENTATION  LANDSCAPE
+ LOGO    500    500   
+ FONTSIZE  26
+ FONTNAME  IMPACT
+ FONTBOLD  
+ DRAWIDTH  5
+' TEXT  1550  600  XXX&OPERATOR&XXX  1  999
+ FONTNAME  ARABIC TRANSPARENT
+ FONTSIZE  7
+' top Most Line
+ LINE    600     300    15850  Y
+' After the Logo Line
+ LINE    300     1500   15850  Y
+' between top and Logo Line
+ LINE    4500     900   15850  Y
+' V Between top and after logo
+ LINE    4500     300   X      1500
+'right most line
+ LINE    300     11000  15550  Y
+'Left most line
+ LINE    300     600    X      11000
+' Bottom most line
+ LINE     15850   300    X      10700
+'Upper left corner circle
+ CIRCLE  600     600    300    1.57    3.14
+' lower right corner circle
+ CIRCLE  15550   10700  300    4.71    0    
+' V Between logo line and bottom after b/l count number
+ LINE    900   1500  X      11000
+' V Between logo line and bottom after b/l number
+ LINE    2400   1500  X      11000
+' V Between logo line and bottom after shipper
+ LINE    6900   1500  X      11000
+' V Between logo line and bottom after cntr number
+ LINE    8400   1500  X      11000
+' V Between logo line and bottom after cargo desc
+ LINE    12900   1500  X      11000
+' V Between logo line and bottom after cargo desc
+ LINE    12900   4500  15850  Y
+ TEXT  950   1600   B/L Number             1  99 
+ TEXT  950   1750   Load Port              1  99 
+ TEXT  950   1900   Origin Country         1  99 
+ TEXT  950   2050   Sailing Date           1  99 
+ TEXT  950   2200   Delivery Port          1  99 
+ TEXT  950   2350   Delivery Country       1  99 
+ TEXT  950   2500   BL Type                1  99 
+ TEXT  2450  1600   Shipper                1  99 
+ TEXT  2450  1750   Consignee              1  99 
+ TEXT  2450  1900   Notify                 1  99 
+ TEXT  6950   1600   Container No.          1  99 
+ TEXT  6950   1750   Container Type         1  99 
+ TEXT  6950   1900   Carrier Seal           1  99 
+ TEXT  6950   2050   Shipper Seal           1  99 
+ TEXT  6950   2200   Customs Seal           1  99 
+ TEXT  6950   2350   Weight                 1  99 
+ TEXT  6950   2500   Packages               1  99 
+ TEXT  8450  1600   Cargo Description      1  99 
+ TEXT  8450  1750   Service Mode           1  99 
+ TEXT  12950  1600   Weight                 1  99 
+ TEXT  12950  1750   volume                 1  99 
+ TEXT  12950  1900   Freight                1  99 
+ TEXT  12950  4600   Marks & Numbers        1  99 
+ TEXT  5000    400    Vessel Name            1  99 
+ TEXT  8000    400    Vessel Number          1  99 
+ TEXT  11000   400    Arrival Date           1  99 
+ TEXT  14000   400    Page Number            1  99 
+ TEXT  5000    1000    Vessel Nationality    1  99 
+ TEXT  8000    1000    Discharge Port        1  99 
+ TEXT  11000   1000    No Of B/Ls            1  99 
+ FONTNORMAL  
+ FONTSIZE  8
+ TEXT  950    2900   XXX&BLNUM&XXX          1  14 
+ TEXT  950    3050   XXX&FROM1&XXX           1  14 
+ TEXT  950    3200   XXX&POLCNTRY&XXX       1  14 
+ TEXT  950    3350   XXX&SAIDATE&XXX        1  10 
+ TEXT  950    3500   XXX&TO&XXX             1  14 
+ TEXT  950    3650   XXX&PODCNTRY&XXX       1  14 
+ TEXT  950    3800   XXX&BLTYPE&XXX         1  14 
+ TEXT  2450   2900   S: XXX&SHIPPER&XXX        1    45 
+ TEXT  2450   3050   XXX&SHIPPER&XXX        43   45 
+ TEXT  2450   3200   XXX&SHIPPER&XXX        88   45 
+ TEXT  2450   3350   XXX&SHIPPER&XXX        133  45 
+ TEXT  2450   3650   XXX&SHIPPER&XXX        178  45 
+ TEXT  2450   4000   C: XXX&CONSIGNEE&XXX      1    45 
+ TEXT  2450   4150   XXX&CONSIGNEE&XXX      43   45 
+ TEXT  2450   4300   XXX&CONSIGNEE&XXX      88   45 
+ TEXT  2450   4450   XXX&CONSIGNEE&XXX      133  45 
+ TEXT  2450   4600   XXX&CONSIGNEE&XXX      178  45 
+ TEXT  2450   4950   N1: XXX&NOTIFY&XXX         1    45 
+ TEXT  2450   5100   XXX&NOTIFY&XXX         42   45 
+ TEXT  2450   5250   XXX&NOTIFY&XXX         87   45 
+ TEXT  2450   5400   XXX&NOTIFY&XXX         132  45 
+ TEXT  2450   5550   XXX&NOTIFY&XXX         177  45 
+ TEXT  12950  2900  XXX&WEIGHT&XXX         1    14 
+ TEXT  12950  3050  XXX&WEIGHT&XXX         15   14 
+ TEXT  12950  3350  XXX&VOLUME&XXX         1    20 
+ TEXT  12950  3500  XXX&VOLUME&XXX         15   20 
+ TEXT  5000   650   XXX&VSL&XXX            1    25 
+ TEXT  8000   650   XXX&VOY&XXX            1    25 
+ TEXT  11000  650   XXX&ARRDATE&XXX        1    25 
+ TEXT  8000   1250  XXX&TO&XXX             1    25 
+ TEXT  11000  1250  XXX&MANIBLTOT&XXX      1    99 
+ TEXT  350    2900  XXX&MANIBLNUM&XXX      1    99 
+ TEXT  5000   1250  XXX&NATIONALITY&XXX    1  25 
+ TEXT  14000  650   XXX&NUMBERING&XXX      1  10 
+' ----- here we populate containers : X - Y - Length - Line Spacing - End Y
+ CNTRBOX   6950   2900    18   150  10700 
+' ----- here we populate containers : X - Y - Length - Line Spacing - End Y
+ DESCBOX   8450   2900    46   150  10700 
+' ----- here we populate containers : X - Y - Length - Line Spacing - End Y
+ MARKSBOX   12950  4900    20   150  10700 
+ PAGELOCATION  2 
+ PAPERSIZE  A4
+ ORIENTATION  LANDSCAPE
+ LOGO    500    500   
+ FONTSIZE  26
+ FONTNAME  IMPACT
+ FONTBOLD  
+ DRAWIDTH  5
+' TEXT  1550  600  XXX&OPERATOR&XXX  1  999
+ FONTNAME  ARABIC TRANSPARENT
+ FONTSIZE  7
+' top Most Line
+ LINE    600     300    15850  Y
+' After the Logo Line
+ LINE    300     1500   15850  Y
+' between top and Logo Line
+ LINE    4500     900   15850  Y
+' V Between top and after logo
+ LINE    4500     300   X      1500
+'right most line
+ LINE    300     11000  15550  Y
+'Left most line
+ LINE    300     600    X      11000
+' Bottom most line
+ LINE     15850   300    X      10700
+'Upper left corner circle
+ CIRCLE  600     600    300    1.57    3.14
+' lower right corner circle
+ CIRCLE  15550   10700  300    4.71    0    
+' V Between logo line and bottom after b/l count number
+ LINE    900   1500  X      11000
+' V Between logo line and bottom after b/l number
+ LINE    2400   1500  X      11000
+' V Between logo line and bottom after shipper
+ LINE    6900   1500  X      11000
+' V Between logo line and bottom after cntr number
+ LINE    8400   1500  X      11000
+' V Between logo line and bottom after cargo desc
+ LINE    12900   1500  X      11000
+' V Between logo line and bottom after cargo desc
+ LINE    12900   4500  15850  Y
+ TEXT  6950   1600   Container No.          1  99 
+ TEXT  6950   1750   Container Type         1  99 
+ TEXT  6950   1900   Carrier Seal           1  99 
+ TEXT  6950   2050   Shipper Seal           1  99 
+ TEXT  6950   2200   Customs Seal           1  99 
+ TEXT  6950   2350   Weight                 1  99 
+ TEXT  6950   2500   Packages               1  99 
+ TEXT  8450  1600   Cargo Description      1  99 
+ TEXT  8450  1750   Service Mode           1  99 
+ TEXT  12950  4600   Marks & Numbers        1  99 
+ TEXT  5000    400    Vessel Name            1  99 
+ TEXT  8000    400    Vessel Number          1  99 
+ TEXT  11000   400    Arrival Date           1  99 
+ TEXT  14000   400    Page Number            1  99 
+ TEXT  5000    1000    Vessel Nationality    1  99 
+ TEXT  8000    1000    Discharge Port        1  99 
+ TEXT  11000   1000    No Of B/Ls            1  99 
+ FONTNORMAL  
+ FONTSIZE  8
+ TEXT  5000   650   XXX&VSL&XXX            1    25 
+ TEXT  8000   650   XXX&VOY&XXX            1    25 
+ TEXT  11000  650   XXX&ARRDATE&XXX        1    25 
+ TEXT  8000   1250  XXX&TO&XXX             1    25 
+ TEXT  11000  1250  XXX&MANIBLTOT&XXX      1    99 
+ TEXT  5000   1250  XXX&NATIONALITY&XXX    1  25 
+ TEXT  14000  650   XXX&NUMBERING&XXX      1  10 
