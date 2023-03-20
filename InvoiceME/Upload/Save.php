@@ -4,7 +4,7 @@ $name = $_POST['name'];
 $age = $_POST['age'];
 
 // Set the path to the text file
-$file_path = '/path/to/myfile.txt';
+$file_path = 'myfile.txt';
 
 // Open the file in append mode
 $file = fopen($file_path, 'a');
