@@ -52,3 +52,5 @@
 " TEXT  2500  8000  XXX&SOBL&XXX  1    420   "
 " TEXT  2500  8500  XXX&CNTNRNO&XXX     1    35   "
 " TEXT  2500  9000  XXX&CNTNRSIZE&XXX     1    35   "
+
+ LASTCHECKED  230410 
