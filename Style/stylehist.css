@@ -41,6 +41,9 @@ a {
   float: right ;
   margin-left: 20px ; }
 
+.navbaritem:hover {
+  font-weight: bold ; }
+
 #contentbox{
   margin-top: var(--navbarH) ; }
 
