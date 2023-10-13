@@ -5,7 +5,9 @@
   --clr04: darkblue ;
   --navbarH: 50px ;
   --navbarW: 80% ; 
-  --secH: 100px ; }
+  --secH: 100px ; 
+  --lineH: 10px ; 
+}
 
 body{
   margin: 0 ;
@@ -51,6 +53,13 @@ a {
   position: sticky ; 
   top: var(--navbarH) ; 
   z-index: 2 ; }
+
+.line{
+  min-height: var(--lineH) ; }
+
+.line::after{
+  content: '' ;
+  clear: both ; }
 
 #footer{
   width: 100% ; 
