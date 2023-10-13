@@ -76,6 +76,10 @@ a {
   content: '' ;
   clear: both ; }
 
+.square {
+  margin: 5px; 
+  text-align: center; }
+
 #footer{
   display: flex; 
   justify-content: center;  
