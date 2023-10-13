@@ -4,29 +4,96 @@
   --clr03: blue ;
   --clr04: darkblue ;
   --navbarH: 50px ;
-  --navbarW: 80%;
-}
+  --navbarW: 80% ; }
 
 body{
-  margin: 0;
-  padding: 0; }
+  margin: 0 ;
+  padding: 0 ; }
 
 #navbarbox{
-  position: fixed; 
-  top: 0;
-  height: var(--navbarH);
-  width: 100%;
-  z-index: 1; }
+  position: fixed ; 
+  top: 0 ;
+  height: var(--navbarH) ;
+  width: 100% ;
+  z-index: 1 ; }
 
 #contentbox{
-  margin-top: var(--navbarH); }
+  margin-top: var(--navbarH) ; }
 
-.bgclr1 { background-color: var(--clr01); }
-.bgclr2 { background-color: var(--clr02); }
-.bgclr3 { background-color: var(--clr03); }
-.bgclr4 { background-color: var(--clr04); }
+.bgclr1 { 
+  background-color: var(--clr01) ; }
 
-.clr1 { color: var(--clr01); }
-.clr2 { color: var(--clr02); }
-.clr3 { color: var(--clr03); }
-.clr4 { color: var(--clr04); }
+.bgclr2 { 
+  background-color: var(--clr02) ; }
+
+.bgclr3 { 
+  background-color: var(--clr03) ; }
+
+.bgclr4 { 
+  background-color: var(--clr04) ; }
+
+.clr1 { 
+  color: var(--clr01) ; }
+
+.clr2 { 
+  color: var(--clr02) ; }
+
+.clr3 { 
+  color: var(--clr03) ; }
+
+.clr4 { 
+  color: var(--clr04) ; }
+
+.w20{
+  width:20% ; }
+
+.w25{
+  width:25% ; }
+
+.w33{
+  width:33.333% ; }
+
+.w50{
+  width:50% ; } 
+
+.w66{
+  width:66.666% ; } 
+
+.w75{
+  width:75% ; } 
+
+.w100{
+  width:100% ; }
+
+.w1{
+  width:1% ; } 
+
+.w2{
+  width:2% ; } 
+
+.w5{
+  width:5% ; } 
+
+.w7{
+  width:7.5% ; } 
+
+.w10{
+  width:10% ; } 
+
+.w12{
+  width:12.5% ; } 
+
+.w15{
+  width:15% ; } 
+
+.wp200{
+  width:200px ; } 
+
+.wp150{
+  width:150px ; } 
+
+.wp100{
+  width:100px ; } 
+
+.wp75{
+  width:75px ; } 
