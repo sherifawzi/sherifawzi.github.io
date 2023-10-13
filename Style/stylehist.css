@@ -66,6 +66,8 @@ a {
   z-index: 2 ; }
 
 .line{
+  display: flex; 
+  justify-content: center;
   min-height: var(--lineH) ; }
 
 .line::after{
