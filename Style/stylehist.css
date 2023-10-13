@@ -42,7 +42,7 @@ a {
   margin-top:5px;
   margin-left: 20px ; }
 
-.navbaritem:hover {
+.navbaritem a:hover {
   text-decoration: underline ; }
 
 #contentbox{
