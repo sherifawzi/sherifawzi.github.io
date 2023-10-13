@@ -54,6 +54,8 @@ a {
   margin-right: auto ; }
 
 .section{
+  display: flex; 
+  justify-content: center;  
   min-height: var(--secH) ; }
 
 .section::after{
@@ -75,9 +77,9 @@ a {
   clear: both ; }
 
 #footer{
-  width: 100% ; 
-  margin-left: auto ; 
-  margin-right: auto ; }
+  display: flex; 
+  justify-content: center;  
+  width: 100% ; }
 
 .bgclr1 { 
   background-color: var(--clr01) ; }
