@@ -35,8 +35,6 @@ body{
   min-height: var(--secH) ; }
 
 .section::after{
-  content: '' ; 
-  display: table ; 
   clear: both; }
 
 .bgclr1 { 
