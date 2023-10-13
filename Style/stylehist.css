@@ -20,3 +20,13 @@ body{
 
 #contentbox{
   margin-top: var(--navbarH); }
+
+.bgclr1 { background-color: var(--clr01); }
+.bgclr2 { background-color: var(--clr02); }
+.bgclr3 { background-color: var(--clr03); }
+.bgclr4 { background-color: var(--clr04); }
+
+.clr1 { color: var(--clr01); }
+.clr2 { color: var(--clr02); }
+.clr3 { color: var(--clr03); }
+.clr4 { color: var(--clr04); }
