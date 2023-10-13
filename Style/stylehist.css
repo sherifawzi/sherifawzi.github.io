@@ -35,7 +35,8 @@ body{
   min-height: var(--secH) ; }
 
 .section::after{
-  clear: both; }
+  content: '' ;
+  clear: both ; }
 
 .bgclr1 { 
   background-color: var(--clr01) ; }
