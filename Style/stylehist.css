@@ -23,6 +23,15 @@ body{
   margin-left: auto ; 
   margin-right: auto ; }
 
+.navbarlogo img { 
+  height: 30px ; }
+
+.navbaritem {
+  margin-left: 20px ; }
+
+.narbaritem a {
+  text-decoration: none ; }
+
 #contentbox{
   margin-top: var(--navbarH) ; }
 
@@ -134,12 +143,3 @@ body{
 
 .pd10{
   padding: 10px ; }
-
-.navbarlogo img { 
-  height: 30px ; }
-
-.navbaritem {
-  margin-left: 20px ; }
-
-.narbaritem a {
-  text-decoration: none ; }
