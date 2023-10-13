@@ -54,8 +54,8 @@ a {
   margin-right: auto ; }
 
 .section{
-  display: flex; 
-  justify-content: center;  
+  margin-left: auto ; 
+  margin-right: auto ; 
   min-height: var(--secH) ; }
 
 .section::after{
