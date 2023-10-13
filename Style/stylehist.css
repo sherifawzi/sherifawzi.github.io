@@ -30,10 +30,14 @@ a {
   margin-left: auto ; 
   margin-right: auto ; }
 
+.navbarlogo{ 
+  float: left ; }
+
 .navbarlogo img { 
   height: 30px ; }
 
 .navbaritem {
+  float: right ;
   margin-left: 20px ; }
 
 #contentbox{
