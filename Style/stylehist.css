@@ -17,8 +17,18 @@ body{
   width: 100% ;
   z-index: 1 ; }
 
+#navbar{
+  width: var(--navbarW) ; 
+  margin-left: auto ; 
+  margin-right: auto ; }
+
 #contentbox{
   margin-top: var(--navbarH) ; }
+
+#content{
+  width: var(--navbarW) ; 
+  margin-left: auto ; 
+  margin-right: auto ; }
 
 .bgclr1 { 
   background-color: var(--clr01) ; }
