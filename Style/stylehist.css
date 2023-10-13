@@ -39,10 +39,11 @@ a {
 
 .navbaritem {
   float: right ;
+  margin-top:5px;
   margin-left: 20px ; }
 
 .navbaritem:hover {
-  font-weight: bold ; }
+  text-decoration: underline ; }
 
 #contentbox{
   margin-top: var(--navbarH) ; }
