@@ -1,10 +1,11 @@
 :root {
-  --clr01: white ;
-  --clr02: grey ;
-  --clr03: blue ;
-  --clr04: darkblue ;
+  --clr01: #f7f7f7 ;
+  --clr02: #d3d3d3 ;
+  --clr03: #1e3c64 ;
+  --clr04: #1b1e3e ;
   --navbarH: 50px ;
-  --navbarW: 80% ; 
+  --navbarW: 90% ; 
+  --contentW: 80% ; 
   --secH: 100px ; 
   --lineH: 10px ; 
 }
@@ -38,7 +39,7 @@ a {
   margin-top: var(--navbarH) ; }
 
 #content{
-  width: var(--navbarW) ; 
+  width: var(--contentW) ; 
   margin-left: auto ; 
   margin-right: auto ; }
 
