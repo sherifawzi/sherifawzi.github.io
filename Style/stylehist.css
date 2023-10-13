@@ -11,6 +11,9 @@ body{
   margin: 0 ;
   padding: 0 ; }
 
+a {
+  text-decoration: none ; }
+
 #navbarbox{
   position: fixed ; 
   top: 0 ;
@@ -28,9 +31,6 @@ body{
 
 .navbaritem {
   margin-left: 20px ; }
-
-.narbaritem a {
-  text-decoration: none ; }
 
 #contentbox{
   margin-top: var(--navbarH) ; }
