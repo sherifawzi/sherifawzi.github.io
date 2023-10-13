@@ -38,6 +38,11 @@ body{
   content: '' ;
   clear: both ; }
 
+#footer{
+  width: 100% ; 
+  margin-left: auto ; 
+  margin-right: auto ; }
+
 .bgclr1 { 
   background-color: var(--clr01) ; }
 
