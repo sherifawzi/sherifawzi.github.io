@@ -27,6 +27,7 @@ a {
 
 #navbar{
   width: var(--navbarW) ; 
+  padding: 10px ;
   margin-left: auto ; 
   margin-right: auto ; }
 
