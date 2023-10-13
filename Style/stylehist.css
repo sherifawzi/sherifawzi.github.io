@@ -2,7 +2,8 @@
   --clr01: #f7f7f7 ;
   --clr02: #d3d3d3 ;
   --clr03: #1e3c64 ;
-  --clr04: #1b1e3e ;
+  --clr04: #1b1e3e ; 
+  --clr05: #0b0921 ;
   --navbarH: 50px ;
   --navbarW: 90% ; 
   --contentW: 80% ; 
@@ -79,6 +80,9 @@ a {
 .bgclr4 { 
   background-color: var(--clr04) ; }
 
+.bgclr5 { 
+  background-color: var(--clr05) ; }
+
 .clr1 { 
   color: var(--clr01) ; }
 
@@ -90,6 +94,9 @@ a {
 
 .clr4 { 
   color: var(--clr04) ; }
+
+.clr5 { 
+  color: var(--clr05) ; }
 
 .w20{
   width: 20% ; }
