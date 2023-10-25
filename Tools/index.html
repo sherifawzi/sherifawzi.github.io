@@ -1,0 +1,140 @@
+
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<link href='https://fonts.googleapis.com/css2?family=Orbitron&display=swap' rel='stylesheet'>
+<title>SNRobotiX</title>
+<style>
+:root {
+--clr1:#f7f7f7;
+--clr2:#d3d3d3;
+--clr3:#1e3c64;
+--clr4:#0b0921;
+--clr5:#d9bf6b;
+--navbarH: 70px;
+--navbarW: 80%;
+--navlogoH: 30px;
+--navlinkS: 20px;
+--footerH: 70px;
+--lineH: 30px;
+--headerH:50px;}
+.navbarbox, .contentbox, .line, .lineheader, .field, .subtot , .footerbox{
+display:flex;
+align-items: center;
+justify-content:center;}
+body{
+background-color:var(--clr4);
+color:var(--clr1);
+padding:0;
+margin:0;}
+.navbarbox{
+background-color:var(--clr4);
+position:fixed;
+top:0;
+width:100%;
+z-index:10;}
+.navbar{
+color:var(--clr5);
+display:flex;
+align-items: center;
+height:var(--navbarH);
+width:var(--navbarW);
+z-index:20;}
+.navlogo{margin-right:auto;}
+.navlogo img{height:var(--navlogoH);}
+.navlink{margin-left:auto;}
+.navlink a{
+color:var(--clr5);
+text-decoration:none;
+margin-left:var(--navlinkS);}
+.contentbox{
+margin-top:var(--navbarH);
+flex-direction: column;
+width:100%;}
+.line{height: var(--lineH);}
+.line:hover{
+color:var(--clr5);
+font-weight: bold;}
+.subtot{height: var(--lineH);color:var(--clr2);}
+.subtot:hover{
+color:green;
+font-weight: bold;}
+.lineheader{
+background-color: var(--clr4);
+font-weight:bold;
+position:sticky;
+top:var(--navbarH);
+height: var(--headerH);
+z-index:5}
+.footerbox{
+background-color:var(--clr4);
+height:var(--footerH);
+width:100%;}
+.wp200{width: 200px;}
+.wp150{width: 150px;}
+.wp100{width: 100px;}
+.wp75{width: 75px;}
+.snrfont{font-family:Orbitron;}
+.searchheader {
+font-size:2.2em;
+padding:10px;
+color:var(--clr5);}
+.searchtext{
+min-height:50px;
+min-width:300px;
+font-size:1.2em;
+margin:20px;
+width:50%;
+text-align:center;}
+.searcherror{
+min-height:20px;
+font-size:1em;
+text-align:center;
+color:red;}
+.searchbutton{
+height:90px;
+margin:10px;}
+@media screen and (max-width:767px){.field:not(.mobile){display:none}}
+</style>
+<script>
+function GoCheckAccountHistory() { var safAccount =
+document.getElementById('accountNumber').value;
+if (safAccount.length < 3) { var errorMessage =
+document.getElementById('error_message'); errorMessage.textContent =
+'Invalid Account Number!'; return; }
+var pageExists = checkPageExists(safAccount);
+if (pageExists) {
+window.location.href = '/PERFHIST/' + safAccount + '.html';
+} else {
+var errorMessage = document.getElementById('error_message');
+errorMessage.textContent = 'Account History Not Found!'; return; }}
+function checkPageExists(accountNumber) {
+var xhr = new XMLHttpRequest(); xhr.open('HEAD', '/PERFHIST/' + accountNumber + '.html',
+false); xhr.send(); return xhr.status != 404; }
+</script>
+</head>
+<body>
+<div class='navbarbox'>
+<div class='navbar'>
+<div class='navlogo'>
+<a href='https://snrobotix.com'>
+<img src='https://sherifawzi.github.io/Pics/SNR.png' alt='Logo'>
+</a>
+</div>
+<div class='navlink'>
+<a href='https://snrobotix.com/Contact-Us/'>CONTACT US</a>
+</div>
+</div>
+</div>
+<div class='contentbox' style='height: 80vh;'>
+<div class='searchheader snrfont'>SNR | Performance</div>
+<input type='text' id='accountNumber' placeholder='Account number ...' class='searchtext field mobile snrfont'>
+<div id='error_message' class='searcherror error-message snrfont'></div>
+<a href='#' onclick='GoCheckAccountHistory(); return false;'>
+<img src='https:/sherifawzi.github.io/Pics/ExitDoor.png' alt='search' class='searchbutton'>
+</div>
+</body>
+</html>
