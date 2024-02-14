@@ -4,7 +4,7 @@
 ;
 ; Main Settings:
 iMaxAllowedDD=10||5||1||200||N
-iMaxAllowedDays=50||0||1||10||N
+iMaxAllowedDays=99||0||1||10||N
 iUseSL=true||false||0||true||N
 ; Variables to test:
 iTPMultiple=0||1||1||3||Y
