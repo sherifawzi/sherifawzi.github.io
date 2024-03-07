@@ -3,7 +3,7 @@
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
 ; Main Settings:
-iMaxAllowedDD=20||5||1||200||N
+iMaxAllowedDD=20||5||1||20||N
 iMaxAllowedDays=999||0||1||10||N
 iUseSL=true||false||0||true||N
 ; Variables to test:
