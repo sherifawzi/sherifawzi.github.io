@@ -3,7 +3,7 @@
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
 robo_Magic=TR5
-robo_MaxDD=5||20||1||200||N
+robo_MaxDD=20||20||1||200||N
 robo_MaxDays=999||999||1||9990||N
 robo_MaxTrades=999||999||1||9990||N
 useSwapie=false||false||0||true||Y
