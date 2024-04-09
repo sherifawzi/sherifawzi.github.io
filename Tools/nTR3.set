@@ -8,7 +8,7 @@ robo_MagicSuffix=
 robo_Settings=
 robo_SunsetDate=
 ; Tester Settings:
-inp_MaxDD=18||20||1||200||N
+inp_MaxDD=14||20||1||200||N
 inp_MaxDays=999||0||1||10||N
 inp_SL=false||false||0||true||N
 ; Variables to test:
