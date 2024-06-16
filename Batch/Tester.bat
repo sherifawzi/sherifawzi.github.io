@@ -2,7 +2,7 @@
         setlocal
 
         set "snrbot=TESTER.ex5"
-        set "snrset=nTR3.set"
+        set "snrset=nTR6.set"
 
         set "snrurl=https://sherifawzi.github.io/Tools/"
         set "snrconfig=%USERPROFILE%\AppData\Roaming\MetaQuotes\Terminal\Common\Files\snrconfig.ini"
