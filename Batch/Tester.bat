@@ -1,6 +1,11 @@
         @echo off
         setlocal
 
+rmdir /S /Q "C:\Users\ubuntu\Desktop\001\logs" >nul
+rmdir /S /Q "C:\Users\ubuntu\Desktop\001\profiles" >nul
+rmdir /S /Q "C:\Users\ubuntu\Desktop\001\Tester" >nul
+del /F /Q "C:\Users\ubuntu\AppData\Roaming\MetaQuotes\Terminal\Common\Files\restart.me" >nul
+
         set "snrbot=TESTER.ex5"
         set "snrset=nTR6.set"
 
