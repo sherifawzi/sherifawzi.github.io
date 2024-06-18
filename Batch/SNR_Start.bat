@@ -7,7 +7,7 @@
    ::set "snrbatch=History.bat
    ::set "snrbatch=Receiver.bat
    ::set "snrbatch=restart.bat
-   ::set "snrbatch=RevHed.bat
+   ::set "snrbatch=RevMag.bat
    ::set "snrbatch=Swapie.bat
    ::set "snrbatch=Tester.bat
 
