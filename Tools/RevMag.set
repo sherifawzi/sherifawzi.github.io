@@ -3,7 +3,7 @@
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
 ; Bot settings:
-robo_MaxDD=12||12||1||120||N
+robo_MaxDD=8||12||1||120||N
 robo_Settings=
 robo_SunsetDate=
 ; Hedger settings:
