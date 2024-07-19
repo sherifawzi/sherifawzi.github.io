@@ -16,7 +16,7 @@ inp_OpenCounterTrade=true||false||0||true||Y
 inp_CounterMaxHours=5||5||5||50||Y
 ; Trade size settings:
 inp_StartLotSize=0.01||0.01||0.001000||0.100000||N
-inp_LotSizeIncrement=0.01||0||0.01||0.01||Y
+inp_LotSizeIncrement=0.01||0||0.01||0.01||N
 ; Entry settings:
 inp_Trend_M1=0||50||50||200||N
 inp_Trend_H1=0||50||50||200||N
