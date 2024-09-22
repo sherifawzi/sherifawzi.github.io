@@ -11,7 +11,7 @@ robo_MaxDD=7||10.0||1.000000||100.000000||N
 robo_MaxDays=0||10||1||100||N
 robo_TestFilters=1250|0|0|500
 robo_TestStart=2022.01.01
-robo_TestResultFolder=/nTESTS/RML01/
+robo_TestResultFolder=/nTESTS/RML02/
 robo_SettingsFile=RML01
 ; Bot settings:
 inp_PeriodATR=76||14||62||1440||Y
