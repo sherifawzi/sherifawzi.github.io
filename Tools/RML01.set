@@ -15,15 +15,15 @@ robo_TestResultFolder=/nTESTS/RML06/
 robo_TestDuration=1000000||0||0||0||N
 robo_SettingsFile=RML01
 ; Bot settings:
-inp_PeriodATR=76||14||62||1440||Y
-inp_MinHedgeDistance=150||30||10||150||Y
-inp_HedgeATRMultiple=1||1||1||9||Y
+inp_PeriodATR=0||14||62||1440||Y
+inp_MinHedgeDistance=0||30||10||150||Y
+inp_HedgeATRMultiple=0||1||1||9||Y
 inp_StartLotSize=0.01||0||0||0||N
 inp_LotSizeIncrement=0.01||0||0||0||N
 inp_CloseAllProfit=9999||0||0||0||N
-inp_MarginCutOff=500||500||500||2500||Y
+inp_MarginCutOff=0||500||500||2500||Y
 ; Trim settings:
-inp_LastTradeTrim=3||3||1||9||Y
-inp_OldTradeTrim=10||3||1||9||Y
+inp_LastTradeTrim=0||3||1||9||Y
+inp_OldTradeTrim=0||3||1||9||Y
 ; Trail settings:
 inp_TrailType=43||0||0||0||N
