@@ -2,19 +2,19 @@
    setlocal
 
    :: ------------------------------ File to download
-   ::set "snrbatch=Analyzer.bat
-   ::set "snrbatch=Beacon.bat
-   ::set "snrbatch=History.bat
-   ::set "snrbatch=Receiver.bat
-   ::set "snrbatch=restart.bat
-   ::set "snrbatch=RevMag.bat
-   ::set "snrbatch=RevMagLite.bat
-   ::set "snrbatch=RevMagLive.bat
-   ::set "snrbatch=Swapie.bat
-   ::set "snrbatch=Tester.bat
+   ::set "snrbatch=Analyzer.bat"
+   ::set "snrbatch=Beacon.bat"
+   ::set "snrbatch=History.bat"
+   ::set "snrbatch=Receiver.bat"
+   ::set "snrbatch=restart.bat"
+   ::set "snrbatch=RevMag.bat"
+   ::set "snrbatch=RevMagLite.bat"
+   ::set "snrbatch=RevMagLive.bat"
+   ::set "snrbatch=Swapie.bat"
+   ::set "snrbatch=Tester.bat"
 
    :: ------------------------------ Download URL
-   set "snrurl=https://sherifawzi.github.io/Tools/"
+   set "snrurl=https://sherifawzi.github.io/Batch/"
 
    :: ------------------------------ Create Folders
    ping -n 3 127.0.0.1 >nul
