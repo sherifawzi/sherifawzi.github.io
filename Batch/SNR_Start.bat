@@ -8,6 +8,8 @@
    ::set "snrbatch=Receiver.bat
    ::set "snrbatch=restart.bat
    ::set "snrbatch=RevMag.bat
+   ::set "snrbatch=RevMagLite.bat
+   ::set "snrbatch=RevMagLive.bat
    ::set "snrbatch=Swapie.bat
    ::set "snrbatch=Tester.bat
 
