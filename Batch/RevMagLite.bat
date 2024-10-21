@@ -6,7 +6,7 @@ rmdir /S /Q "C:\Users\ubuntu\Desktop\001\profiles" >nul
 rmdir /S /Q "C:\Users\ubuntu\Desktop\001\Tester" >nul
 del /F /Q "C:\Users\ubuntu\AppData\Roaming\MetaQuotes\Terminal\Common\Files\restart.me" >nul
 
-set "snrbot=RevMagLite.ex5"
+set "snrbot=TEST.ex5"
 set "snrset=RML02.set"
 
 set "snrurl=https://sherifawzi.github.io/Tools/"
