@@ -7,7 +7,7 @@ rmdir /S /Q "C:\Users\ubuntu\Desktop\001\Tester" >nul
 del /F /Q "C:\Users\ubuntu\AppData\Roaming\MetaQuotes\Terminal\Common\Files\restart.me" >nul
 
 set "snrbot=RevMagLite.ex5"
-set "snrset=RML01.set"
+set "snrset=RML02.set"
 
 set "snrurl=https://sherifawzi.github.io/Tools/"
 set "snrconfig=%USERPROFILE%\AppData\Roaming\MetaQuotes\Terminal\Common\Files\snrconfig.ini"
