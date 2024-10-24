@@ -10,7 +10,7 @@ robo_SunsetDate=
 robo_TestFilters=1000|0|0|50
 robo_TestStart=2020.01.01
 robo_TestResultFolder=/nTESTS/TR8/
-robo_TestDuration=7200000||0||0||0||N
+robo_TestDuration=10800000||0||0||0||N
 robo_SettingsFile=nTR8
 ; Counter Trade Settings:
 inp_CounterType=2||0||0||0||N
