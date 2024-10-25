@@ -11,7 +11,7 @@ robo_MaxDD=20||0||0||0||N
 robo_MaxDays=0||0||0||0||N
 robo_TestFilters=5000|0|0|0
 robo_TestStart=2022.01.01
-robo_TestResultFolder=/nTESTS/nRML/
+robo_TestResultFolder=/nTESTS/nRML2/
 robo_TestDuration=7200000||0||0||0||N
 robo_SettingsFile=RML02
 ; Bot settings:
@@ -24,6 +24,6 @@ inp_CloseAllProfit=9999||0||0||0||N
 inp_MarginCutOff=0||500||500||2500||Y
 ; Trim settings:
 inp_LastTradeTrim=0||3||1||9||Y
-inp_OldTradeTrim=0||3||1||9||Y
+inp_OldTradeTrim=0||0||0||0||N
 ; Trail settings:
 inp_TrailType=43||0||0||0||N
