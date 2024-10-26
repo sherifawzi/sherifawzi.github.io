@@ -33,3 +33,4 @@ del /F /Q "C:\Users\ubuntu\AppData\Roaming\MetaQuotes\Terminal\Common\Files\rest
         ::%COMSPEC% /C start %mtmainpath%\terminal64.exe /portable
 
         endlocal
+exit
