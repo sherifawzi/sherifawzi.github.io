@@ -70,3 +70,4 @@
    %COMSPEC% /C start %mtmainpath5%\terminal64.exe /portable
 
    endlocal
+exit
