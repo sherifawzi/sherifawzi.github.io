@@ -32,3 +32,4 @@ cd "%mtmainpath%" 2>nul
 %COMSPEC% /C start %mtmainpath%\terminal64.exe /config:%snrconfig% /portable
 
 endlocal
+exit
