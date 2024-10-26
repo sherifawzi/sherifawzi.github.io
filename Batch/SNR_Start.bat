@@ -5,12 +5,12 @@ setlocal
 ::set "snrbatch=Analyzer.bat
 ::set "snrbatch=Beacon.bat
 ::set "snrbatch=History.bat
-:: set "snrbatch=Receiver.bat
+::set "snrbatch=Receiver.bat
 ::set "snrbatch=restart.bat
+::set "snrbatch=RevMag.bat
 ::set "snrbatch=RevMagLive.bat
 ::set "snrbatch=Swapie.bat
 ::set "snrbatch=Tester.bat
-set "snrbatch=RevHist.bat"
 
 :: ------------------------------ Download URL
 set "snrurl=https://sherifawzi.github.io/Batch/"
