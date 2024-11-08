@@ -29,7 +29,7 @@ powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrset%' -OutFile '%mtsetp
 ping -n 10 127.0.0.1 >nul
 
 cd "%mtmainpath%" 2>nul
-::%COMSPEC% /C start %mtmainpath%\terminal64.exe /config:%snrconfig% /portable
+%COMSPEC% /C start %mtmainpath%\terminal64.exe /config:%snrconfig% /portable
 
 endlocal
 exit
