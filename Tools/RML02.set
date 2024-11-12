@@ -7,7 +7,7 @@ robo_Settings=
 robo_SunsetDate=
 ; Test settings:
 robo_Magic=RevMagLite
-robo_MaxDD=15||0||0.000000||0.000000||N
+robo_MaxDD=7||0||0.000000||0.000000||N
 robo_MaxDays=0||0||1||10||N
 robo_TestFilters=7000|1|1|0
 robo_TestStart=2022.01.01
