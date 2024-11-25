@@ -7,11 +7,11 @@ robo_Settings=
 robo_SunsetDate=
 ; Test settings:
 robo_Magic=RevMagLite
-robo_MaxDD=20||0||0.000000||0.000000||N
+robo_MaxDD=15||0||0.000000||0.000000||N
 robo_MaxDays=0||0||1||10||N
-robo_TestFilters=7000|1|1|0
+robo_TestFilters=4000|1|1|0
 robo_TestStart=2022.01.01
-robo_TestResultFolder=/nTESTS/nRML4/
+robo_TestResultFolder=/nTESTS/nRML5/
 robo_TestDuration=3600000||0||1||10||N
 robo_SettingsFile=RML02
 ; Bot settings:
