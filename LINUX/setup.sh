@@ -27,7 +27,10 @@
 	
 	# -------------------- Optionally prevent sleep (use with caution)
 	sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
-	
+
+	# -------------------- Install CURL
+ 	sudo apt-get install -y curl jq
+ 
 	# -------------------- Final system cleanup
 	sudo apt-get clean -y
 	
