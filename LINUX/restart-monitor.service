@@ -1,0 +1,11 @@
+        [Unit]
+        Description=Server Restart Monitor
+        After=network.target
+        
+        [Service]
+        ExecStart=/usr/local/bin/restart_monitor.sh
+        Restart=always
+        User=root
+        
+        [Install]
+        WantedBy=multi-user.target
