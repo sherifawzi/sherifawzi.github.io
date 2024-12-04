@@ -5,7 +5,7 @@
         [Service]
         ExecStart=/usr/local/bin/restart_monitor.sh
         Restart=always
-        User=root
+        User=ubuntu
         
         [Install]
         WantedBy=multi-user.target
