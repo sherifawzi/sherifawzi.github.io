@@ -1,5 +1,6 @@
 01 - Download the setup file from server:
 
+cd /
 sudo wget https://sherifawzi.github.io/LINUX/setup.sh
 
 02 - Set security level:
