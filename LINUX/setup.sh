@@ -26,10 +26,10 @@
 	groups ubuntu
 	
 	# -------------------- Diable screen lock and idle
-	gsettings set org.gnome.desktop.session idle-delay 0
-	gsettings set org.gnome.desktop.screensaver lock-enabled false
-	systemctl mask suspend.target
-	
+	sudo gsettings set org.gnome.desktop.session idle-delay 0
+	sudo gsettings set org.gnome.desktop.screensaver lock-enabled false
+	sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
 	# -------------------- Clean up and optimize the system
 	sudo apt-get clean -y && sudo apt-get update && sudo apt-get upgrade -y
 	sudo shutdown -r now
