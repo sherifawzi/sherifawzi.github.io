@@ -14,8 +14,6 @@
 	
 	# -------------------- Create a new user account
 	sudo useradd -m ubuntu
-	# -------------------- Note: You'll need to set the password manually or use a secure method
-	# -------------------- sudo echo "ubuntu:password" | chpasswd  # Be cautious with this method
 	
 	# -------------------- Add the new user to the sudo group
 	sudo usermod -aG sudo ubuntu
