@@ -24,3 +24,29 @@ cd /etc/systemd/system/
 sudo wget https://sherifawzi.github.io/LINUX/restart-monitor.service
 
 sudo chmod +x restart-monitor.service
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable restart-monitor.service
+
+sudo systemctl start restart-monitor.service
+
+- Edit the GDM3 configuration:
+
+sudo nano /etc/gdm3/custom.conf
+
+- Modify the file to look like this:
+
+    [daemon]
+    # Uncomment the line below to force the login screen to use Xorg
+    #WaylandEnable=false
+    
+    # Enabling automatic login
+    AutomaticLoginEnable = true
+    AutomaticLogin = ubuntu
+
+sudo shutdown -r now
+
+- To test write the following:
+
+touch /home/ubuntu/.mt5/dosdevices/c:/users/ubuntu/AppData/Roaming/MetaQuotes/Terminal/Common/Files/restart.me
