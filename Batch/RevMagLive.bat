@@ -25,7 +25,7 @@ setlocal
 
    ping -n 3 127.0.0.1 >nul
    set "mtmainpath5=%USERPROFILE%\Desktop\005"
-   set "mtbotpath5=%mtmainpath4%\MQL5\Experts"
+   set "mtbotpath5=%mtmainpath5%\MQL5\Experts"
    md "%mtbotpath5%" 2>nul
 
    :: ------------------------------ Download URL
