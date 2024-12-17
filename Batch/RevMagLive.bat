@@ -23,6 +23,11 @@ setlocal
    set "mtbotpath4=%mtmainpath4%\MQL5\Experts"
    md "%mtbotpath4%" 2>nul
 
+   ping -n 3 127.0.0.1 >nul
+   set "mtmainpath5=%USERPROFILE%\Desktop\005"
+   set "mtbotpath5=%mtmainpath4%\MQL5\Experts"
+   md "%mtbotpath5%" 2>nul
+
    :: ------------------------------ Download URL
    set "snrurl=https://sherifawzi.github.io/Tools/"
 
@@ -45,6 +50,9 @@ setlocal
    ping -n 5 127.0.0.1 >nul
    copy "%mtbotpath%\%snrbot%" "%mtbotpath4%"
 
+   ping -n 5 127.0.0.1 >nul
+   copy "%mtbotpath%\%snrbot%" "%mtbotpath5%"
+
 
 
    :: ------------------------------ Bot File Name
@@ -63,6 +71,9 @@ setlocal
 
    ping -n 5 127.0.0.1 >nul
    copy "%mtbotpath%\%snrbot%" "%mtbotpath4%"
+
+   ping -n 5 127.0.0.1 >nul
+   copy "%mtbotpath%\%snrbot%" "%mtbotpath5%"
 
 
 
@@ -86,6 +97,12 @@ setlocal
    cd "%mtmainpath4%" 2>nul
    ::%COMSPEC% /C start %mtmainpath4%\terminal64.exe /portable
     %COMSPEC% /C start %mtmainpath4%\_CleanStart.bat
+
+   ping -n 90 127.0.0.1 >nul
+   cd "%mtmainpath5%" 2>nul
+   ::%COMSPEC% /C start %mtmainpath5%\terminal64.exe /portable
+    %COMSPEC% /C start %mtmainpath5%\_CleanStart.bat
+
 
 endlocal
 exit
