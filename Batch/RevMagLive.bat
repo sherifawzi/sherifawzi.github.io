@@ -98,10 +98,10 @@ setlocal
    ::%COMSPEC% /C start %mtmainpath4%\terminal64.exe /portable
     %COMSPEC% /C start %mtmainpath4%\_CleanStart.bat
 
-   ::ping -n 90 127.0.0.1 >nul
-   ::cd "%mtmainpath5%" 2>nul
+   ping -n 90 127.0.0.1 >nul
+   cd "%mtmainpath5%" 2>nul
    ::%COMSPEC% /C start %mtmainpath5%\terminal64.exe /portable
-   ::%COMSPEC% /C start %mtmainpath5%\_CleanStart.bat
+   %COMSPEC% /C start %mtmainpath5%\_CleanStart.bat
 
 
 endlocal
