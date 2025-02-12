@@ -85,6 +85,7 @@
 |X|USDCHF...|
 |MB|AUDCHF...|
 |X|CADCHF...|
+|MB|XAUUSD...|
 
 |MQ|EURUSD|
 |MQ|GBPUSD|
