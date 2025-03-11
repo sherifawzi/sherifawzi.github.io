@@ -10,7 +10,7 @@ inp_CoolOffATR=5
 inp_NewTradeBufferPeriod=480
 inp_BufferOverrideATR=4
 ; Take Profit Settings:
-inp_TakeProfits=5,15,35,66
+inp_TakeProfits=5,15,35,65
 ; Trail Settings:
 inp_TrailDelay=5
 inp_TrailPeriod=34
@@ -19,7 +19,7 @@ inp_BeTriggerATR=5
 inp_BeTargetATR=2
 ; Order End Settings:
 inp_OrderDuration=40
-inp_MaxLossTrades=2
+inp_MaxLossTrades=3
 inp_MaxLossBuyTrades=0
 inp_MaxLossSellTrades=0
 inp_MaxLossAmount=0
