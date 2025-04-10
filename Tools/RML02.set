@@ -15,8 +15,8 @@ robo_TestResultFolder=/nTESTS/nRML5/
 robo_TestDuration=3600000||0||1||10||N
 robo_SettingsFile=RML02
 ; Bot settings:
-inp_PeriodATR=0||14||62||1440||Y
-inp_MinHedgeDistance=0||30||10||150||Y
+inp_PeriodATR=0||140||62||1440||Y
+inp_MinHedgeDistance=0||50||10||150||Y
 inp_HedgeATRMultiple=0||1||1||9||Y
 inp_StartLotSize=0.01||0||0.000000||0.000000||N
 inp_LotSizeIncrement=0.01||0||0.000000||0.000000||N
