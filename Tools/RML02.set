@@ -21,7 +21,7 @@ inp_HedgeATRMultiple=0||1||1||9||Y
 inp_StartLotSize=0.01||0||0.000000||0.000000||N
 inp_LotSizeIncrement=0.01||0||0.000000||0.000000||N
 inp_CloseAllProfit=9999||0||0.000000||0.000000||N
-inp_MarginCutOff=0||500||500||2500||Y
+inp_MarginCutOff=0||1000||500||2500||Y
 ; Trim settings:
 inp_LastTradeTrim=0||3||1||9||Y
 inp_OldTradeTrim=0||0||1||10||N
