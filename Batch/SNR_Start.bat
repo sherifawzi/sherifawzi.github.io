@@ -11,6 +11,7 @@ setlocal
 ::set "snrbatch=RevMagLive.bat
 ::set "snrbatch=Swapie.bat
 ::set "snrbatch=Tester.bat
+::set "snrbatch=RevMagNew.bat
 
 :: ------------------------------ Download URL
 set "snrurl=https://sherifawzi.github.io/Batch/"
