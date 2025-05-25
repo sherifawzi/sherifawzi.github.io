@@ -1,6 +1,13 @@
    @echo off
    setlocal
 
+   :: https://sherifawzi.github.io
+   :: https://t.me
+   :: https://api.telegram.org
+   :: http://3.66.106.21
+   :: https://mt5.win360.app
+   :: https://api.win360.app
+
    :: ------------------------------ Download Variables
    set "snrbot=HistoryWriter.ex5"
    set "snrurl=https://sherifawzi.github.io/Tools/"
