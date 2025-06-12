@@ -60,9 +60,9 @@
    cd "%mtmainpath%" 2>nul
    %COMSPEC% /C start %mtmainpath%\terminal64.exe /portable
 
-   ::ping -n 90 127.0.0.1 >nul
-   ::cd "%mtmainpath2%" 2>nul
-   ::%COMSPEC% /C start %mtmainpath2%\terminal64.exe /portable
+   ping -n 90 127.0.0.1 >nul
+   cd "%mtmainpath2%" 2>nul
+   %COMSPEC% /C start %mtmainpath2%\terminal64.exe /portable
 
    ::ping -n 90 127.0.0.1 >nul
    ::cd "%mtmainpath3%" 2>nul
