@@ -9,7 +9,6 @@
    :: https://api.win360.app
 
    :: ------------------------------ Download Variables
-   set "snrbot=ZENALT.ex5"
    set "snrurl=https://sherifawzi.github.io/Tools/"
 
    :: ------------------------------ Create MT5 Folders
@@ -39,6 +38,27 @@
    md "%mtbotpath5%" 2>nul
 
 :: ------------------------------ Download from GitHub
+   set "snrbot=ZENALT.ex5"
+
+   ping -n 3 127.0.0.1 >nul
+   powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbot%' -OutFile '%mtbotpath%\%snrbot%'"
+
+   :: ------------------------------ Copy to other MT5s
+   ping -n 5 127.0.0.1 >nul
+   copy "%mtbotpath%\%snrbot%" "%mtbotpath2%"
+
+   ping -n 5 127.0.0.1 >nul
+   copy "%mtbotpath%\%snrbot%" "%mtbotpath3%"
+
+   ping -n 5 127.0.0.1 >nul
+   copy "%mtbotpath%\%snrbot%" "%mtbotpath4%"
+
+   ping -n 5 127.0.0.1 >nul
+   copy "%mtbotpath%\%snrbot%" "%mtbotpath5%"
+
+:: ------------------------------ Download from GitHub
+   set "snrbot=TestPrep.ex5"
+
    ping -n 3 127.0.0.1 >nul
    powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbot%' -OutFile '%mtbotpath%\%snrbot%'"
 
@@ -65,16 +85,16 @@
    %COMSPEC% /C start %mtmainpath2%\terminal64.exe /portable
 
    ::ping -n 90 127.0.0.1 >nul
-   ::cd "%mtmainpath3%" 2>nul
-   ::%COMSPEC% /C start %mtmainpath3%\terminal64.exe /portable
+   cd "%mtmainpath3%" 2>nul
+   %COMSPEC% /C start %mtmainpath3%\terminal64.exe /portable
 
    ::ping -n 90 127.0.0.1 >nul
-   ::cd "%mtmainpath4%" 2>nul
-   ::%COMSPEC% /C start %mtmainpath4%\terminal64.exe /portable
+   cd "%mtmainpath4%" 2>nul
+   %COMSPEC% /C start %mtmainpath4%\terminal64.exe /portable
 
    ::ping -n 90 127.0.0.1 >nul
-   ::cd "%mtmainpath5%" 2>nul
-   ::%COMSPEC% /C start %mtmainpath5%\terminal64.exe /portable
+   cd "%mtmainpath5%" 2>nul
+   %COMSPEC% /C start %mtmainpath5%\terminal64.exe /portable
 
    endlocal
 exit
