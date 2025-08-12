@@ -44,16 +44,16 @@
    powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbot%' -OutFile '%mtbotpath%\%snrbot%'"
 
    :: ------------------------------ Copy to other MT5s
-   ping -n 5 127.0.0.1 >nul
+   ping -n 3 127.0.0.1 >nul
    copy "%mtbotpath%\%snrbot%" "%mtbotpath2%"
 
-   ping -n 5 127.0.0.1 >nul
+   ping -n 3 127.0.0.1 >nul
    copy "%mtbotpath%\%snrbot%" "%mtbotpath3%"
 
-   ping -n 5 127.0.0.1 >nul
+   ping -n 3 127.0.0.1 >nul
    copy "%mtbotpath%\%snrbot%" "%mtbotpath4%"
 
-   ping -n 5 127.0.0.1 >nul
+   ping -n 3 127.0.0.1 >nul
    copy "%mtbotpath%\%snrbot%" "%mtbotpath5%"
 
 :: ------------------------------ Download from GitHub
@@ -63,38 +63,38 @@
    powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbot%' -OutFile '%mtbotpath%\%snrbot%'"
 
    :: ------------------------------ Copy to other MT5s
-   ping -n 5 127.0.0.1 >nul
+   ping -n 3 127.0.0.1 >nul
    copy "%mtbotpath%\%snrbot%" "%mtbotpath2%"
 
-   ping -n 5 127.0.0.1 >nul
+   ping -n 3 127.0.0.1 >nul
    copy "%mtbotpath%\%snrbot%" "%mtbotpath3%"
 
-   ping -n 5 127.0.0.1 >nul
+   ping -n 3 127.0.0.1 >nul
    copy "%mtbotpath%\%snrbot%" "%mtbotpath4%"
 
-   ping -n 5 127.0.0.1 >nul
+   ping -n 3 127.0.0.1 >nul
    copy "%mtbotpath%\%snrbot%" "%mtbotpath5%"
 
    :: ------------------------------ Start MT5s
-   ping -n 90 127.0.0.1 >nul
+   ping -n 10 127.0.0.1 >nul
    cd "%mtmainpath%" 2>nul
    %COMSPEC% /C start %mtmainpath%\terminal64.exe /portable
 
-   ping -n 90 127.0.0.1 >nul
+   ping -n 10 127.0.0.1 >nul
    cd "%mtmainpath2%" 2>nul
    %COMSPEC% /C start %mtmainpath2%\terminal64.exe /portable
 
-   ::ping -n 90 127.0.0.1 >nul
+   ::ping -n 10 127.0.0.1 >nul
    cd "%mtmainpath3%" 2>nul
    %COMSPEC% /C start %mtmainpath3%\terminal64.exe /portable
 
-   ::ping -n 90 127.0.0.1 >nul
+   ::ping -n 10 127.0.0.1 >nul
    cd "%mtmainpath4%" 2>nul
    %COMSPEC% /C start %mtmainpath4%\terminal64.exe /portable
 
-   ::ping -n 90 127.0.0.1 >nul
-   cd "%mtmainpath5%" 2>nul
-   %COMSPEC% /C start %mtmainpath5%\terminal64.exe /portable
+   ::ping -n 10 127.0.0.1 >nul
+   ::cd "%mtmainpath5%" 2>nul
+   ::%COMSPEC% /C start %mtmainpath5%\terminal64.exe /portable
 
    endlocal
 exit
