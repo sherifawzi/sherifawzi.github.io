@@ -27,7 +27,7 @@ setlocal
    :: ------------------------------ Start MT5s
    ping -n 10 127.0.0.1 >nul
    cd "%mtmainpath%" 2>nul
-   %COMSPEC% /C start %mtmainpath%\terminal64.exe /portable
+   %COMSPEC% /C start %mtmainpath%\terminal64.exe /config:%snrconfig% /portable
    ::%COMSPEC% /C start %mtmainpath%\_CleanStart.bat
 
 endlocal
