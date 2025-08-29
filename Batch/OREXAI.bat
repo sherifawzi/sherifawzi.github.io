@@ -1,0 +1,33 @@
+
+@echo off
+setlocal
+
+   :: https://sherifawzi.github.io
+   :: https://t.me
+   :: https://api.telegram.org
+   :: http://3.66.106.21
+
+   :: ------------------------------ Create MT5 Folders
+   ping -n 3 127.0.0.1 >nul
+   set "mtmainpath=%USERPROFILE%\Desktop\001"
+   set "mtbotpath=%mtmainpath%\MQL5\Experts"
+   md "%mtbotpath%" 2>nul
+
+   :: ------------------------------ Download URL
+   set "snrurl=https://sherifawzi.github.io/Tools/"
+
+   :: ------------------------------ Bot File Name
+   set "snrbot=OREXAI.ex5"
+
+   :: ------------------------------ Download from GitHub
+   ping -n 3 127.0.0.1 >nul
+   powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbot%' -OutFile '%mtbotpath%\%snrbot%'"
+
+   :: ------------------------------ Start MT5s
+   ping -n 90 127.0.0.1 >nul
+   cd "%mtmainpath%" 2>nul
+   ::%COMSPEC% /C start %mtmainpath%\terminal64.exe /portable
+    %COMSPEC% /C start %mtmainpath%\_CleanStart.bat
+
+endlocal
+exit
