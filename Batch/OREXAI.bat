@@ -15,6 +15,7 @@ setlocal
 
    :: ------------------------------ Download URL
    set "snrurl=https://sherifawzi.github.io/Tools/"
+   set "snrconfig=%USERPROFILE%\AppData\Roaming\MetaQuotes\Terminal\Common\Files\orexconf.ini"
 
    :: ------------------------------ Bot File Name
    set "snrbot=OREXAI.ex5"
