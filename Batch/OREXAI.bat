@@ -24,10 +24,10 @@ setlocal
    powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbot%' -OutFile '%mtbotpath%\%snrbot%'"
 
    :: ------------------------------ Start MT5s
-   ping -n 90 127.0.0.1 >nul
+   ping -n 10 127.0.0.1 >nul
    cd "%mtmainpath%" 2>nul
-   ::%COMSPEC% /C start %mtmainpath%\terminal64.exe /portable
-    %COMSPEC% /C start %mtmainpath%\_CleanStart.bat
+   %COMSPEC% /C start %mtmainpath%\terminal64.exe /portable
+   ::%COMSPEC% /C start %mtmainpath%\_CleanStart.bat
 
 endlocal
 exit
