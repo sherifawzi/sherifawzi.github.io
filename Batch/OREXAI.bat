@@ -12,7 +12,9 @@ setlocal
    set "mtmainpath=%USERPROFILE%\Desktop\001"
    set "mtbotpath=%mtmainpath%\MQL5\Experts"
    set "mtsetpath=%mtmainpath%\MQL5\Profiles\Tester"
+
    md "%mtbotpath%" 2>nul
+   md "%mtsetpath%" 2>nul
 
    :: ------------------------------ Download URL
    set "snrurl=https://sherifawzi.github.io/Tools/"
@@ -30,7 +32,7 @@ setlocal
 
    :: ------------------------------ Download from GitHub
    ping -n 3 127.0.0.1 >nul
-   powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbot%' -OutFile '%mtsetpath%\%snrset%'"
+   powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbot%' -OutFile '%mtsetpath%\%snrbot%'"
 
    :: ------------------------------ Start MT5s
    ping -n 10 127.0.0.1 >nul
