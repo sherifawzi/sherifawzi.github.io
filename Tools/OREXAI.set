@@ -3,7 +3,7 @@
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
 ; Optimization Parameters:
-inp_MaxDrawdownPercent=10||20||1||200||N
+inp_MaxDrawdownPercent=20||20||1||200||N
 ; Sizing Parameters:
 inp_PercentOfDay=5.0||3||1||30||Y
 ; Margin Parameters:
