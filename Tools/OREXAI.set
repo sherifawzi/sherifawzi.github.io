@@ -4,7 +4,7 @@
 ;
 ; Optimization Parameters:
 inp_MaxDrawdownPercent=10||20||1||200||N
-inp_ElapseTimeMax=3600000||10800000||1||108000000||N
+inp_ElapseTimeMax=900000||10800000||1||108000000||N
 inp_TestFileName=TestResultsv4
 ; Sizing Parameters:
 inp_PercentOfDay=5.0||3||1||30||Y
@@ -23,6 +23,7 @@ inp_ReverseProfitFactor=2.0||1||0.1||5||Y
 inp_TrimFirst=false||false||0||true||Y
 inp_TrimLast=false||false||0||true||Y
 inp_TrimBiggestLoss=false||false||0||true||Y
+
 
 
 
