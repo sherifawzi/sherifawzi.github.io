@@ -3,18 +3,18 @@
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
 ; Optimization Parameters:
-inp_MaxDrawdownPercent=10||20||1||200||N
+inp_MaxDrawdownPercent=20||20||1||200||N
 inp_ElapseTimeMax=3600000||10800000||1||108000000||N
-inp_TestFileName=TestResultsv5
+inp_TestFileName=TestResultsv6
 ; Sizing Parameters:
 inp_PercentOfDay=5.0||3||1||10||Y
 ; Margin Parameters:
 inp_MarginCutoff=500||500||500||3000||Y
 inp_MarginBuffer=50||50||50||300||Y
 ; Hedge Trim Parameters:
-inp_MaxTrimFactorAddon=0.5||0.1||0.1||4||Y
-inp_MinTrimFactor=3.0||1||0.1||4||Y
-inp_MinTrimTrigger=5||5||1||20||Y
+inp_MaxTrimFactorAddon=0.5||0.1||0.1||1||Y
+inp_MinTrimFactor=3.0||1||0.1||2||Y
+inp_MinTrimTrigger=5||5||1||10||Y
 ; Reverse Parameters:
 inp_ReverseStartLot=9999.0||0.05||0.01||0.3||Y
 inp_ReverseFactor=1.0||1.0||0.100000||5||Y
@@ -23,6 +23,7 @@ inp_ReverseProfitFactor=2.0||1||0.1||5||Y
 inp_TrimFirst=false||false||0||true||Y
 inp_TrimLast=false||false||0||true||Y
 inp_TrimBiggestLoss=false||false||0||true||Y
+
 
 
 
