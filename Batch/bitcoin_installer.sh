@@ -116,7 +116,7 @@ cat > "$PROJECT_DIR/bitcoin_collector.php" << EOF
 // Configuration
 \$bitcoin_symbol = '$BITCOIN_SYMBOL';
 \$binance_symbol = '$BINANCE_SYMBOL';
-\$data_dir = './data/';
+\$data_dir = '/var/www/html/bitcoin/data/';
 
 // Ensure data directory exists
 if (!is_dir(\$data_dir)) {
