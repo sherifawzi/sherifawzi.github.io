@@ -9,8 +9,8 @@ inp_TestFileName=v2
 ; Sizing Parameters:
 inp_PercentOfDay=5||3||1||10||Y
 ; Margin Parameters:
-inp_MarginCutoff=500||500||500||3000||N
-inp_MarginBuffer=50||50||50||300||N
+inp_MarginCutoff=500||500||500||1500||Y
+inp_MarginBuffer=50||50||50||100||Y
 ; Hedge Trim Parameters:
 inp_MaxTrimFactorAddon=0.5||0.1||0.1||1||Y
 inp_MinTrimFactor=3.0||1||0.1||2||Y
@@ -20,7 +20,8 @@ inp_ReverseStartLot=99||0.05||0.01||0.3||N
 inp_ReverseFactor=1.0||1.0||0.100000||5||N
 inp_ReverseProfitFactor=2.0||1||0.1||5||N
 ; Margin Trim Parameters:
-inp_TrimFirst=false||false||0||true||N
-inp_TrimLast=false||false||0||true||N
-inp_TrimBiggestLoss=false||false||0||true||N
+inp_TrimFirst=false||false||0||true||Y
+inp_TrimLast=false||false||0||true||Y
+inp_TrimBiggestLoss=false||false||0||true||Y
+
 
