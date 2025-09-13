@@ -34,6 +34,13 @@ setlocal
    ping -n 3 127.0.0.1 >nul
    powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbot%' -OutFile '%mtsetpath%\%snrbot%'"
 
+   :: ------------------------------ Bot File Name
+   set "snrbot=HistoryWriter.ex5"
+
+   :: ------------------------------ Download from GitHub
+   ping -n 3 127.0.0.1 >nul
+   powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbot%' -OutFile '%mtbotpath%\%snrbot%'"
+
    :: ------------------------------ Start MT5s
    ping -n 10 127.0.0.1 >nul
    cd "%mtmainpath%" 2>nul
