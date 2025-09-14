@@ -7,7 +7,7 @@ inp_MaxDrawdownPercent=40||20||1||200||N
 inp_ElapseTimeMax=10800000||10800000||1||108000000||N
 inp_TestFileName=v2
 ; Sizing Parameters:
-inp_PercentOfDay=5||3||1||10||Y
+inp_PercentOfDay=5||5||1||10||Y
 inp_ScalingFactor=1||0||1||1||N
 ; Margin Parameters:
 inp_MarginCutoff=500||500||500||1500||Y
@@ -25,4 +25,5 @@ inp_KillMode=0||0||0||2||Y
 inp_TrimFirst=false||false||0||true||Y
 inp_TrimLast=false||false||0||true||Y
 inp_TrimBiggestLoss=false||false||0||true||Y
+
 
