@@ -17,13 +17,15 @@ set "snrbatch=History.bat"
 
 
 
-:: ------------------------------ Download Batch File
-set "snrurl=https://sherifawzi.github.io/Batch/"
-
 :: ------------------------------ Create Folders
 ping -n 3 127.0.0.1 >nul
 set "batchpath=%USERPROFILE%\Desktop\BAT"
 md "%batchpath%" 2>nul
+
+
+
+:: ------------------------------ Download Batch File
+set "snrurl=https://sherifawzi.github.io/Batch/"
 
 :: ------------------------------ Download from GitHub
 ping -n 3 127.0.0.1 >nul
@@ -75,6 +77,7 @@ powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbatch%' -OutFile '%batc
 
 :: ------------------------------ Start MT5s
 ping -n 10 127.0.0.1 >nul
+set "batchpath=%USERPROFILE%\Desktop\BAT"
 cd "%batchpath%" 2>nul
 start %batchpath%\%snrbatch%
 
