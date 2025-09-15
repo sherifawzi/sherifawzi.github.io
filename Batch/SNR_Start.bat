@@ -32,9 +32,9 @@ ping -n 3 127.0.0.1 >nul
 powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbatch%' -OutFile '%batchpath%\%snrbatch%'"
 
 :: ------------------------------ Download from GitHub
-set "snrbatch=restart.bat"
+set "snrfile=restart.bat"
 ping -n 3 127.0.0.1 >nul
-powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbatch%' -OutFile '%batchpath%\%snrbatch%'"
+powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
 
 
 
@@ -49,29 +49,29 @@ md "%batchpath%" 2>nul
 set "snrurl=http://3.66.106.21/MT5/"
 
 :: ------------------------------ Download from GitHub
-set "snrbatch=MetaEditor64.exe"
+set "snrfile=MetaEditor64.exe"
 ping -n 3 127.0.0.1 >nul
-powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbatch%' -OutFile '%batchpath%\%snrbatch%'"
+powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
 
 :: ------------------------------ Download from GitHub
-set "snrbatch=_CleanOnly.bat"
+set "snrfile=_CleanOnly.bat"
 ping -n 3 127.0.0.1 >nul
-powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbatch%' -OutFile '%batchpath%\%snrbatch%'"
+powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
 
 :: ------------------------------ Download from GitHub
-set "snrbatch=_CleanStart.bat"
+set "snrfile=_CleanStart.bat"
 ping -n 3 127.0.0.1 >nul
-powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbatch%' -OutFile '%batchpath%\%snrbatch%'"
+powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
 
 :: ------------------------------ Download from GitHub
-set "snrbatch=metatester64.exe"
+set "snrfile=metatester64.exe"
 ping -n 3 127.0.0.1 >nul
-powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbatch%' -OutFile '%batchpath%\%snrbatch%'"
+powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
 
 :: ------------------------------ Download from GitHub
-set "snrbatch=terminal64.exe"
+set "snrfile=terminal64.exe"
 ping -n 3 127.0.0.1 >nul
-powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbatch%' -OutFile '%batchpath%\%snrbatch%'"
+powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
 
 
 
