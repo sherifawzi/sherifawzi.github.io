@@ -1,15 +1,15 @@
-﻿; saved on 2025.09.25 14:09:06
+﻿; saved on 2025.10.02 11:08:00
 ; this file contains input parameters for testing/optimizing OREXAI expert advisor
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
 ; Config String for Live Trading:
 inp_ConfigString=
 ; Optimization Parameters:
-inp_MaxDrawdownPercent=25||20||1||200||N
-inp_TestStartBalance=25000||10000||1||100000||N
-inp_TestStartYear=2023||2023||1||20230||N
-inp_ElapseTimeMax=10800000||10800000||1||108000000||N
-inp_TestFileName=25K_xR_xS
+tst_MaxDrawdownPercent=25||20||1||200||N
+tst_TestStartBalance=25000||10000||1||100000||N
+tst_TestStartYear=2023||2023||1||20230||N
+tst_ElapseTimeMax=10800000||10800000||1||108000000||N
+tst_TestFileName=25K_xR_xS
 ; Sizing Parameters:
 inp_PercentOfDay=5||5||1||10||Y
 inp_ScalingFactor=1||0||1||1||N
