@@ -59,7 +59,7 @@ setlocal
 
    
    :: ------------------------------ Bot File Name
-   set "snrbot=OREXAI.ex5"
+   set "snrbot=OREXAILIVE.ex5"
 
    :: ------------------------------ Download from GitHub
    ping -n 3 127.0.0.1 >nul
@@ -104,7 +104,7 @@ setlocal
    ping -n 90 127.0.0.1 >nul
    cd "%mtmainpath5%" 2>nul
    ::%COMSPEC% /C start %mtmainpath5%\terminal64.exe /portable
-   %COMSPEC% /C start %mtmainpath5%\_CleanStart.bat
+   ::%COMSPEC% /C start %mtmainpath5%\_CleanStart.bat
 
 
 endlocal
