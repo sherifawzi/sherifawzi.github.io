@@ -81,28 +81,28 @@ setlocal
 
 
    :: ------------------------------ Start MT5s
-   ping -n 90 127.0.0.1 >nul
+   ping -n 30 127.0.0.1 >nul
    cd "%mtmainpath%" 2>nul
    ::%COMSPEC% /C start %mtmainpath%\terminal64.exe /portable
     %COMSPEC% /C start %mtmainpath%\_CleanStart.bat
 
-   ping -n 90 127.0.0.1 >nul
+   ping -n 30 127.0.0.1 >nul
    cd "%mtmainpath2%" 2>nul
    ::%COMSPEC% /C start %mtmainpath2%\terminal64.exe /portable
     %COMSPEC% /C start %mtmainpath2%\_CleanStart.bat
 
-   ping -n 90 127.0.0.1 >nul
+   ping -n 30 127.0.0.1 >nul
    cd "%mtmainpath3%" 2>nul
    ::%COMSPEC% /C start %mtmainpath3%\terminal64.exe /portable
     %COMSPEC% /C start %mtmainpath3%\_CleanStart.bat
 
-   ping -n 90 127.0.0.1 >nul
+   ping -n 30 127.0.0.1 >nul
    cd "%mtmainpath4%" 2>nul
    ::%COMSPEC% /C start %mtmainpath4%\terminal64.exe /portable
     %COMSPEC% /C start %mtmainpath4%\_CleanStart.bat
 
-   ping -n 90 127.0.0.1 >nul
-   cd "%mtmainpath5%" 2>nul
+   ::ping -n 30 127.0.0.1 >nul
+   ::cd "%mtmainpath5%" 2>nul
    ::%COMSPEC% /C start %mtmainpath5%\terminal64.exe /portable
    ::%COMSPEC% /C start %mtmainpath5%\_CleanStart.bat
 
