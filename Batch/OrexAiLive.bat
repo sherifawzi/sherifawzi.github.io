@@ -59,7 +59,7 @@ setlocal
 
    
    :: ------------------------------ Bot File Name
-   set "snrbot=OREXAILIVE.ex5"
+   set "snrbot=OrexAiLive.ex5"
 
    :: ------------------------------ Download from GitHub
    ping -n 3 127.0.0.1 >nul
