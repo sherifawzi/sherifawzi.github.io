@@ -9,7 +9,7 @@ tst_MaxDrawdownPercent=30||20||1||200||N
 tst_TestStartBalance=25000||10000||1||100000||N
 tst_TestStartYear=2023||2023||1||20230||N
 tst_ElapseTimeMax=14400000||10800000||1||108000000||N
-tst_TestFileName=25K_xR_xS
+tst_TestFileName=25K_xR_xS_50p
 ; Sizing Parameters:
 inp_PercentOfDay=5||5||1||10||Y
 inp_ScalingFactor=1||0||1||1||N
@@ -31,6 +31,7 @@ inp_TrimLast=false||false||0||true||Y
 inp_TrimBiggestLoss=false||false||0||true||Y
 ; Old Trim Parameters:
 inp_OldTrimMode=0||0||0||2||N
+
 
 
 
