@@ -14,7 +14,7 @@ tst_TestFileName=25k_xr_xs_50p_v4
 ; Sizing Parameters:
 inp_PercentOfDay=5||5||1||10||Y
 inp_ScalingFactor=1||0||1||1||N
-inp_AtrMode=0||0||0||4||Y
+inp_AtrMode=0||0||0||4||N
 ; Margin Parameters:
 inp_MarginCutoff=500||500||500||1500||Y
 inp_MarginBuffer=50||50||50||100||Y
@@ -37,4 +37,5 @@ inp_TrimLast=false||false||0||true||Y
 inp_TrimBiggestLoss=false||false||0||true||Y
 ; Old Trim Parameters:
 inp_OldTrimMode=0||0||0||2||N
+
 
