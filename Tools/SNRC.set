@@ -5,19 +5,20 @@
 ; Config String for Live Trading:
 inp_ConfigString=
 ; Optimization Parameters:
-tst_MaxDrawdownPerc=25||0||1||10||N
-tst_DurationMinutes=45||1||1||1||N
+tst_MaxDrawdownPerc=25||0||0||0||N
+tst_DurationMinutes=45||0||0||0||N
 ; Sizing Parameters:
-inp_PercentOfDay=3.0||5||1||10||Y
+inp_PercentOfDay=0||5||1||10||Y
 inp_HedgeExpandMode=0||0||0||2||Y
 ; Margin Trim Parameters:
-inp_MarginCutoff=500||500||500||3000||Y
-inp_MarginBuffer=50||50||50||200||Y
+inp_MarginCutoff=0||500||500||3000||Y
+inp_MarginBuffer=0||50||50||200||Y
 inp_MarginTrimMode=0||0||0||7||Y
 inp_MarginTrimStop=0||0||0||2||Y
 ; Hedge Trim Parameters:
 inp_HedgeTrimMode=0||0||0||2||N
-inp_HedgeTrimFactor=3.0||1.5||0.1||3||Y
-inp_HedgeTrimAddon=0.5||0.1||0.1||1||Y
-inp_HedgeTrimMin=1.1||1||0.1||1.1||Y
+inp_HedgeTrimFactor=0||1.5||0.1||3||Y
+inp_HedgeTrimAddon=0||0.1||0.1||1||Y
+inp_HedgeTrimMin=0||1||0.1||1.1||Y
+
 
