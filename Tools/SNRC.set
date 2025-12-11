@@ -1,4 +1,4 @@
-﻿; saved on 2025.12.09 18:20:39
+; saved on 2025.12.09 18:20:39
 ; this file contains input parameters for testing/optimizing TEMP expert advisor
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
@@ -6,7 +6,7 @@
 inp_ConfigString=
 ; Optimization Parameters:
 tst_MaxDrawdownPerc=25||0||0||0||N
-tst_DurationMinutes=45||0||0||0||N
+tst_DurationMinutes=120||0||0||0||N
 ; Sizing Parameters:
 inp_PercentOfDay=0||5||1||10||Y
 inp_HedgeExpandMode=0||0||0||2||Y
