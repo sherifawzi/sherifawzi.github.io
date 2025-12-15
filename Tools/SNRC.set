@@ -26,5 +26,4 @@ inp_HedgeTrimMin=0||1||0.1||1.1||Y
 inp_FirstTradeSizeCloseAll=3||3||1||10||N
 inp_HedgeTrimStartTradeNo=4||4||1||10||N
 ; Drawdown Trim Parameters:
-inp_DrawdownTrimPercent=0||0||1||5||Y
-
+inp_DrawdownTrimPercent=0||0||1||5||N
