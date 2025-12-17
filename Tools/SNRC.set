@@ -7,7 +7,7 @@ inp_ConfigString=
 ; Optimization Parameters:
 tst_MaxDrawdownPerc=25||0||1||10||N
 tst_MinGainPerc=25||0||1||10||N
-tst_DurationMinutes=5||0||1||10||N
+tst_DurationMinutes=45||0||1||10||N
 ; Sizing Parameters:
 inp_PercentOfDay=0||5||1||10||Y
 inp_HedgeExpandMode=0||0||0||2||Y
@@ -29,4 +29,5 @@ inp_MarginCutoff=0||500||500||3000||Y
 inp_MarginBuffer=0||50||50||200||Y
 inp_MarginTrimMode=0||0||0||7||Y
 inp_MarginTrimStop=0||0||0||2||Y
+
 
