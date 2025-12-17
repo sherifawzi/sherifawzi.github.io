@@ -1,0 +1,31 @@
+; saved on 2025.12.17 17:01:00
+; this file contains input parameters for testing/optimizing SNRC expert advisor
+; to use it in the strategy tester, click Load in the context menu of the Inputs tab
+;
+; Config String for Live Trading:
+inp_ConfigString=
+; Optimization Parameters:
+tst_MaxDrawdownPerc=25||0||1||10||N
+tst_MinGainPerc=25||0||1||10||N
+tst_DurationMinutes=150||0||1||10||N
+; Sizing Parameters:
+inp_PercentOfDay=0||5||1||10||Y
+inp_HedgeExpandMode=0||0||0||2||Y
+inp_StaticLotSize=false||false||0||true||N
+inp_ScalingAmount=0||0||1||10||N
+; Hedge Trim Parameters:
+inp_HedgeTrimMode=0||0||0||2||Y
+inp_HedgeTrimFactor=0||1.5||0.1||3||Y
+inp_HedgeTrimAddon=0||0.1||0.1||1||Y
+inp_HedgeTrimMin=0||1||0.1||1.1||Y
+inp_FirstTradeSizeCloseAll=3||3||1||10||N
+inp_HedgeTrimStartTradeNo=4||4||1||10||N
+inp_Quick2StdMultiplier=0.5||0.25||0.25||1||Y
+; Drawdown Trim Parameters:
+inp_DrawdownTrimPercent=0||0||1||5||Y
+inp_DrawdownTrimPartial=false||false||0||true||Y
+; Margin Trim Parameters:
+inp_MarginCutoff=0||500||500||3000||Y
+inp_MarginBuffer=0||50||50||200||Y
+inp_MarginTrimMode=0||0||0||7||Y
+inp_MarginTrimStop=0||0||0||2||Y
