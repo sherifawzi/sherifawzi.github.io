@@ -37,9 +37,8 @@ sudo dpkg --add-architecture i386
 sudo apt update
 sudo apt install -y wine64 wine32 winetricks
 
-# Install PlayOnLinux
-sudo apt update
-sudo apt install -y playonlinux
+# Install additional components
+winetricks corefonts vcrun2015
 
 # 6. Download and Install MetaTrader 5
 
