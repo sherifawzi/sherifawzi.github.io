@@ -1,5 +1,7 @@
 #!/bin/bash
 
+   # >>> RUN ON UBUNTU 20 and NOT above <<<
+
    # sudo chmod +x snrtestsetup.sh
    # sudo ./snrtestsetup.sh
    
@@ -59,7 +61,8 @@ echo "1. REBOOT THE SERVER (recommended):"
 echo "   sudo shutdown -r now"
 echo ""
 echo "2. Once connected via RDP:"
-echo "   winetricks vcrun2015 corefonts"
+echo "   winetricks corefonts"
+echo "   winetricks vcrun2015"
 echo "   winecfg"
 echo "   Run: cd ~/mt5 && wine terminal64.exe"
 echo ""
