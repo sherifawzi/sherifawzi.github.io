@@ -31,17 +31,19 @@
    winetricks vcrun2015 corefonts
 
 # 5a. Set Wine to Windows 10 mode & Disable debug messages
-   WINEARCH=win64 winecfg
+   export WINEPREFIX="$HOME/.wine"
+   export WINEARCH=win64
    export WINEDEBUG=-all
+   winecfg
 
 # 6. Download and Install MetaTrader 5
    mkdir -p ~/mt5
    cd ~/mt5
-   sudo wget https://sherifawzi.github.io/Tools/mt5setup.exe
-   sudo wget https://sherifawzi.github.io/Pics/SNRTSTBKG.jpg
-   sudo wget https://sherifawzi.github.io/Tools/SNRC.ex5
-   sudo wget https://sherifawzi.github.io/Tools/SNRC.set
-   sudo wget https://www.snrobotix.com/MT5/terminal64.exe
+   wget https://sherifawzi.github.io/Tools/mt5setup.exe
+   wget https://sherifawzi.github.io/Pics/SNRTSTBKG.jpg
+   wget https://sherifawzi.github.io/Tools/SNRC.ex5
+   wget https://sherifawzi.github.io/Tools/SNRC.set
+   wget https://www.snrobotix.com/MT5/terminal64.exe
 
 # 7. Keep everything up to date before restart
    sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
