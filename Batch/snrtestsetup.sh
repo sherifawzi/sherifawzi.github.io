@@ -27,7 +27,7 @@
 # Install Wine for MetaTrader 5
    sudo dpkg --add-architecture i386
    sudo apt update
-   sudo apt install -y wine64 wine32 winetricks
+   sudo apt install -y wine64 wine32 winetricks mesa-utils libgl1-mesa-glx
 
 # Set Wine to Windows 10 mode & Disable debug messages
    export WINEPREFIX="$HOME/.wine"
@@ -49,6 +49,9 @@
 
 # Keep everything up to date before restart
    sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
+
+# Turn off wine logging permanently
+   echo 'export WINEDEBUG=-all' >> ~/.bashrc
 
 ###############################################################################
 # Installation Complete - Next Steps
