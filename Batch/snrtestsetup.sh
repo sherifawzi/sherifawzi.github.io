@@ -107,6 +107,12 @@ pkill winecfg || true
 echo -e "${GREEN}✓ Wine installed and configured${NC}"
 echo ""
 
+winetricks winhttp wininet
+
+winecfg
+
+winetricks corefonts vcrun2015 dotnet48
+
 ###############################################################################
 # STEP 6: Download and Prepare MT5 Installation
 ###############################################################################
