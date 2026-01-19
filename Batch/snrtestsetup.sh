@@ -1,17 +1,18 @@
 #!/bin/bash
 
-   :: sudo chmod +x snrtestsetup.sh
-   :: sudo ./snrtestsetup.sh
+   # sudo chmod +x snrtestsetup.sh
+   # sudo ./snrtestsetup.sh
    
-   :: https://sherifawzi.github.io
-   :: https://t.me
-   :: https://api.telegram.org
-   :: http://3.66.106.21
+   # https://sherifawzi.github.io
+   # https://t.me
+   # https://api.telegram.org
+   # http://3.66.106.21
 
 # 1. Install Desktop Environment (XFCE - lightweight and good for RDP)
 
 sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
 sudo apt install -y xfce4 xfce4-goodies
+#sudo apt install -y ubuntu-mate-desktop
 
 # 2. Install XRDP for Remote Desktop
 
@@ -22,6 +23,7 @@ sudo systemctl start xrdp
 # 3. Configure XRDP to use XFCE
 
 echo xfce4-session > ~/.xsession
+#echo "mate-session" > ~/.xsession
 sudo systemctl restart xrdp
 
 #4. Configure Firewall (if enabled)
@@ -38,7 +40,7 @@ sudo apt update
 sudo apt install -y wine64 wine32 winetricks
 
 # Install additional components
-winetricks corefonts vcrun2015
+#winetricks corefonts vcrun2015
 
 # 6. Download and Install MetaTrader 5
 
