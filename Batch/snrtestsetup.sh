@@ -29,6 +29,9 @@
    sudo apt update
    sudo apt install -y wine64 wine32 winetricks
    winetricks vcrun2015 corefonts
+
+# 5a. Set Wine to Windows 10 mode & Disable debug messages
+   WINEARCH=win64 winecfg
    export WINEDEBUG=-all
 
 # 6. Download and Install MetaTrader 5
@@ -41,7 +44,7 @@
    sudo wget https://www.snrobotix.com/MT5/terminal64.exe
 
 # 7. Keep everything up to date before restart
-sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
+   sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
 
 ###############################################################################
 # Installation Complete - Next Steps
