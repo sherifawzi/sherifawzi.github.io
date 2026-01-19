@@ -46,6 +46,9 @@ sudo apt install -y playonlinux
 mkdir -p ~/mt5
 cd ~/mt5
 sudo wget https://sherifawzi.github.io/Tools/mt5setup.exe
+sudo wget https://sherifawzi.github.io/Pics/SNRTSTBKG.jpg
+sudo wget https://sherifawzi.github.io/Tools/SNRC.ex5
+sudo wget https://sherifawzi.github.io/Tools/SNRC.set
 
 sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
 
