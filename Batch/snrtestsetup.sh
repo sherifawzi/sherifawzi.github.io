@@ -34,10 +34,6 @@
    export WINEARCH=win64
    export WINEDEBUG=-all
 
-# Set Wine to Windows 10 mode & Disable debug messages
-   winetricks vcrun2015 corefonts
-   winecfg
-
 # Download and Install MetaTrader 5
    mkdir -p ~/mt5
    cd ~/mt5
@@ -63,7 +59,9 @@ echo "1. REBOOT THE SERVER (recommended):"
 echo "   sudo shutdown -r now"
 echo ""
 echo "2. Once connected via RDP:"
-echo "   - Run: cd ~/mt5 && wine terminal64.exe"
+echo "   winetricks vcrun2015 corefonts"
+echo "   winecfg"
+echo "   Run: cd ~/mt5 && wine terminal64.exe"
 echo ""
 echo "Note: DONT use SUDO with Wine EVER!!"
 echo ""
