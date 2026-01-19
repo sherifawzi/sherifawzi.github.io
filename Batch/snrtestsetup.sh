@@ -1,5 +1,8 @@
 #!/bin/bash
 
+   :: sudo chmod +x snrtestsetup.sh
+   :: sudo ./snrtestsetup.sh
+   
    :: https://sherifawzi.github.io
    :: https://t.me
    :: https://api.telegram.org
