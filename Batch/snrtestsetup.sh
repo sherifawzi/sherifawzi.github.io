@@ -10,7 +10,7 @@
 
 # 1. Install Desktop Environment (XFCE - lightweight and good for RDP)
 
-sudo apt update
+sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
 sudo apt install -y xfce4 xfce4-goodies
 
 # 2. Install XRDP for Remote Desktop
@@ -47,8 +47,7 @@ mkdir -p ~/mt5
 cd ~/mt5
 sudo wget https://sherifawzi.github.io/Tools/mt5setup.exe
 
-sudo apt clean && sudo apt update && sudo apt-get upgrade -y
-
+sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
 
 ###############################################################################
 # Installation Complete - Next Steps
