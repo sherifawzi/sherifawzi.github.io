@@ -1,6 +1,6 @@
 #!/bin/bash
 
-   # >>> RUN ON UBUNTU 20 and NOT above <<<
+   # >>> RUN ON UBUNTU 22.04 and NOT above <<<
 
    # sudo chmod +x snrtestsetup.sh
    # sudo ./snrtestsetup.sh
