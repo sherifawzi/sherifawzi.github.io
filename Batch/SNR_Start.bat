@@ -1,83 +1,45 @@
 @echo off
 setlocal
 
-:: ------------------------------ File to download
-::set "snrbatch=Analyzer.bat"
-::set "snrbatch=Beacon.bat"
-set "snrbatch=History.bat"
-::set "snrbatch=Receiver.bat"
-::set "snrbatch=restart.bat"
-::set "snrbatch=RevMag.bat"
-::set "snrbatch=RevMagLive.bat"
-::set "snrbatch=Swapie.bat"
-::set "snrbatch=Tester.bat"
-::set "snrbatch=RevMagNew.bat"
-::set "snrbatch=OREXAI.bat"
-::set "snrbatch=OrexAiLive.bat"
+:: ------------------------------ Delete test restart file
+del "%APPDATA%\MetaQuotes\Terminal\Common\Files\restart.txt"
 
-
-
-:: ------------------------------ Create Folders
-ping -n 3 127.0.0.1 >nul
-set "batchpath=%USERPROFILE%\Desktop\BAT"
-md "%batchpath%" 2>nul
-
-
-
-:: ------------------------------ Download Batch File
+:: ------------------------------ Set main download URL
 set "snrurl=https://sherifawzi.github.io/Batch/"
 
-:: ------------------------------ Download from GitHub
+:: ------------------------------ Create Batch Folders
+set "batchpath=%USERPROFILE%\Desktop\BAT"
+md "%batchpath%" 2>nul
 ping -n 3 127.0.0.1 >nul
+
+:: ------------------------------ Download Batch file
+::set "snrbatch=Tester.bat"
+::set "snrbatch=Trader.bat"
 powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrbatch%' -OutFile '%batchpath%\%snrbatch%'"
-
-:: ------------------------------ Download from GitHub
-set "snrfile=restart.bat"
 ping -n 3 127.0.0.1 >nul
+
+:: ------------------------------ Download Restart from
+set "snrfile=restart.bat"
 powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
-
-
+ping -n 3 127.0.0.1 >nul
 
 :: ------------------------------ Create MT5 Folder
+set "mt5path=%USERPROFILE%\Desktop\001"
+md "%mt5path%" 2>nul
 ping -n 3 127.0.0.1 >nul
-set "batchpath=%USERPROFILE%\Desktop\001"
-md "%batchpath%" 2>nul
-
-
-
-:: ------------------------------ Download MT5
-set "snrurl=http://3.66.106.21/MT5/"
-
-:: ------------------------------ Download from GitHub
-set "snrfile=MetaEditor64.exe"
-ping -n 3 127.0.0.1 >nul
-powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
 
 :: ------------------------------ Download from GitHub
 set "snrfile=_CleanOnly.bat"
+powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%mt5path%\%snrfile%'"
 ping -n 3 127.0.0.1 >nul
-powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
 
 :: ------------------------------ Download from GitHub
 set "snrfile=_CleanStart.bat"
+powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%mt5path%\%snrfile%'"
 ping -n 3 127.0.0.1 >nul
-powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
-
-:: ------------------------------ Download from GitHub
-set "snrfile=metatester64.exe"
-ping -n 3 127.0.0.1 >nul
-powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
-
-:: ------------------------------ Download from GitHub
-set "snrfile=terminal64.exe"
-ping -n 3 127.0.0.1 >nul
-powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%batchpath%\%snrfile%'"
-
-
 
 :: ------------------------------ Start MT5s
 ping -n 10 127.0.0.1 >nul
-set "batchpath=%USERPROFILE%\Desktop\BAT"
 cd "%batchpath%" 2>nul
 start %batchpath%\%snrbatch%
 
