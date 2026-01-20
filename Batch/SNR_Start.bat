@@ -29,12 +29,12 @@ md "%mt5path%" 2>nul
 ping -n 3 127.0.0.1 >nul
 
 :: ------------------------------ Download from GitHub
-set "snrfile=_CleanOnly.bat"
+set "snrfile=CleanOnly.bat"
 powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%mt5path%\%snrfile%'"
 ping -n 3 127.0.0.1 >nul
 
 :: ------------------------------ Download from GitHub
-set "snrfile=_CleanStart.bat"
+set "snrfile=CleanStart.bat"
 powershell -Command "Invoke-WebRequest -Uri '%snrurl%%snrfile%' -OutFile '%mt5path%\%snrfile%'"
 ping -n 3 127.0.0.1 >nul
 
