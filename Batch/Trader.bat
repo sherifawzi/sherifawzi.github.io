@@ -54,20 +54,21 @@ setlocal
 
    :: ------------------------------ Start MT5s
    cd "%mtmainpath%" 2>nul
-   start %mtmainpath%\_CleanStart.bat
+   start %mtmainpath%\CleanStart.bat
    ping -n 10 127.0.0.1 >nul
 
    cd "%mtmainpath2%" 2>nul
-   start %mtmainpath2%\_CleanStart.bat
+   start %mtmainpath2%\CleanStart.bat
    ping -n 10 127.0.0.1 >nul
 
    cd "%mtmainpath3%" 2>nul
-   start %mtmainpath3%\_CleanStart.bat
+   start %mtmainpath3%\CleanStart.bat
    ping -n 10 127.0.0.1 >nul
 
    cd "%mtmainpath4%" 2>nul
-   start %mtmainpath4%\_CleanStart.bat
+   start %mtmainpath4%\CleanStart.bat
 
 endlocal
 exit
+
 
