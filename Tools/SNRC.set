@@ -9,7 +9,7 @@ tst_DurationMinutes=355||0||1||10||N
 ; Config String for Live Trading:
 inp_ConfigString=
 ; Sizing Parameters:
-inp_PercentOfDay=0||5||1||10||Y
+inp_PercentOfDay=0||6||1||8||Y
 inp_HedgeExpandMode=0||0||0||2||Y
 inp_StaticLotSize=false||false||0||true||N
 inp_ScalingAmount=0||0||1||10||N
@@ -31,3 +31,4 @@ inp_MarginCutoff=0||500||500||3000||Y
 inp_MarginBuffer=0||50||50||200||Y
 inp_MarginTrimMode=0||0||0||8||Y
 inp_MarginTrimStop=0||0||0||2||Y
+
