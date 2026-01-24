@@ -1,0 +1,44 @@
+
+1. Create the script:
+
+    sudo nano /usr/local/bin/check_restart.sh
+
+2. Paste the script below and save:
+
+#!/bin/bash
+    
+    # Configuration
+    CHECK_FOLDER="/root/.wine/drive_c/users/root/Application Data/MetaQuotes/Terminal/Common/Files"
+    CHECK_FILE="restart.txt"
+    RESTART_DELAY=300  # 5 minutes in seconds
+    
+    # Full path to the file
+    FILE_PATH="$CHECK_FOLDER/$CHECK_FILE"
+    
+    # Check if the file exists
+    if [ -f "$FILE_PATH" ]; then
+        echo "$(date): Found $CHECK_FILE - Initiating restart sequence"
+        
+        # Delete the file
+        rm -f "$FILE_PATH"
+        echo "$(date): Deleted $CHECK_FILE"
+        
+        # Wait 5 minutes then restart
+        echo "$(date): System will restart in 5 minutes..."
+        sleep $RESTART_DELAY
+        
+        # Restart the system
+        /sbin/shutdown -r now
+    fi
+
+3. Make it executable:
+
+    sudo chmod +x /usr/local/bin/check_restart.sh
+
+4. Add to crontab to run every 5 minutes:
+
+    sudo crontab -e
+
+5. Add this line: ( Select Nano if first time )
+
+    */5 * * * * /usr/local/bin/check_restart.sh >> /var/log/restart_check.log 2>&1
