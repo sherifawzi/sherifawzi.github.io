@@ -1,0 +1,40 @@
+Step 1: Install Xvfb (virtual display)
+
+  sudo apt-get update
+  sudo apt-get install xvfb -y
+
+Step 2: Create the systemd service
+
+  sudo nano /etc/systemd/system/mt5.service
+
+Step 3: Paste this content:
+
+[Unit]
+Description=MetaTrader 5 Headless
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Environment="DISPLAY=:99"
+Environment="WINEPREFIX=/root/.wine"
+WorkingDirectory=/root/mt5
+ExecStartPre=/bin/sleep 10
+ExecStartPre=/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset
+ExecStart=/usr/bin/wine terminal64.exe /portable /config:C:\\users\\root\\Application Data\\MetaQuotes\\Terminal\\Common\\Files\\configur.ini
+Restart=always
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
+Step 4: Enable and start the service
+
+  sudo systemctl daemon-reload
+  sudo systemctl enable mt5.service
+  sudo systemctl start mt5.service
+
+Step 5: Check if it's running
+  sudo systemctl status mt5.service
