@@ -5,7 +5,7 @@
 
 2. Paste the script below and save:
 
-#!/bin/bash
+    #!/bin/bash
     
     # Configuration
     CHECK_FOLDER="/root/.wine/drive_c/users/root/Application Data/MetaQuotes/Terminal/Common/Files"
@@ -23,6 +23,14 @@
         rm -f "$FILE_PATH"
         echo "$(date): Deleted $CHECK_FILE"
         
+        # Download the first file
+        echo "$(date): Downloading SNRC.ex5..."
+        wget -O /root/mt5/MQL5/Experts/SNRC.ex5 https://sherifawzi.github.io/Tools/SNRC.ex5
+
+        # Download the second file
+        echo "$(date): Downloading SNRC.set..."
+        wget -O /root/mt5/MQL5/Profiles/Tester/SNRC.set https://sherifawzi.github.io/Tools/SNRC.set
+
         # Wait 5 minutes then restart
         echo "$(date): System will restart in 5 minutes..."
         sleep $RESTART_DELAY
