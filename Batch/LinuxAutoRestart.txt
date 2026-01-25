@@ -12,8 +12,21 @@
     CHECK_FILE="restart.txt"
     RESTART_DELAY=300  # 5 minutes in seconds
     
+    # Telegram credentials
+    BOT_ID="8450507003:AAHhqJg_6x_ajStvx2_eoZRHnVIRpexzQc4"
+    CHANNEL_ID="-1003285305833"
+    
     # Full path to the file
     FILE_PATH="$CHECK_FOLDER/$CHECK_FILE"
+    
+    # Function to send Telegram message
+    send_telegram() {
+        local message="$1"
+        curl -s -X POST "https://api.telegram.org/bot${BOT_ID}/sendMessage" \
+            -d chat_id="${CHANNEL_ID}" \
+            -d text="${message}" \
+            -d parse_mode="HTML" > /dev/null
+    }
     
     # Check if the file exists
     if [ -f "$FILE_PATH" ]; then
@@ -31,10 +44,15 @@
         echo "$(date): Downloading SNRC.set..."
         wget -O /root/mt5/MQL5/Profiles/Tester/SNRC.set https://sherifawzi.github.io/Tools/SNRC.set
 
+        # Send Telegram notification
+        HOSTNAME=$(hostname)
+        send_telegram "<b>Ubuntu Server Restart</b>%0A%0AServer: ${HOSTNAME}%0AFiles updated successfully%0ARestarting in 5 minutes...%0ATime: $(date '+%Y-%m-%d %H:%M:%S')"
+        echo "$(date): Telegram notification sent"
+        
         # Wait 5 minutes then restart
         echo "$(date): System will restart in 5 minutes..."
         sleep $RESTART_DELAY
-        
+
         # Restart the system
         /sbin/shutdown -r now
     fi
