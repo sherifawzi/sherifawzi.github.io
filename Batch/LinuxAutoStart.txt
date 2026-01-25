@@ -1,22 +1,28 @@
 
-1. Create autostart directory (if it doesn't exist)
+1. Create script to run on startup:
+  nano /root/start-mt5.sh
 
-  bashmkdir -p ~/.config/autostart
+2. Add the following content:
+  #!/bin/bash
+  sleep 5
+  cd /root/mt5
+  WINEPREFIX=~/.wine wine terminal64.exe /portable /config:C:\\users\\root\\Application Data\\MetaQuotes\\Terminal\\Common\\Files\\configur.ini
 
-2. Create the MT5 autostart file
+3.Make executable:
+  chmod +x /root/start-mt5.sh
 
+4. Create startup trigger:
   nano ~/.config/autostart/mt5.desktop
 
-3. Add this content:
-
+5. Add the following content:
   [Desktop Entry]
   Type=Application
   Name=MetaTrader 5
-  Exec=sh -c 'sleep 5 && cd /root/mt5 && wine terminal64.exe /config:"/root/.wine/drive_c/users/root/Application Data/MetaQuotes/Terminal/Common/Files/configur.ini" /portable'
+  Exec=/root/start-mt5.sh
   Hidden=false
   NoDisplay=false
   X-GNOME-Autostart-enabled=true
   Comment=Start MT5 automatically on login
 
-4. Make it executable
+6. Make executable:
   chmod +x ~/.config/autostart/mt5.desktop
