@@ -29,7 +29,7 @@ inp_DrawdownTrimPartial=false||false||0||true||Y
 ; Margin Trim Parameters:
 inp_MarginCutoff=0||500||500||2000||Y
 inp_MarginBuffer=0||50||50||200||Y
-inp_MarginTrimMode=0||0||0||8||Y
+inp_MarginTrimMode=0||1||0||8||Y
 inp_MarginTrimStop=0||0||0||2||Y
 
 
