@@ -24,13 +24,14 @@ inp_FirstTradeSizeCloseAll=10||3||1||10||N
 inp_HedgeTrimStartTradeNo=4||4||1||10||N
 inp_Quick2StdMultiplier=0.5||0.75||0.25||1||Y
 ; Drawdown Trim Parameters:
-inp_DrawdownTrimPercent=0||0||1||5||Y
-inp_DrawdownTrimPartial=false||false||0||true||Y
+inp_DrawdownTrimPercent=0||0||5||15||Y
+inp_DrawdownTrimPartial=false||false||0||true||N
 ; Margin Trim Parameters:
 inp_MarginCutoff=0||1500||500||3000||Y
 inp_MarginBuffer=0||50||50||200||Y
 inp_MarginTrimMode=0||1||0||8||Y
 inp_MarginTrimStop=0||0||0||2||Y
+
 
 
 
