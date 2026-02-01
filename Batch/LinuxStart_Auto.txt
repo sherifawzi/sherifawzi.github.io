@@ -21,6 +21,7 @@ Environment="WINEPREFIX=/root/.wine"
 WorkingDirectory=/root/mt5
 ExecStartPre=/bin/sleep 10
 ExecStartPre=/bin/bash -c '/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset & sleep 2'
+ExecStartPre=/bin/bash -c 'cd /root/.wine/drive_c/users/root/Application\ Data/MetaQuotes/Terminal/Common/Files/ && python3 -m http.server 8567 &'
 ExecStart=/usr/bin/wine terminal64.exe /portable /config:C:\\users\\root\\Application Data\\MetaQuotes\\Terminal\\Common\\Files\\configur.ini
 Restart=always
 RestartSec=30
@@ -30,11 +31,19 @@ StandardError=journal
 [Install]
 WantedBy=multi-user.target
 
-Step 4: Enable and start the service
+Step 4: Open firewall port for web access
+
+  sudo ufw allow 8567
+
+Step 5: Enable and start the service
 
   sudo systemctl daemon-reload
   sudo systemctl enable mt5.service
   sudo systemctl start mt5.service
 
-Step 5: Check if it's running
+Step 6: Check if it's running
   sudo systemctl status mt5.service
+
+Step 7: Access your files from browser
+
+  http://173.249.29.68:8567
