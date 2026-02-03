@@ -19,10 +19,25 @@ User=root
 Environment="DISPLAY=:99"
 Environment="WINEPREFIX=/root/.wine"
 WorkingDirectory=/root/mt5
+
+# Initial delay
 ExecStartPre=/bin/sleep 10
-ExecStartPre=/bin/bash -c '/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset & sleep 2'
-ExecStartPre=/bin/bash -c 'cd /root/.wine/drive_c/users/root/Application\ Data/MetaQuotes/Terminal/Common/Files/ && python3 -m http.server 8567 &'
+
+# Start Xvfb and track its PID
+ExecStartPre=/bin/bash -c '/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset & echo $! > /tmp/xvfb.pid && sleep 2'
+
+# Start Python HTTP server and track its PID
+ExecStartPre=/bin/bash -c 'cd /root/.wine/drive_c/users/root/Application\ Data/MetaQuotes/Terminal/Common/Files/ && python3 -m http.server 8567 & echo $! > /tmp/mt5-http.pid'
+
+# Main MT5 process
 ExecStart=/usr/bin/wine terminal64.exe /portable /config:C:\\users\\root\\Application Data\\MetaQuotes\\Terminal\\Common\\Files\\configur.ini
+
+# Clean shutdown - kill tracked processes
+ExecStopPost=/bin/bash -c 'if [ -f /tmp/mt5-http.pid ]; then kill $(cat /tmp/mt5-http.pid) 2>/dev/null; rm -f /tmp/mt5-http.pid; fi'
+ExecStopPost=/bin/bash -c 'if [ -f /tmp/xvfb.pid ]; then kill $(cat /tmp/xvfb.pid) 2>/dev/null; rm -f /tmp/xvfb.pid; fi'
+ExecStopPost=/usr/bin/pkill -9 -f winedevice
+ExecStopPost=/usr/bin/pkill -9 wine
+
 Restart=always
 RestartSec=30
 StandardOutput=journal
