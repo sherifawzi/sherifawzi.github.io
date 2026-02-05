@@ -4,11 +4,6 @@
 
    # sudo chmod +x snrnew.sh
    # sudo ./snrnew.sh
-   
-   # https://sherifawzi.github.io
-   # https://t.me
-   # https://api.telegram.org
-   # http://3.66.106.21
 
 # Install Desktop Environment (XFCE - lightweight and good for RDP)
    sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
@@ -43,15 +38,17 @@
 # Download and Install MetaTrader 5
    mkdir -p ~/mt5
    cd ~/mt5
-   wget https://sherifawzi.github.io/Tools/mt5setup.exe
-   wget https://sherifawzi.github.io/Pics/SNRTSTBKG.jpg
-   wget https://sherifawzi.github.io/Tools/SNRC.ex5
-   wget https://sherifawzi.github.io/Tools/SNRC.set
    wget https://www.snrobotix.com/MT5/terminal64.exe
+   wget https://sherifawzi.github.io/Batch/configur.ini
 
 # Create necessary directories for MT5
    mkdir -p ~/mt5/MQL5/Experts
+   cd ~/mt5/MQL5/Experts
+   wget https://sherifawzi.github.io/Tools/SNRC.ex5   
+   
    mkdir -p ~/mt5/MQL5/Profiles/Tester
+   cd ~/mt5/MQL5/Profiles/Tester
+   wget https://sherifawzi.github.io/Tools/SNRC.set   
 
 # Turn off wine logging permanently
    echo 'export WINEDEBUG=-all' >> ~/.bashrc
@@ -67,7 +64,7 @@ cat > /usr/local/bin/check_restart.sh << 'EOF'
 # Configuration
 CHECK_FOLDER="/root/.wine/drive_c/users/root/Application Data/MetaQuotes/Terminal/Common/Files"
 CHECK_FILE="restart.txt"
-RESTART_DELAY=300  # 5 minutes in seconds
+RESTART_DELAY=120  # 2 minutes in seconds
 
 # Telegram credentials
 BOT_ID="8450507003:AAHhqJg_6x_ajStvx2_eoZRHnVIRpexzQc4"
@@ -106,8 +103,8 @@ if [ -f "$FILE_PATH" ]; then
     send_telegram "<b>Ubuntu Server Restart</b>%0A%0AServer: ${HOSTNAME}%0AFiles updated successfully%0ARestarting in 5 minutes...%0ATime: $(date '+%Y-%m-%d %H:%M:%S')"
     echo "$(date): Telegram notification sent"
     
-    # Wait 5 minutes then restart
-    echo "$(date): System will restart in 5 minutes..."
+    # Wait 2 minutes then restart
+    echo "$(date): System will restart in 2 minutes..."
     sleep $RESTART_DELAY
 
     # Restart the system
@@ -196,6 +193,11 @@ echo "   winecfg"
 echo ""
 echo "3. Run MT5 manually first time to initialize Wine prefix:"
 echo "   cd ~/mt5 && wine terminal64.exe"
+echo ""
+echo "   https://sherifawzi.github.io"
+echo "   https://t.me"
+echo "   https://api.telegram.org"
+echo "   http://3.66.106.21"
 echo ""
 echo "4. After MT5 is configured and working, start the service:"
 echo "   sudo systemctl start mt5.service"
