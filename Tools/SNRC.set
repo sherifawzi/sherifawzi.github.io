@@ -5,7 +5,7 @@
 ; Test Parameters:
 tst_MaxDrawdownPerc=15||0||1||10||N
 tst_MinGainPerc=40||0||1||10||N
-tst_DurationMinutes=355||0||1||10||N
+tst_DurationMinutes=55||0||1||10||N
 ; Config String for Live Trading:
 inp_ConfigString=
 ; Sizing Parameters:
@@ -31,6 +31,7 @@ inp_MarginCutoff=0||1500||500||3000||Y
 inp_MarginBuffer=0||50||50||200||Y
 inp_MarginTrimMode=0||1||0||8||Y
 inp_MarginTrimStop=0||0||0||2||Y
+
 
 
 
