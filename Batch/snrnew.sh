@@ -1,6 +1,6 @@
 #!/bin/bash
 
-   # >>> RUN ON UBUNTU 22.04 and NOT above <
+   # >>> RUN ON UBUNTU 22.04 and NOT above 
 
    # sudo chmod +x snrnew.sh
    # sudo ./snrnew.sh
@@ -100,7 +100,7 @@ if [ -f "$FILE_PATH" ]; then
 
     # Send Telegram notification
     HOSTNAME=$(hostname)
-    send_telegram "<b>Ubuntu Server Restart</b>%0A%0AServer: ${HOSTNAME}%0AFiles updated successfully%0ARestarting in 5 minutes...%0ATime: $(date '+%Y-%m-%d %H:%M:%S')"
+    send_telegram "<b>Ubuntu Server Restart</b>%0A%0AServer: ${HOSTNAME}%0AFiles updated successfully%0ARestarting in 2 minutes...%0ATime: $(date '+%Y-%m-%d %H:%M:%S')"
     echo "$(date): Telegram notification sent"
     
     # Wait 2 minutes then restart
@@ -121,7 +121,7 @@ chmod +x /usr/local/bin/check_restart.sh
 echo "Restart check script installed and cron job configured"
 
 ###############################################################################
-# Setup MT5 Systemd Service (Flow 2)
+# Setup MT5 Systemd Service (Flow 2) - WITH IMPROVED SHUTDOWN HANDLING
 ###############################################################################
 
 # Create the systemd service file
@@ -149,9 +149,14 @@ ExecStartPre=/bin/bash -c 'cd /root/.wine/drive_c/users/root/Application\ Data/M
 # Main MT5 process
 ExecStart=/usr/bin/wine terminal64.exe /portable /config:C:\\users\\root\\Application Data\\MetaQuotes\\Terminal\\Common\\Files\\configur.ini
 
-# Clean shutdown - kill tracked processes
-ExecStopPost=/bin/bash -c 'if [ -f /tmp/mt5-http.pid ]; then kill $(cat /tmp/mt5-http.pid) 2>/dev/null; rm -f /tmp/mt5-http.pid; fi'
-ExecStopPost=/bin/bash -c 'if [ -f /tmp/xvfb.pid ]; then kill $(cat /tmp/xvfb.pid) 2>/dev/null; rm -f /tmp/xvfb.pid; fi'
+# Force kill everything with proper escalation
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=5
+
+# Clean up tracked processes
+ExecStopPost=/bin/bash -c 'if [ -f /tmp/mt5-http.pid ]; then kill -9 $(cat /tmp/mt5-http.pid) 2>/dev/null; rm -f /tmp/mt5-http.pid; fi'
+ExecStopPost=/bin/bash -c 'if [ -f /tmp/xvfb.pid ]; then kill -9 $(cat /tmp/xvfb.pid) 2>/dev/null; rm -f /tmp/xvfb.pid; fi'
 ExecStopPost=/usr/bin/pkill -9 -f winedevice
 ExecStopPost=/usr/bin/pkill -9 wine
 
@@ -211,5 +216,6 @@ echo "- NEVER use SUDO with Wine commands!"
 echo "- Restart check script runs every 5 minutes via cron"
 echo "- MT5 service will auto-start on future reboots"
 echo "- Logs available: sudo journalctl -u mt5.service -f"
+echo "- Improved shutdown handling ensures clean Wine process termination"
 echo ""
 echo "=============================================="
