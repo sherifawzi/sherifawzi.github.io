@@ -119,7 +119,7 @@ chmod +x /usr/local/bin/check_restart.sh
 (crontab -l 2>/dev/null; echo "*/5 * * * * /usr/local/bin/check_restart.sh >> /var/log/restart_check.log 2>&1") | crontab -
 
 # Add auto-restart trigger (6.5 hours)
-(crontab -l 2>/dev/null; echo "*/30 * * * * [ \$(awk '{print int(\$1)}' /proc/uptime) -ge 23400 ] && touch '/root/.wine/drive_c/users/root/Application Data/MetaQuotes/Terminal/Common/Files/restart.txt'") | crontab -
+(crontab -l 2>/dev/null; echo "*/30 * * * * [ \$(/usr/bin/awk '{print int(\$1)}' /proc/uptime) -ge 23400 ] && touch '/root/.wine/drive_c/users/root/Application Data/MetaQuotes/Terminal/Common/Files/restart.txt'") | crontab -
 
 echo "Restart check script installed and cron job configured"
 
