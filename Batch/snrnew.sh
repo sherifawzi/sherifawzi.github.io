@@ -2,6 +2,8 @@
 
    # >>> RUN ON UBUNTU 22.04 and NOT above 
 
+   # sudo -i
+   # sudo passwd
    # sudo chmod +x snrnew.sh
    # sudo ./snrnew.sh
 
