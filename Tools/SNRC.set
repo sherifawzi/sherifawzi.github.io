@@ -3,9 +3,9 @@
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
 ; Test Parameters:
-tst_MaxDrawdownPerc=15||0||1||10||N
+tst_MaxDrawdownPerc=17||0||1||10||N
 tst_MinGainPerc=40||0||1||10||N
-tst_DurationMinutes=355||0||1||10||N
+tst_DurationMinutes=655||0||1||10||N
 ; Config String for Live Trading:
 inp_ConfigString=
 ; Sizing Parameters:
