@@ -41,8 +41,7 @@
    mkdir -p ~/mt5
    cd ~/mt5
    wget https://www.snrobotix.com/MT5/terminal64.exe
-   wget https://sherifawzi.github.io/Batch/configur.ini
-
+   
 # Create necessary directories for MT5
    mkdir -p ~/mt5/MQL5/Experts
    cd ~/mt5/MQL5/Experts
@@ -102,7 +101,7 @@ if [ -f "$FILE_PATH" ]; then
 
     # Send Telegram notification
     HOSTNAME=$(hostname)
-    send_telegram "<b>Ubuntu Server Restart</b>%0A%0AServer: ${HOSTNAME}%0AFiles updated successfully%0ARestarting in 2 minutes...%0ATime: $(date '+%Y-%m-%d %H:%M:%S')"
+    send_telegram "<b>UB0X Server Restart</b>"
     echo "$(date): Telegram notification sent"
     
     # Wait 2 minutes then restart
@@ -152,7 +151,7 @@ ExecStartPre=/bin/bash -c '/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extensio
 ExecStartPre=/bin/bash -c 'cd /root/.wine/drive_c/users/root/Application\ Data/MetaQuotes/Terminal/Common/Files/ && python3 -m http.server 8567 & echo $! > /tmp/mt5-http.pid'
 
 # Main MT5 process
-ExecStart=/usr/bin/wine terminal64.exe /portable /config:C:\\users\\root\\Application Data\\MetaQuotes\\Terminal\\Common\\Files\\configur.ini
+ExecStart=/usr/bin/wine terminal64.exe /portable /config:C:\\users\\root\\Application Data\\MetaQuotes\\Terminal\\Common\\Files\\configur.txt
 
 # Force kill everything with proper escalation
 KillMode=mixed
