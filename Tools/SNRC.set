@@ -1,33 +1,37 @@
-; saved on 2026.03.01 00:00:00
-; this file contains input parameters for testing/optimizing SNRC-T expert advisor
+; saved on 2026.03.19 11:47:36
+; this file contains input parameters for testing/optimizing SNRC expert advisor
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
 ; Test Parameters:
 tst_MaxDrawdownPerc=15||0||1||10||N
 tst_MinGainPerc=40||0||1||10||N
 tst_DurationMinutes=355||0||1||10||N
+; Config String for Live Trading:
+inp_ConfigString=
 ; Sizing Parameters:
-inp_PercentOfDay=0||5||1||8||Y
-inp_HedgeExpandMode=0||1||0||2||Y
 inp_StaticLotSize=false||false||0||true||N
-inp_ScalingAmount=0||0||1||10||N
-; Double Down Parameters:
+inp_ScalingAmount=0||35000||5000||40000||Y
+inp_AmountPerMinLot=2000||2000||1||20000||N
+; Hedge Parameters:
+inp_PercentOfDay=3.0||3||1||10||Y
+inp_HedgeExpandMode=0||0||0||2||Y
+; Doubledown Parameters:
 inp_DoubledownFactor=0.0||0.0||0.5||0.5||Y
-; Hedge Trim Parameters:
-inp_HedgeTrimMode=2||1||0||2||N
-inp_HedgeTrimFactor=0||1.5||0.1||3||Y
-inp_HedgeTrimAddon=0||0.1||0.1||2||Y
-inp_HedgeTrimMin=1.1||1||0.1||1.1||N
-inp_FirstTradeSizeCloseAll=10||3||2||10||Y
-inp_HedgeTrimStartTradeNo=4||3||1||5||Y
-inp_Quick2StdMultiplier=1||0.5||0.25||1||Y
-; Drawdown Trim Parameters:
-inp_DrawdownTrimPercent=0||0||2||10||Y
-inp_DrawDownTrimMode=0||0||0||2||N
-; Margin Trim Parameters:
-inp_MarginCutoff=0||1500||500||3000||Y
-inp_MarginBuffer=0||50||50||200||Y
-inp_MarginTrimMode=8||1||0||8||N
-inp_MarginTrimStop=0||0||0||2||Y
-
-
+; Take Profit Parameters:
+inp_TakeProfitMode=2||0||0||2||Y
+inp_TakeProfitFactor=3.0||1.5||0.1||3||Y
+inp_TakeProfitAddon=0.5||0.1||0.1||2||Y
+inp_TakeProfitMin=1.1||1.1||0.110000||11.000000||N
+inp_FirstTradeSizeCloseAll=3||3||2||10||Y
+inp_TakeProfitStartTradeNo=4||3||1||5||Y
+inp_Quick2StdMultiplier=0.5||0.5||0.25||1||Y
+; Drawdown Parameters:
+inp_DrawdownCutoff=0.0||0.0||2||10||Y
+inp_DrawdownBuffer=0.25||0.5||0.050000||5.000000||N
+; Margin Parameters:
+inp_MarginCutoff=500||1500||500||3000||Y
+inp_MarginBuffer=50||50||50||200||Y
+; Trim Parameters:
+inp_TrimMode=0||0||0||2||Y
+inp_TrimStop=0||0||0||2||Y
+inp_TrimMethod=0||0||0||1||N
