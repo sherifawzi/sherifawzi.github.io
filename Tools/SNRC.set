@@ -6,7 +6,7 @@
 tst_MaxDrawdownPerc=17||0||1||10||N
 tst_MinGainPerc=40||0||1||10||N
 tst_GainPerMonth=1.25||1.25||0.125000||12.500000||N
-tst_DurationMinutes=355||0||1||10||N
+tst_DurationMinutes=1435||0||1||10||N
 ; Config String for Live Trading:
 inp_ConfigString=
 ; Sizing Parameters:
