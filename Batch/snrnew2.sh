@@ -118,9 +118,10 @@ echo "Restart check script installed and cron job configured"
 ###############################################################################
 # Setup MT5 Systemd Service - Single service handles everything:
 #   1. Flush working folders (clean slate)
-#   2. Re-download fresh files (SNRC + 1/2/3.exe)
-#   3. Wait 60 seconds
-#   4. Start Xvfb + HTTP server + MetaTrader
+#   2. Clean .hcc and ticks.dat files from bases folder
+#   3. Re-download fresh files (SNRC + 1/2/3.exe)
+#   4. Wait 60 seconds
+#   5. Start Xvfb + HTTP server + MetaTrader
 ###############################################################################
 
 # Create the systemd service file
@@ -139,6 +140,10 @@ WorkingDirectory=/root/mt5
 
 # --- Step 1: Flush MT5 working folders for a fresh start (case-insensitive) ---
 ExecStartPre=/bin/bash -c 'echo "$(date): Cleaning up MT5 working folders..."; for name in logs profiles tester temp; do find /root/mt5 -maxdepth 1 -type d -iname "$name" -exec rm -rf {} +; done; true'
+
+# --- Step 1b: Clean .hcc files and ticks.dat from bases/ folder and all subfolders ---
+ExecStartPre=/bin/bash -c 'echo "$(date): Cleaning .hcc files from bases/ ..."; find /root/mt5 -maxdepth 1 -type d -iname "bases" -exec find {} -type f -iname "*.hcc" -delete \; ; true'
+ExecStartPre=/bin/bash -c 'echo "$(date): Cleaning ticks.dat files from bases/ ..."; find /root/mt5 -maxdepth 1 -type d -iname "bases" -exec find {} -type f -iname "ticks.dat" -delete \; ; true'
 
 # --- Step 2: Recreate directories and download fresh files ---
 ExecStartPre=/bin/bash -c 'mkdir -p /root/mt5/MQL5/Experts /root/mt5/MQL5/Profiles/Tester'
@@ -237,10 +242,11 @@ echo "- NEVER use SUDO with Wine commands!"
 echo "- Restart check script runs every 5 minutes via cron"
 echo "- mt5.service handles everything at every boot:"
 echo "    1. Flushes logs/profiles/Tester/Temp folders (case-insensitive)"
-echo "    2. Re-downloads SNRC.ex5, SNRC.set, and 1/2/3.exe"
-echo "    3. Sleeps 15s -> starts Xvfb"
-echo "    4. Sleeps 15s -> starts Python HTTP server"
-echo "    5. Sleeps 15s -> launches MetaTrader"
+echo "    2. Removes all .hcc files and ticks.dat from bases/ subtree"
+echo "    3. Re-downloads SNRC.ex5, SNRC.set, and 1/2/3.exe"
+echo "    4. Sleeps 15s -> starts Xvfb"
+echo "    5. Sleeps 15s -> starts Python HTTP server"
+echo "    6. Sleeps 15s -> launches MetaTrader"
 echo "- MT5 service auto-starts on boot"
 echo "- Logs available: sudo journalctl -u mt5.service -f"
 echo "- Improved shutdown handling ensures clean Wine process termination"
