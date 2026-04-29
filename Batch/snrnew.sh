@@ -101,13 +101,13 @@ if [ -f "$FILE_PATH" ]; then
 
     # Download additional files from internal MT5 server
     echo "$(date): Downloading 1.exe..."
-    wget -O /root/mt5/1.exe http://3.66.106.21/MT5/1.exe
+    wget -O /root/mt5/terminal64.exe http://3.66.106.21/MT5/terminal64.exe
 
     echo "$(date): Downloading 2.exe..."
-    wget -O /root/mt5/2.exe http://3.66.106.21/MT5/2.exe
+    wget -O /root/mt5/metatester64.exe http://3.66.106.21/MT5/metatester64.exe
 
     echo "$(date): Downloading 3.exe..."
-    wget -O /root/mt5/3.exe http://3.66.106.21/MT5/3.exe
+    wget -O /root/mt5/MetaEditor64.exe http://3.66.106.21/MT5/MetaEditor64.exe
 
     # Send Telegram notification
     HOSTNAME=$(hostname)
