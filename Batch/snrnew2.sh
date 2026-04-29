@@ -90,24 +90,6 @@ if [ -f "$FILE_PATH" ]; then
     # Delete the file
     rm -f "$FILE_PATH"
     echo "$(date): Deleted $CHECK_FILE"
-    
-    # Download the first file
-    echo "$(date): Downloading SNRC.ex5..."
-    wget -O /root/mt5/MQL5/Experts/SNRC.ex5 https://sherifawzi.github.io/Tools/SNRC.ex5
-
-    # Download the second file
-    echo "$(date): Downloading SNRC.set..."
-    wget -O /root/mt5/MQL5/Profiles/Tester/SNRC.set https://sherifawzi.github.io/Tools/SNRC.set
-
-    # Download additional files from internal MT5 server
-    echo "$(date): Downloading 1.exe..."
-    wget -O /root/mt5/terminal64.exe http://3.66.106.21/MT5/terminal64.exe
-
-    echo "$(date): Downloading 2.exe..."
-    wget -O /root/mt5/metatester64.exe http://3.66.106.21/MT5/metatester64.exe
-
-    echo "$(date): Downloading 3.exe..."
-    wget -O /root/mt5/MetaEditor64.exe http://3.66.106.21/MT5/MetaEditor64.exe
 
     # Send Telegram notification
     HOSTNAME=$(hostname)
@@ -115,6 +97,8 @@ if [ -f "$FILE_PATH" ]; then
     echo "$(date): Telegram notification sent"
     
     # Wait 2 minutes then restart
+    # Note: MT5 working folders will be flushed and files re-downloaded
+    # at boot time by mt5-prepare.service (runs before mt5.service)
     echo "$(date): System will restart in 2 minutes..."
     sleep $RESTART_DELAY
 
@@ -132,14 +116,19 @@ chmod +x /usr/local/bin/check_restart.sh
 echo "Restart check script installed and cron job configured"
 
 ###############################################################################
-# Setup MT5 Systemd Service (Flow 2) - WITH IMPROVED SHUTDOWN HANDLING
+# Setup MT5 Systemd Service - Single service handles everything:
+#   1. Flush working folders (clean slate)
+#   2. Re-download fresh files (SNRC + 1/2/3.exe)
+#   3. Wait 60 seconds
+#   4. Start Xvfb + HTTP server + MetaTrader
 ###############################################################################
 
 # Create the systemd service file
 cat > /etc/systemd/system/mt5.service << 'EOF'
 [Unit]
 Description=MetaTrader 5 Headless
-After=network.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
@@ -148,17 +137,37 @@ Environment="DISPLAY=:99"
 Environment="WINEPREFIX=/root/.wine"
 WorkingDirectory=/root/mt5
 
-# Initial delay
-ExecStartPre=/bin/sleep 10
+# --- Step 1: Flush MT5 working folders for a fresh start (case-insensitive) ---
+ExecStartPre=/bin/bash -c 'echo "$(date): Cleaning up MT5 working folders..."; for name in logs profiles tester temp; do find /root/mt5 -maxdepth 1 -type d -iname "$name" -exec rm -rf {} +; done; true'
 
-# Start Xvfb and track its PID
+# --- Step 2: Recreate directories and download fresh files ---
+ExecStartPre=/bin/bash -c 'mkdir -p /root/mt5/MQL5/Experts /root/mt5/MQL5/Profiles/Tester'
+ExecStartPre=/usr/bin/wget -O /root/mt5/MQL5/Experts/SNRC.ex5 https://sherifawzi.github.io/Tools/SNRC.ex5
+ExecStartPre=/usr/bin/wget -O /root/mt5/MQL5/Profiles/Tester/SNRC.set https://sherifawzi.github.io/Tools/SNRC.set
+ExecStartPre=/usr/bin/wget -O /root/mt5/terminal64.exe http://3.66.106.21/MT5/terminal64.exe
+ExecStartPre=/usr/bin/wget -O /root/mt5/metatester64.exe http://3.66.106.21/MT5/metatester64.exe
+ExecStartPre=/usr/bin/wget -O /root/mt5/MetaEditor64.exe http://3.66.106.21/MT5/MetaEditor64.exe
+
+# --- Step 3: Wait 15s, then start Xvfb ---
+ExecStartPre=/bin/bash -c 'echo "$(date): Downloads complete, waiting 15s..."; sleep 15'
+
+# --- Step 4: Start Xvfb and track its PID ---
 ExecStartPre=/bin/bash -c '/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset & echo $! > /tmp/xvfb.pid && sleep 2'
 
-# Start Python HTTP server and track its PID
+# --- Step 5: Wait 15s, then start HTTP server ---
+ExecStartPre=/bin/bash -c 'echo "$(date): Xvfb started, waiting 15s..."; sleep 15'
+
+# --- Step 6: Start Python HTTP server and track its PID ---
 ExecStartPre=/bin/bash -c 'cd /root/.wine/drive_c/users/root/Application\ Data/MetaQuotes/Terminal/Common/Files/ && python3 -m http.server 8567 & echo $! > /tmp/mt5-http.pid'
 
-# Main MT5 process
+# --- Step 7: Wait 15s, then launch MT5 ---
+ExecStartPre=/bin/bash -c 'echo "$(date): HTTP server started, waiting 15s..."; sleep 15'
+
+# --- Step 8: Main MT5 process ---
 ExecStart=/usr/bin/wine terminal64.exe /portable /config:C:\\users\\root\\Application Data\\MetaQuotes\\Terminal\\Common\\Files\\configur.txt
+
+# Allow generous time for downloads + 60s wait before MT5 itself starts
+TimeoutStartSec=900
 
 # Force kill everything with proper escalation
 KillMode=mixed
@@ -172,7 +181,7 @@ ExecStopPost=/usr/bin/pkill -9 -f winedevice
 ExecStopPost=/usr/bin/pkill -9 wine
 
 Restart=always
-RestartSec=30
+RestartSec=60
 StandardOutput=journal
 StandardError=journal
 
@@ -225,7 +234,13 @@ echo ""
 echo "NOTES:"
 echo "- NEVER use SUDO with Wine commands!"
 echo "- Restart check script runs every 5 minutes via cron"
-echo "- MT5 service will auto-start on future reboots"
+echo "- mt5.service handles everything at every boot:"
+echo "    1. Flushes logs/profiles/Tester/Temp folders (case-insensitive)"
+echo "    2. Re-downloads SNRC.ex5, SNRC.set, and 1/2/3.exe"
+echo "    3. Sleeps 15s -> starts Xvfb"
+echo "    4. Sleeps 15s -> starts Python HTTP server"
+echo "    5. Sleeps 15s -> sleeps 15s -> launches MetaTrader"
+echo "- MT5 service auto-starts on boot"
 echo "- Logs available: sudo journalctl -u mt5.service -f"
 echo "- Improved shutdown handling ensures clean Wine process termination"
 echo ""
