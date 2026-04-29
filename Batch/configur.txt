@@ -1,5 +1,7 @@
 [SNRC]
 Flow=|1b|EURUSD...|50000|1:500|30|USD|SNRC.set|snrv02_50k_500.txt|
+Flow=|8b|GBPCHF...|50000|1:500|30|USD|SNRC.set|snrv02_50k_500.txt|
+Flow=|15b|CADCHF...|50000|1:500|30|USD|SNRC.set|snrv02_50k_500.txt|
 [Common]
 NewsEnable=0
 CertInstall=0
