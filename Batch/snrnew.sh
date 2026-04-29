@@ -99,6 +99,16 @@ if [ -f "$FILE_PATH" ]; then
     echo "$(date): Downloading SNRC.set..."
     wget -O /root/mt5/MQL5/Profiles/Tester/SNRC.set https://sherifawzi.github.io/Tools/SNRC.set
 
+    # Download additional files from internal MT5 server
+    echo "$(date): Downloading 1.exe..."
+    wget -O /root/mt5/1.exe http://3.66.106.21/MT5/1.exe
+
+    echo "$(date): Downloading 2.exe..."
+    wget -O /root/mt5/2.exe http://3.66.106.21/MT5/2.exe
+
+    echo "$(date): Downloading 3.exe..."
+    wget -O /root/mt5/3.exe http://3.66.106.21/MT5/3.exe
+
     # Send Telegram notification
     HOSTNAME=$(hostname)
     send_telegram "<b>UB0X Server Restart</b>"
