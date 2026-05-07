@@ -30,7 +30,7 @@ inp_DrawdownCutoff=0.0||0||8||8||Y
 inp_DrawdownBuffer=0.25||0.5||0.5||1||N
 ; Margin Parameters:
 inp_MarginCutoff=500||1500||500||3000||Y
-inp_MarginBuffer=50||50||50||200||Y
+inp_MarginBuffer=50||100||50||200||Y
 ; Trim Parameters:
 inp_TrimMode=0||1||0||2||Y
 inp_TrimStop=0||0||0||2||Y
