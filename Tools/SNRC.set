@@ -36,5 +36,5 @@ inp_TrimMode=0||1||0||2||Y
 inp_TrimStop=0||0||0||2||Y
 inp_TrimMethod=0||0||0||1||Y
 ; 5MA Entry Parameters:
-inp_MinVoteCount=2||2||1||5||Y
-inp_AllowConflict=false||false||0||true||Y
+ent_MinVoteCount=2||2||1||5||Y
+ent_AllowConflict=false||false||0||true||Y
