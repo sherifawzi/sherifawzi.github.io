@@ -1,5 +1,4 @@
 [SNRC]
-Flow=|1b|EURUSD...|50000|1:500|30|USD|SNRC.set|snrv03_50k_500.txt|
 Flow=|8b|GBPCHF...|50000|1:500|30|USD|SNRC.set|snrv03_50k_500.txt|
 Flow=|15b|CADCHF...|50000|1:500|30|USD|SNRC.set|snrv03_50k_500.txt|
 [Common]
@@ -9,7 +8,7 @@ ExpertsFilesAccess=2
 [Tester]
 Expert=SNRC
 ExpertParameters=SNRC.set
-Symbol=EURUSD...
+Symbol=GBPCHF...
 Period=M1
 Model=4
 ExecutionMode=150
