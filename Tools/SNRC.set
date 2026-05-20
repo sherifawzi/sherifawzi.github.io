@@ -3,7 +3,7 @@
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
 ; Test Parameters:
-tst_MaxDrawdownPerc=17||0||1||10||N
+tst_MaxDrawdownPerc=15||0||1||10||N
 tst_GainPerMonth=1.67||1.25||0.125000||12.500000||N
 tst_DurationMinutes=1435||0||1||10||N
 ; Sizing Parameters:
