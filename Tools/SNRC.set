@@ -11,7 +11,7 @@ inp_StaticLotSize=false||false||0||true||N
 inp_ScalingAmount=50000||35000||5000||40000||N
 inp_AmountPerMinLot=2000||2000||1000||4000||Y
 ; Hedge Parameters:
-inp_PercentOfDay=3.0||3||1||10||Y
+inp_PercentOfDay=3.0||4||1||9||Y
 inp_HedgeExpandMode=0||1||0||2||Y
 ; Doubledown Parameters:
 inp_DoubledownFactor=0.0||0.0||0.25||0.5||Y
