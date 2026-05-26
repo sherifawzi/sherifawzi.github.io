@@ -26,7 +26,7 @@ inp_TakeProfitStartTradeNo=4||3||1||5||Y
 inp_Quick2StdMultiplier=1||0.5||0.25||1||N
 ; Drawdown Parameters:
 inp_DrawdownCutoff=0.0||0||8||8||N
-inp_DrawdownBuffer=0.25||0.5||0.5||1||N
+inp_DrawdownBuffer=0.0||0.25||0.25||0.5||N
 ; Margin Parameters:
 inp_MarginCutoff=500||2000||500||3000||Y
 inp_MarginBuffer=50||50||50||100||Y
