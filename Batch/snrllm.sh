@@ -18,6 +18,9 @@
 #   TRIAL  — no domain, web UI reached via SSH tunnel (most private).
 #   PUBLIC — domain + Nginx + HTTPS, reachable on the internet with login.
 #
+#    To Open to the internet use: sudo ufw allow 8080/tcp
+#    To close again use: sudo ufw delete allow 8080/tcp
+#
 # Usage:
 #   chmod +x snrllm.sh
 #   ./snrllm.sh
