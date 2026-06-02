@@ -176,4 +176,6 @@ at $SERVER_IP, then install nginx + certbot, add a reverse proxy to 127.0.0.1:80
 and open ports 80/443 in ufw. That is the only delta from this trial.
 
 To Open to the internet use: sudo ufw allow 8080/tcp
+To close again use: sudo ufw delete allow 8080/tcp
+
 EOF
