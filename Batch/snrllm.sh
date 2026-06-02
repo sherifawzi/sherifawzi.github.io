@@ -174,4 +174,6 @@ PERFORMANCE: the 14B web model is the snappy one for coding. The 32B agent runs
 WHEN YOU COMMIT: to go public with a real URL + HTTPS, point a domain's A record
 at $SERVER_IP, then install nginx + certbot, add a reverse proxy to 127.0.0.1:8080,
 and open ports 80/443 in ufw. That is the only delta from this trial.
+
+To Open to the internet use: sudo ufw allow 8080/tcp
 EOF
