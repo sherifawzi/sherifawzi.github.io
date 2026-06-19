@@ -1,5 +1,5 @@
 [SNRC]
-Flow=|1b|EURUSD...|50000|1:500|30|USD|SNRC.set|snrv06_50k_500.txt|
+Flow=|1b|EURUSD...|50000|1:500|30|USD|SNRC.set|snrv07_50k_500.txt|
 [Common]
 NewsEnable=0
 CertInstall=0
@@ -13,7 +13,7 @@ Model=4
 ExecutionMode=150
 Optimization=2
 OptimizationCriterion=6
-FromDate=2023.12.13
+FromDate=2023.12.18
 ToDate=2036.01.01
 ForwardMode=0
 Deposit=50000
