@@ -24,10 +24,21 @@
    sudo ufw allow 3389/tcp
    sudo ufw allow 8567/tcp
 
-# Install Wine for MetaTrader 5
+# Install Wine 10.0 from WineHQ for MetaTrader 5
+# (jammy's stock wine is 6.0.3, too old for current MT5; Wine 11 trips MT5's
+#  debugger-detection check. So pin 10.0 and hold it against upgrades.)
    sudo dpkg --add-architecture i386
+   sudo mkdir -pm755 /etc/apt/keyrings
+   wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key
+   sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
    sudo apt update
-   sudo apt install -y wine64 wine32 winetricks libgl1-mesa-glx
+   sudo apt install -y --install-recommends \
+       winehq-stable=10.0.0.0~jammy-1 \
+       wine-stable=10.0.0.0~jammy-1 \
+       wine-stable-amd64=10.0.0.0~jammy-1 \
+       wine-stable-i386:i386=10.0.0.0~jammy-1
+   sudo apt-mark hold winehq-stable wine-stable wine-stable-amd64 wine-stable-i386
+   sudo apt install -y winetricks libgl1-mesa-glx
 
 # Install Xvfb for headless operation
    sudo apt-get install -y xvfb
