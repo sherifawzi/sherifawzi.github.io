@@ -253,7 +253,12 @@ WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
-systemctl enable xvfb.service mt5-http.service mt5.service
+systemctl enable xvfb.service mt5-http.service
+
+# NOTE: mt5.service is deliberately NOT enabled here. Its ExecStopPost pkill
+# lines are system-wide, so a service in its restart loop will SIGKILL any
+# manual wine session you have open over RDP. Enable it only after the manual
+# MT5 setup below is finished:  systemctl enable --now mt5.service
 
 ###############################################################################
 echo ""
@@ -285,8 +290,8 @@ echo "         http://3.66.106.21"
 echo "   d) Tick Algo Trading, attach SNRC, confirm it initialises."
 echo "   e) Close MT5 with File > Exit (not Ctrl+C) so settings get flushed."
 echo ""
-echo "3. Start it headless:"
-echo "     systemctl start mt5.service"
+echo "3. Only after step 2 is complete, enable and start it headless:"
+echo "     systemctl enable --now mt5.service"
 echo "     journalctl -u mt5.service -f"
 echo ""
 echo "Notes:"
