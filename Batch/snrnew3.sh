@@ -1,6 +1,6 @@
 #!/bin/bash
 
-   # >>> RUN ON UBUNTU 22.04 and NOT above 
+   # >>> RUN ON UBUNTU 22.04 and NOT above
 
    # sudo -i
    # sudo passwd
@@ -24,13 +24,34 @@
    sudo ufw allow 3389/tcp
    sudo ufw allow 8567/tcp
 
-# Install Wine for MetaTrader 5
+###############################################################################
+# Install Wine 10.0 stable from WineHQ
+#
+# WHY: Ubuntu 22.04's stock wine64/wine32 is Wine 6.0.3, which current MT5
+# builds no longer run on (MetaQuotes minimum is 8.0.1, recent builds want
+# 9/10). Wine 11.x triggers MT5's "A debugger has been found running in your
+# system" check, so we pin 10.0 and hold it against upgrades.
+###############################################################################
    sudo dpkg --add-architecture i386
+   sudo mkdir -pm755 /etc/apt/keyrings
+   wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key
+   sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
    sudo apt update
-   sudo apt install -y wine64 wine32 winetricks libgl1-mesa-glx
+   sudo apt install -y --install-recommends \
+       winehq-stable=10.0.0.0~jammy-1 \
+       wine-stable=10.0.0.0~jammy-1 \
+       wine-stable-amd64=10.0.0.0~jammy-1 \
+       wine-stable-i386:i386=10.0.0.0~jammy-1
+   sudo apt-mark hold winehq-stable wine-stable wine-stable-amd64 wine-stable-i386
 
-# Install Xvfb for headless operation
-   sudo apt-get install -y xvfb
+# Install current winetricks from GitHub
+# (jammy's packaged winetricks is from 2021 and its corefonts/vcrun2015
+# download URLs are dead)
+   sudo wget -O /usr/local/bin/winetricks https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+   sudo chmod +x /usr/local/bin/winetricks
+
+# Runtime libs + Xvfb for headless operation
+   sudo apt install -y libgl1-mesa-glx xvfb
 
 # Set Wine to Windows 10 mode & Disable debug messages
    export WINEPREFIX="$HOME/.wine"
@@ -41,15 +62,15 @@
    mkdir -p ~/mt5
    cd ~/mt5
    wget https://www.snrobotix.com/MT5/terminal64.exe
-   
+
 # Create necessary directories for MT5
    mkdir -p ~/mt5/MQL5/Experts
    cd ~/mt5/MQL5/Experts
-   wget https://sherifawzi.github.io/Tools/SNRC.ex5   
-   
+   wget https://sherifawzi.github.io/Tools/SNRC.ex5
+
    mkdir -p ~/mt5/MQL5/Profiles/Tester
    cd ~/mt5/MQL5/Profiles/Tester
-   wget https://sherifawzi.github.io/Tools/SNRC.set   
+   wget https://sherifawzi.github.io/Tools/SNRC.set
 
 # Turn off wine logging permanently
    echo 'export WINEDEBUG=-all' >> ~/.bashrc
@@ -86,7 +107,7 @@ send_telegram() {
 # Check if the file exists
 if [ -f "$FILE_PATH" ]; then
     echo "$(date): Found $CHECK_FILE - Initiating restart sequence"
-    
+
     # Delete the file
     rm -f "$FILE_PATH"
     echo "$(date): Deleted $CHECK_FILE"
@@ -95,7 +116,7 @@ if [ -f "$FILE_PATH" ]; then
     HOSTNAME=$(hostname)
     send_telegram "<b>UB0X Server Restart</b>"
     echo "$(date): Telegram notification sent"
-    
+
     # Wait 2 minutes then restart
     # Note: MT5 working folders will be flushed and files re-downloaded
     # at boot time by mt5-prepare.service (runs before mt5.service)
@@ -201,6 +222,7 @@ systemctl enable mt5.service
 echo "MT5 systemd service installed and enabled"
 
 # Keep everything up to date before restart
+# (wine packages are held via apt-mark hold, so this will NOT pull Wine 11)
    sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
 
 ###############################################################################
@@ -211,16 +233,19 @@ echo "=============================================="
 echo "INSTALLATION COMPLETE!"
 echo "=============================================="
 echo ""
+echo "Installed Wine version (must be 10.0):"
+wine --version
+echo ""
 echo "NEXT STEPS:"
 echo ""
 echo "1. REBOOT THE SERVER (required):"
 echo "   sudo shutdown -r now"
 echo ""
 echo "2. After reboot, connect via RDP and run:"
+echo "   winecfg -v win10"
 echo "   winetricks corefonts"
 echo "   wineserver -k"
 echo "   winetricks vcrun2015"
-echo "   winecfg"
 echo ""
 echo "3. Run MT5 manually first time to initialize Wine prefix:"
 echo "   cd ~/mt5 && wine terminal64.exe"
@@ -228,6 +253,8 @@ echo ""
 echo "   https://sherifawzi.github.io"
 echo "   https://t.me"
 echo "   https://api.telegram.org"
+echo "   https://dl.winehq.org"
+echo "   https://raw.githubusercontent.com"
 echo "   http://3.66.106.21"
 echo ""
 echo "4. After MT5 is configured and working, start the service:"
@@ -239,6 +266,12 @@ echo "   http://YOUR_SERVER_IP:8567"
 echo ""
 echo "NOTES:"
 echo "- NEVER use SUDO with Wine commands!"
+echo "- Wine is PINNED and HELD at 10.0 stable (Wine 11 breaks MT5 with"
+echo "  'A debugger has been found running in your system')"
+echo "  To verify hold: apt-mark showhold"
+echo "- On EXISTING servers being upgraded from old Wine: delete ~/.wine"
+echo "  first, then redo step 2 (mixing a Wine 10 runtime with a Wine 6"
+echo "  prefix causes flaky failures)"
 echo "- Restart check script runs every 5 minutes via cron"
 echo "- mt5.service handles everything at every boot:"
 echo "    1. Flushes logs/profiles/Tester/Temp folders (case-insensitive)"
