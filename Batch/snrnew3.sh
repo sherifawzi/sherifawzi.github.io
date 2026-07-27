@@ -180,6 +180,7 @@ Type=simple
 User=root
 Environment="DISPLAY=:99"
 Environment="WINEPREFIX=/root/.wine"
+Environment="WINEDEBUG=-all"
 WorkingDirectory=/root/mt5
 
 # --- Step 1: Flush MT5 working folders for a fresh start (case-insensitive) ---
