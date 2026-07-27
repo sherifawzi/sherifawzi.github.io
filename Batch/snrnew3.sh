@@ -3,12 +3,13 @@
 # SNRobotiX MT5 server provisioning - Ubuntu 22.04 ONLY, Wine 10.0 pinned
 #
 #   sudo -i
-#   wget https://sherifawzi.github.io/Batch/snrnew4.sh
-#   chmod +x snrnew4.sh
-#   ./snrnew4.sh
+#   passwd                 # REQUIRED: xrdp needs a root password to log in
+#   wget https://sherifawzi.github.io/Batch/snrnew5.sh
+#   chmod +x snrnew5.sh
+#   ./snrnew5.sh
 #
-# Runs fully unattended. No prompts, no manual Wine steps afterwards.
-# Reboot when it finishes, then start mt5.service.
+# Runs unattended. Reboot at the end, do the one-time MT5 setup over RDP,
+# then enable mt5.service.
 
 set -u
 
@@ -16,7 +17,7 @@ HOMEDIR=/root
 MT5DIR=$HOMEDIR/mt5
 PREFIX=$HOMEDIR/.wine
 BINHOST=http://3.66.106.21/MT5
-TOOLHOST=https://sherifawzi.github.io/Tools
+GECKOVER=2.47.4
 COMMONFILES="$PREFIX/drive_c/users/root/Application Data/MetaQuotes/Terminal/Common/Files"
 
 ###############################################################################
@@ -38,13 +39,17 @@ done
 
 APTOPTS="-o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold"
 
+apt-get clean
 apt-get update
 apt-get upgrade -y $APTOPTS
 
 ###############################################################################
-# 2. Desktop + remote access (needed only for manual inspection over RDP)
+# 2. Desktop + remote access
+#
+# xfce4-terminal and dbus-x11 are named explicitly: the whole manual workflow
+# is a terminal over RDP, and dropping xfce4-goodies must not risk losing it.
 ###############################################################################
-apt-get install -y xfce4 xrdp
+apt-get install -y xfce4 xfce4-terminal dbus-x11 xrdp
 echo xfce4-session > $HOMEDIR/.xsession
 systemctl enable --now xrdp
 
@@ -55,9 +60,8 @@ ufw allow 8567/tcp 2>/dev/null || true
 # 3. Wine 10.0 from WineHQ, pinned and held
 #
 # Jammy's own wine is 6.0.3 (too old for current MT5). Wine 11.x trips MT5's
-# "A debugger has been found running in your system" check. 10.0 is the only
-# version that works, so it is version-pinned AND apt-mark held so neither the
-# upgrade above nor unattended-upgrades can move it.
+# "A debugger has been found running in your system" check. So 10.0 is both
+# version-pinned and apt-mark held, so no later upgrade can move it.
 ###############################################################################
 dpkg --add-architecture i386
 mkdir -pm755 /etc/apt/keyrings
@@ -72,62 +76,84 @@ apt-get install -y --install-recommends \
     wine-stable-i386:i386=10.0.0.0~jammy-1
 apt-mark hold winehq-stable wine-stable wine-stable-amd64 wine-stable-i386
 
-# Runtime deps: libgl1 for rendering, xvfb for headless, fonts for chart labels
-apt-get install -y libgl1 xvfb ttf-mscorefonts-installer
+# libgl1 + libglx-mesa0 replace the old libgl1-mesa-glx; xvfb for headless;
+# msttcorefonts so chart and panel text renders correctly
+apt-get install -y libgl1 libglx-mesa0 xvfb ttf-mscorefonts-installer
 
 wine --version
 
 ###############################################################################
-# 4. Build the Wine prefix here, headlessly, instead of by hand after reboot
+# 4. Pre-seed Wine Gecko so the prefix can be built with no dialogs
 #
-# WINEDLLOVERRIDES disables Mono and Gecko, which MT5 does not use. Without it
-# wineboot blocks forever on an installer dialog that never gets clicked.
-# xvfb-run gives wineboot a display so no RDP session is needed.
-# timeout is a backstop: a wedged wineboot fails the step instead of hanging.
+# MT5 uses embedded HTML for Mailbox/Market/News, so Gecko must be present.
+# If the MSIs are already in /usr/share/wine/gecko, wineboot installs them
+# silently instead of showing the "Wine could not find a wine-gecko package"
+# dialog, which is what blocks an unattended prefix build.
+#
+# Mono is genuinely unused by MT5, so mscoree stays disabled.
+###############################################################################
+mkdir -p /usr/share/wine/gecko
+for a in x86 x86_64; do
+    f=/usr/share/wine/gecko/wine-gecko-$GECKOVER-$a.msi
+    [ -s "$f" ] || wget -q -O "$f" "https://dl.winehq.org/wine/wine-gecko/$GECKOVER/wine-gecko-$GECKOVER-$a.msi" || true
+done
+
+###############################################################################
+# 5. Build the Wine prefix here, headlessly, instead of by hand after reboot
 ###############################################################################
 export WINEPREFIX=$PREFIX
 export WINEARCH=win64
 export WINEDEBUG=-all
-export WINEDLLOVERRIDES="mscoree,mshtml="
+export WINEDLLOVERRIDES="mscoree="
 
 pkill -9 -f wineserver 2>/dev/null || true
 pkill -9 -f wine 2>/dev/null || true
+sleep 2
 rm -rf $PREFIX
 
-timeout 300 xvfb-run -a wineboot -u
-timeout 60 xvfb-run -a winecfg -v win10
+timeout 420 xvfb-run -a wineboot -u
+wineserver -k 2>/dev/null || true
+sleep 2
+
+# Windows 10 mode, and winhttp forced native so MT5's WebRequest calls work
+wine reg add "HKCU\\Software\\Wine" /v Version /d win10 /f
+wine reg add "HKCU\\Software\\Wine\\DllOverrides" /v winhttp /d "native,builtin" /f
 wineserver -k 2>/dev/null || true
 sleep 2
 
 cp /usr/share/fonts/truetype/msttcorefonts/*.ttf "$PREFIX/drive_c/windows/Fonts/" 2>/dev/null || true
 
-# Prove the prefix actually works before going any further
+# Prove the prefix works before going further
 if wine cmd /c echo PREFIX_OK 2>/dev/null | grep -q PREFIX_OK; then
     echo "Wine prefix OK"
 else
-    echo "ERROR: Wine prefix is broken. Fix this before starting mt5.service." >&2
+    echo "ERROR: Wine prefix is broken - fix before enabling mt5.service" >&2
 fi
 wineserver -k 2>/dev/null || true
 
 ###############################################################################
-# 5. MT5 binaries - fetched ONCE, not on every boot
+# 6. MT5 binaries - fetched ONCE, not on every boot
 #
-# MT5 completes its own installation on first run (it downloads the several
-# hundred supporting files itself). Those files are matched to the terminal
-# binary that fetched them. Overwriting terminal64.exe on every boot while
-# leaving that supporting tree in place leaves the install mismatched, which
-# is the most likely cause of the startup crashes. So: download only what is
-# missing, and let MT5 own its own directory from then on.
+# MT5 completes its own installation on first run, downloading the several
+# hundred supporting files itself, and those files match the binary that
+# fetched them. Overwriting terminal64.exe on every boot while leaving that
+# tree in place leaves the install mismatched. So download only what is
+# missing and let MT5 own its directory from then on.
 ###############################################################################
 mkdir -p $MT5DIR
 for f in terminal64.exe metatester64.exe MetaEditor64.exe; do
-    [ -s "$MT5DIR/$f" ] || wget -q -O "$MT5DIR/$f" "$BINHOST/$f"
+    [ -s "$MT5DIR/$f" ] || wget -q -O "$MT5DIR/$f" "$BINHOST/$f" || true
 done
+[ -s "$MT5DIR/terminal64.exe" ] || echo "ERROR: terminal64.exe did not download from $BINHOST" >&2
 
+# Quiet Wine logging in interactive shells (profile.d covers login shells,
+# .bashrc covers the terminal windows opened over RDP).
+# Remove both if you need to see Wine errors while troubleshooting.
 echo 'export WINEDEBUG=-all' > /etc/profile.d/wine-quiet.sh
+grep -q "WINEDEBUG=-all" $HOMEDIR/.bashrc || echo 'export WINEDEBUG=-all' >> $HOMEDIR/.bashrc
 
 ###############################################################################
-# 6. Restart watcher (EA drops restart.txt -> notify -> reboot)
+# 7. Restart watcher (EA drops restart.txt -> notify -> reboot)
 ###############################################################################
 cat > /usr/local/bin/check_restart.sh << 'EOF'
 #!/bin/bash
@@ -137,12 +163,13 @@ BOT_ID="8450507003:AAHhqJg_6x_ajStvx2_eoZRHnVIRpexzQc4"
 CHANNEL_ID="-1003285305833"
 
 if [ -f "$FILE_PATH" ]; then
+    echo "$(date): found restart.txt"
     rm -f "$FILE_PATH"
     curl -s -X POST "https://api.telegram.org/bot${BOT_ID}/sendMessage" \
         -d chat_id="${CHANNEL_ID}" \
         -d text="<b>$(hostname) Server Restart</b>" \
         -d parse_mode="HTML" > /dev/null
-    echo "$(date): restart.txt found, rebooting in ${RESTART_DELAY}s"
+    echo "$(date): telegram sent, rebooting in ${RESTART_DELAY}s"
     sleep $RESTART_DELAY
     /sbin/shutdown -r now
 fi
@@ -153,11 +180,7 @@ chmod +x /usr/local/bin/check_restart.sh
  echo "*/5 * * * * /usr/local/bin/check_restart.sh >> /var/log/restart_check.log 2>&1") | crontab -
 
 ###############################################################################
-# 7. Xvfb as its own unit
-#
-# Previously Xvfb was backgrounded from an ExecStartPre with a PID file, so
-# systemd had no idea whether it was alive. As a real unit, MT5 can depend on
-# it and systemd restarts it if it dies.
+# 8. Xvfb as its own supervised unit
 ###############################################################################
 cat > /etc/systemd/system/xvfb.service << 'EOF'
 [Unit]
@@ -175,7 +198,7 @@ WantedBy=multi-user.target
 EOF
 
 ###############################################################################
-# 8. File server for the Common\Files folder
+# 9. File server for the MT5 Common\Files folder
 ###############################################################################
 cat > /etc/systemd/system/mt5-http.service << EOF
 [Unit]
@@ -195,17 +218,20 @@ WantedBy=multi-user.target
 EOF
 
 ###############################################################################
-# 9. MT5 service
+# 10. MT5 service
 #
-# Changes from the previous version:
-#  - no 45 seconds of hardcoded sleeps; ordering is expressed as dependencies
-#  - Xvfb and the HTTP server are separate units, not backgrounded children
-#  - binaries are NOT re-downloaded per boot (see section 5)
-#  - the /config argument is quoted; unquoted it was split on the space in
-#    "Application Data" and MT5 never received the config path
-#  - Mono/Gecko overrides set so a headless start cannot block on a dialog
-#  - "profiles" removed from the per-boot wipe: it holds chart and EA setup.
-#    Add it back to the for-loop below if wiping it was deliberate.
+# Fixes carried in here that the old unit had wrong:
+#  - ExecStartPre used a shell variable ($name) inside the command line.
+#    systemd expands $VAR itself before bash ever sees it, and an undefined
+#    one becomes empty, so that cleanup loop was matching nothing. Rewritten
+#    with no variables at all.
+#  - the /config argument was unquoted, so systemd split it on the space in
+#    "Application Data" and MT5 never received the config path.
+#  - ExecStopPost ran system-wide "pkill -9 wine", which SIGKILLs any manual
+#    Wine session open over RDP. Replaced with a prefix-scoped wineserver -k.
+#  - EA download failures now use "-" so they cannot abort startup.
+#  - "profiles" dropped from the per-boot wipe: it holds chart and EA setup.
+#    Put it back in the find below if that wipe was deliberate.
 ###############################################################################
 cat > /etc/systemd/system/mt5.service << 'EOF'
 [Unit]
@@ -220,15 +246,15 @@ User=root
 Environment="DISPLAY=:99"
 Environment="WINEPREFIX=/root/.wine"
 Environment="WINEDEBUG=-all"
-Environment="WINEDLLOVERRIDES=mscoree,mshtml="
+Environment="WINEDLLOVERRIDES=mscoree="
 WorkingDirectory=/root/mt5
 
-# Clear caches and stale logs, keep the install itself intact
-ExecStartPre=/bin/bash -c 'for d in logs tester temp; do find /root/mt5 -maxdepth 1 -type d -iname "$d" -exec rm -rf {} +; done; true'
-ExecStartPre=/bin/bash -c 'find /root/mt5 -maxdepth 1 -type d -iname bases -exec find {} -type f \( -iname "*.hcc" -o -iname "ticks.dat" \) -delete \; ; true'
+# Clear stale logs and caches, leave the installation itself intact
+ExecStartPre=-/usr/bin/find /root/mt5 -maxdepth 1 -type d \( -iname logs -o -iname tester -o -iname temp \) -exec rm -rf {} +
+ExecStartPre=-/usr/bin/find /root/mt5 -maxdepth 2 -type d -iname bases -exec find {} -type f \( -iname "*.hcc" -o -iname "ticks.dat" \) -delete ;
 
 # Refresh the EA and its preset only
-ExecStartPre=/bin/bash -c 'mkdir -p /root/mt5/MQL5/Experts /root/mt5/MQL5/Profiles/Tester'
+ExecStartPre=/bin/mkdir -p /root/mt5/MQL5/Experts /root/mt5/MQL5/Profiles/Tester
 ExecStartPre=-/usr/bin/wget -q -O /root/mt5/MQL5/Experts/SNRC.ex5 https://sherifawzi.github.io/Tools/SNRC.ex5
 ExecStartPre=-/usr/bin/wget -q -O /root/mt5/MQL5/Profiles/Tester/SNRC.set https://sherifawzi.github.io/Tools/SNRC.set
 
@@ -239,9 +265,7 @@ KillMode=mixed
 KillSignal=SIGTERM
 TimeoutStopSec=10
 
-ExecStopPost=-/usr/bin/pkill -9 -f winedevice
-ExecStopPost=-/usr/bin/pkill -9 -f wineserver
-ExecStopPost=-/usr/bin/pkill -9 wine
+ExecStopPost=-/usr/bin/wineserver -k
 
 Restart=always
 RestartSec=60
@@ -255,10 +279,8 @@ EOF
 systemctl daemon-reload
 systemctl enable xvfb.service mt5-http.service
 
-# NOTE: mt5.service is deliberately NOT enabled here. Its ExecStopPost pkill
-# lines are system-wide, so a service in its restart loop will SIGKILL any
-# manual wine session you have open over RDP. Enable it only after the manual
-# MT5 setup below is finished:  systemctl enable --now mt5.service
+# mt5.service is deliberately NOT enabled here. Enable it only after the
+# one-time MT5 setup below, so it cannot interfere with a manual session.
 
 ###############################################################################
 echo ""
@@ -277,10 +299,9 @@ echo ""
 echo "   (virtual desktop mode - plain 'wine terminal64.exe' gives unclickable"
 echo "    windows under XRDP)"
 echo ""
-echo "   a) Let MT5 finish completing its own installation. If it exits, relaunch"
-echo "      with the same command until it stays up."
-echo "   b) Log into the broker account and tick Save password, so the headless"
-echo "      service can reconnect on its own."
+echo "   a) Let MT5 finish completing its own installation. If it exits,"
+echo "      relaunch with the same command until it stays up."
+echo "   b) Log into the broker account, tick Save password."
 echo "   c) Tools > Options > Expert Advisors > tick 'Allow WebRequest for"
 echo "      listed URL' and add all four:"
 echo "         https://sherifawzi.github.io"
@@ -288,14 +309,16 @@ echo "         https://t.me"
 echo "         https://api.telegram.org"
 echo "         http://3.66.106.21"
 echo "   d) Tick Algo Trading, attach SNRC, confirm it initialises."
-echo "   e) Close MT5 with File > Exit (not Ctrl+C) so settings get flushed."
+echo "   e) Close MT5 with File > Exit so settings are flushed."
 echo ""
-echo "3. Only after step 2 is complete, enable and start it headless:"
+echo "3. Only then, enable and start it headless:"
 echo "     systemctl enable --now mt5.service"
 echo "     journalctl -u mt5.service -f"
 echo ""
 echo "Notes:"
 echo " - Never run wine with sudo."
-echo " - Wine is held at 10.0; check with: apt-mark showhold"
+echo " - Do not run MT5 manually while mt5.service is active: they share the"
+echo "   same Wine prefix and will fight over it."
+echo " - Wine is held at 10.0; verify with: apt-mark showhold"
 echo " - Files served at http://SERVER_IP:8567"
 echo "=============================================="
