@@ -20,6 +20,7 @@
    sudo sed -i "s/^#\?\$nrconf{restart}.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf 2>/dev/null || true
    sudo sed -i "s/^#\?\$nrconf{kernelhints}.*/\$nrconf{kernelhints} = -1;/" /etc/needrestart/needrestart.conf 2>/dev/null || true
    echo "lightdm shared/default-x-display-manager select lightdm" | sudo debconf-set-selections
+   echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | sudo debconf-set-selections
 
 # Install Desktop Environment (XFCE - lightweight and good for RDP)
    sudo -E apt-get clean && sudo -E apt-get update && sudo -E apt-get upgrade -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold
@@ -64,9 +65,9 @@
    sudo wget -O /usr/local/bin/winetricks https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
    sudo chmod +x /usr/local/bin/winetricks
 
-# Runtime libs + Xvfb for headless operation
-# (cabextract is required by winetricks corefonts)
-   sudo -E apt install -y libgl1-mesa-glx xvfb cabextract
+# Runtime libs + Xvfb + Microsoft core fonts (installed via apt, NOT winetricks -
+# the winetricks corefonts route runs Wine processes that can hang/crash)
+   sudo -E apt install -y libgl1-mesa-glx xvfb cabextract ttf-mscorefonts-installer
 
 # Set Wine to Windows 10 mode & Disable debug messages
    export WINEPREFIX="$HOME/.wine"
@@ -259,8 +260,10 @@ echo ""
 echo "2. After reboot, connect via RDP and run:"
 echo "   WINEARCH=win64 WINEPREFIX=\$HOME/.wine wineboot -u   # init prefix, wait for it to finish"
 echo "   winecfg -v win10"
-echo "   winetricks corefonts"
-echo "   # DO NOT run 'winetricks vcrun2015' - not needed on Wine 10 and its"
+echo "   cp /usr/share/fonts/truetype/msttcorefonts/*.ttf ~/.wine/drive_c/windows/Fonts/"
+echo "   # DO NOT run 'winetricks corefonts' or 'winetricks vcrun2015':"
+echo "   # corefonts hangs/crashes Wine helper processes (fonts are copied"
+echo "   # directly above instead), and vcrun2015 is not needed on Wine 10 and its"
 echo "   # DLL overrides can silently break MT5 startup"
 echo ""
 echo "3. Run MT5 manually first time to initialize Wine prefix:"
