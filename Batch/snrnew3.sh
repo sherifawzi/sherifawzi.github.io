@@ -40,6 +40,11 @@
    sudo apt-mark hold winehq-stable wine-stable wine-stable-amd64 wine-stable-i386
    sudo apt install -y winetricks libgl1-mesa-glx
 
+# Replace jammy's 2021 winetricks (its corefonts/vcrun download URLs are dead) with current one
+   sudo wget -O /usr/local/bin/winetricks https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
+   sudo chmod +x /usr/local/bin/winetricks
+   sudo apt install -y cabextract
+
 # Install Xvfb for headless operation
    sudo apt-get install -y xvfb
 
@@ -228,6 +233,7 @@ echo "1. REBOOT THE SERVER (required):"
 echo "   sudo shutdown -r now"
 echo ""
 echo "2. After reboot, connect via RDP and run:"
+echo "   WINEDLLOVERRIDES=\"mscoree=,mshtml=\" wineboot -u   # init prefix first"
 echo "   winetricks corefonts"
 echo "   wineserver -k"
 echo "   winetricks vcrun2015"
