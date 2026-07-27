@@ -1,179 +1,218 @@
 #!/bin/bash
-
-   # >>> RUN ON UBUNTU 22.04 and NOT above
-
-   # sudo -i
-   # sudo passwd
-   # sudo chmod +x snrnew.sh
-   # sudo ./snrnew.sh
-
-###############################################################################
-# Suppress all interactive prompts (pink debconf/needrestart screens)
-# - DEBIAN_FRONTEND=noninteractive : debconf picks defaults silently
-# - NEEDRESTART_MODE=a + conf edit : auto-restart services, no dialogs
-# - force-confdef/confold (on upgrade lines below) : keep local config files
-# NOTE: sudo strips env vars, so all apt calls below use "sudo -E"
-###############################################################################
-   export DEBIAN_FRONTEND=noninteractive
-   export NEEDRESTART_MODE=a
-   export NEEDRESTART_SUSPEND=1
-   sudo sed -i "s/^#\?\$nrconf{restart}.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf 2>/dev/null || true
-   sudo sed -i "s/^#\?\$nrconf{kernelhints}.*/\$nrconf{kernelhints} = -1;/" /etc/needrestart/needrestart.conf 2>/dev/null || true
-   echo "lightdm shared/default-x-display-manager select lightdm" | sudo debconf-set-selections
-   echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | sudo debconf-set-selections
-
-# Wait for any competing apt/dpkg process (cloud-init / unattended-upgrades
-# on first boot) to release the lock before we touch apt
-   while sudo fuser /var/lib/dpkg/lock-frontend /var/lib/apt/lists/lock /var/lib/dpkg/lock >/dev/null 2>&1; do
-       echo "Waiting for another apt/dpkg process to finish..."
-       sleep 5
-   done
-
-# Install Desktop Environment (XFCE - lightweight and good for RDP)
-   sudo -E apt-get clean && sudo -E apt-get update && sudo -E apt-get upgrade -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold
-   sudo -E apt install -y xfce4 xfce4-goodies
-
-# Install XRDP for Remote Desktop
-   sudo -E apt install -y xrdp
-   sudo systemctl enable xrdp
-   sudo systemctl start xrdp
-
-# Configure XRDP to use XFCE
-   echo xfce4-session > ~/.xsession
-   sudo systemctl restart xrdp
-
-# Configure Firewall (if enabled)
-   sudo ufw allow 3389/tcp
-   sudo ufw allow 8567/tcp
-
-###############################################################################
-# Install Wine 10.0 stable from WineHQ
 #
-# WHY: Ubuntu 22.04's stock wine64/wine32 is Wine 6.0.3, which current MT5
-# builds no longer run on (MetaQuotes minimum is 8.0.1, recent builds want
-# 9/10). Wine 11.x triggers MT5's "A debugger has been found running in your
-# system" check, so we pin 10.0 and hold it against upgrades.
-###############################################################################
-   sudo dpkg --add-architecture i386
-   sudo mkdir -pm755 /etc/apt/keyrings
-   wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key
-   sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
-   sudo -E apt update
-   sudo -E apt install -y --install-recommends \
-       winehq-stable=10.0.0.0~jammy-1 \
-       wine-stable=10.0.0.0~jammy-1 \
-       wine-stable-amd64=10.0.0.0~jammy-1 \
-       wine-stable-i386:i386=10.0.0.0~jammy-1
-   sudo apt-mark hold winehq-stable wine-stable wine-stable-amd64 wine-stable-i386
+# SNRobotiX MT5 server provisioning - Ubuntu 22.04 ONLY, Wine 10.0 pinned
+#
+#   sudo -i
+#   wget https://sherifawzi.github.io/Batch/snrnew4.sh
+#   chmod +x snrnew4.sh
+#   ./snrnew4.sh
+#
+# Runs fully unattended. No prompts, no manual Wine steps afterwards.
+# Reboot when it finishes, then start mt5.service.
 
-# Install current winetricks from GitHub
-# (jammy's packaged winetricks is from 2021 and its corefonts/vcrun2015
-# download URLs are dead)
-   sudo wget -O /usr/local/bin/winetricks https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
-   sudo chmod +x /usr/local/bin/winetricks
+set -u
 
-# Runtime libs + Xvfb + Microsoft core fonts (installed via apt, NOT winetricks -
-# the winetricks corefonts route runs Wine processes that can hang/crash)
-   sudo -E apt install -y libgl1-mesa-glx xvfb cabextract ttf-mscorefonts-installer
-
-# Set Wine to Windows 10 mode & Disable debug messages
-   export WINEPREFIX="$HOME/.wine"
-   export WINEARCH=win64
-   export WINEDEBUG=-all
-
-# Download and Install MetaTrader 5
-   mkdir -p ~/mt5
-   cd ~/mt5
-   wget https://www.snrobotix.com/MT5/terminal64.exe
-
-# Create necessary directories for MT5
-   mkdir -p ~/mt5/MQL5/Experts
-   cd ~/mt5/MQL5/Experts
-   wget https://sherifawzi.github.io/Tools/SNRC.ex5
-
-   mkdir -p ~/mt5/MQL5/Profiles/Tester
-   cd ~/mt5/MQL5/Profiles/Tester
-   wget https://sherifawzi.github.io/Tools/SNRC.set
-
-# Turn off wine logging permanently (idempotent)
-   grep -q "WINEDEBUG=-all" ~/.bashrc || echo 'export WINEDEBUG=-all' >> ~/.bashrc
+HOMEDIR=/root
+MT5DIR=$HOMEDIR/mt5
+PREFIX=$HOMEDIR/.wine
+BINHOST=http://3.66.106.21/MT5
+TOOLHOST=https://sherifawzi.github.io/Tools
+COMMONFILES="$PREFIX/drive_c/users/root/Application Data/MetaQuotes/Terminal/Common/Files"
 
 ###############################################################################
-# Setup Restart Check Script (Flow 1)
+# 1. Silence every interactive prompt, then wait for cloud-init to free apt
 ###############################################################################
+export DEBIAN_FRONTEND=noninteractive
+export NEEDRESTART_MODE=a
+export NEEDRESTART_SUSPEND=1
 
-# Create the restart check script
+sed -i "s/^#\?\$nrconf{restart}.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf 2>/dev/null || true
+sed -i "s/^#\?\$nrconf{kernelhints}.*/\$nrconf{kernelhints} = -1;/" /etc/needrestart/needrestart.conf 2>/dev/null || true
+echo "lightdm shared/default-x-display-manager select lightdm" | debconf-set-selections
+echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
+
+while fuser /var/lib/dpkg/lock-frontend /var/lib/apt/lists/lock /var/lib/dpkg/lock >/dev/null 2>&1; do
+    echo "Waiting for another apt/dpkg process to finish..."
+    sleep 5
+done
+
+APTOPTS="-o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold"
+
+apt-get update
+apt-get upgrade -y $APTOPTS
+
+###############################################################################
+# 2. Desktop + remote access (needed only for manual inspection over RDP)
+###############################################################################
+apt-get install -y xfce4 xrdp
+echo xfce4-session > $HOMEDIR/.xsession
+systemctl enable --now xrdp
+
+ufw allow 3389/tcp 2>/dev/null || true
+ufw allow 8567/tcp 2>/dev/null || true
+
+###############################################################################
+# 3. Wine 10.0 from WineHQ, pinned and held
+#
+# Jammy's own wine is 6.0.3 (too old for current MT5). Wine 11.x trips MT5's
+# "A debugger has been found running in your system" check. 10.0 is the only
+# version that works, so it is version-pinned AND apt-mark held so neither the
+# upgrade above nor unattended-upgrades can move it.
+###############################################################################
+dpkg --add-architecture i386
+mkdir -pm755 /etc/apt/keyrings
+wget -qO - https://dl.winehq.org/wine-builds/winehq.key | gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key
+wget -qNP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
+apt-get update
+
+apt-get install -y --install-recommends \
+    winehq-stable=10.0.0.0~jammy-1 \
+    wine-stable=10.0.0.0~jammy-1 \
+    wine-stable-amd64=10.0.0.0~jammy-1 \
+    wine-stable-i386:i386=10.0.0.0~jammy-1
+apt-mark hold winehq-stable wine-stable wine-stable-amd64 wine-stable-i386
+
+# Runtime deps: libgl1 for rendering, xvfb for headless, fonts for chart labels
+apt-get install -y libgl1 xvfb ttf-mscorefonts-installer
+
+wine --version
+
+###############################################################################
+# 4. Build the Wine prefix here, headlessly, instead of by hand after reboot
+#
+# WINEDLLOVERRIDES disables Mono and Gecko, which MT5 does not use. Without it
+# wineboot blocks forever on an installer dialog that never gets clicked.
+# xvfb-run gives wineboot a display so no RDP session is needed.
+# timeout is a backstop: a wedged wineboot fails the step instead of hanging.
+###############################################################################
+export WINEPREFIX=$PREFIX
+export WINEARCH=win64
+export WINEDEBUG=-all
+export WINEDLLOVERRIDES="mscoree,mshtml="
+
+pkill -9 -f wineserver 2>/dev/null || true
+pkill -9 -f wine 2>/dev/null || true
+rm -rf $PREFIX
+
+timeout 300 xvfb-run -a wineboot -u
+timeout 60 xvfb-run -a winecfg -v win10
+wineserver -k 2>/dev/null || true
+sleep 2
+
+cp /usr/share/fonts/truetype/msttcorefonts/*.ttf "$PREFIX/drive_c/windows/Fonts/" 2>/dev/null || true
+
+# Prove the prefix actually works before going any further
+if wine cmd /c echo PREFIX_OK 2>/dev/null | grep -q PREFIX_OK; then
+    echo "Wine prefix OK"
+else
+    echo "ERROR: Wine prefix is broken. Fix this before starting mt5.service." >&2
+fi
+wineserver -k 2>/dev/null || true
+
+###############################################################################
+# 5. MT5 binaries - fetched ONCE, not on every boot
+#
+# MT5 completes its own installation on first run (it downloads the several
+# hundred supporting files itself). Those files are matched to the terminal
+# binary that fetched them. Overwriting terminal64.exe on every boot while
+# leaving that supporting tree in place leaves the install mismatched, which
+# is the most likely cause of the startup crashes. So: download only what is
+# missing, and let MT5 own its own directory from then on.
+###############################################################################
+mkdir -p $MT5DIR
+for f in terminal64.exe metatester64.exe MetaEditor64.exe; do
+    [ -s "$MT5DIR/$f" ] || wget -q -O "$MT5DIR/$f" "$BINHOST/$f"
+done
+
+echo 'export WINEDEBUG=-all' > /etc/profile.d/wine-quiet.sh
+
+###############################################################################
+# 6. Restart watcher (EA drops restart.txt -> notify -> reboot)
+###############################################################################
 cat > /usr/local/bin/check_restart.sh << 'EOF'
 #!/bin/bash
-
-# Configuration
-CHECK_FOLDER="/root/.wine/drive_c/users/root/Application Data/MetaQuotes/Terminal/Common/Files"
-CHECK_FILE="restart.txt"
-RESTART_DELAY=120  # 2 minutes in seconds
-
-# Telegram credentials
+FILE_PATH="/root/.wine/drive_c/users/root/Application Data/MetaQuotes/Terminal/Common/Files/restart.txt"
+RESTART_DELAY=120
 BOT_ID="8450507003:AAHhqJg_6x_ajStvx2_eoZRHnVIRpexzQc4"
 CHANNEL_ID="-1003285305833"
 
-# Full path to the file
-FILE_PATH="$CHECK_FOLDER/$CHECK_FILE"
-
-# Function to send Telegram message
-send_telegram() {
-    local message="$1"
+if [ -f "$FILE_PATH" ]; then
+    rm -f "$FILE_PATH"
     curl -s -X POST "https://api.telegram.org/bot${BOT_ID}/sendMessage" \
         -d chat_id="${CHANNEL_ID}" \
-        -d text="${message}" \
+        -d text="<b>$(hostname) Server Restart</b>" \
         -d parse_mode="HTML" > /dev/null
-}
-
-# Check if the file exists
-if [ -f "$FILE_PATH" ]; then
-    echo "$(date): Found $CHECK_FILE - Initiating restart sequence"
-
-    # Delete the file
-    rm -f "$FILE_PATH"
-    echo "$(date): Deleted $CHECK_FILE"
-
-    # Send Telegram notification
-    HOSTNAME=$(hostname)
-    send_telegram "<b>UB0X Server Restart</b>"
-    echo "$(date): Telegram notification sent"
-
-    # Wait 2 minutes then restart
-    # Note: MT5 working folders will be flushed and files re-downloaded
-    # at boot time by mt5-prepare.service (runs before mt5.service)
-    echo "$(date): System will restart in 2 minutes..."
+    echo "$(date): restart.txt found, rebooting in ${RESTART_DELAY}s"
     sleep $RESTART_DELAY
-
-    # Restart the system
     /sbin/shutdown -r now
 fi
 EOF
-
-# Make it executable
 chmod +x /usr/local/bin/check_restart.sh
 
-# Add to root's crontab (idempotent - removes any existing entry first)
-(crontab -l 2>/dev/null | grep -v check_restart.sh; echo "*/5 * * * * /usr/local/bin/check_restart.sh >> /var/log/restart_check.log 2>&1") | crontab -
-
-echo "Restart check script installed and cron job configured"
+(crontab -l 2>/dev/null | grep -v check_restart.sh; \
+ echo "*/5 * * * * /usr/local/bin/check_restart.sh >> /var/log/restart_check.log 2>&1") | crontab -
 
 ###############################################################################
-# Setup MT5 Systemd Service - Single service handles everything:
-#   1. Flush working folders (clean slate)
-#   2. Clean .hcc and ticks.dat files from bases folder
-#   3. Re-download fresh files (SNRC + 1/2/3.exe)
-#   4. Wait 60 seconds
-#   5. Start Xvfb + HTTP server + MetaTrader
+# 7. Xvfb as its own unit
+#
+# Previously Xvfb was backgrounded from an ExecStartPre with a PID file, so
+# systemd had no idea whether it was alive. As a real unit, MT5 can depend on
+# it and systemd restarts it if it dies.
 ###############################################################################
+cat > /etc/systemd/system/xvfb.service << 'EOF'
+[Unit]
+Description=Xvfb virtual display :99
+After=network.target
 
-# Create the systemd service file
+[Service]
+Type=simple
+ExecStart=/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+###############################################################################
+# 8. File server for the Common\Files folder
+###############################################################################
+cat > /etc/systemd/system/mt5-http.service << EOF
+[Unit]
+Description=MT5 Common Files HTTP server
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=/bin/mkdir -p "$COMMONFILES"
+WorkingDirectory=$COMMONFILES
+ExecStart=/usr/bin/python3 -m http.server 8567
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+###############################################################################
+# 9. MT5 service
+#
+# Changes from the previous version:
+#  - no 45 seconds of hardcoded sleeps; ordering is expressed as dependencies
+#  - Xvfb and the HTTP server are separate units, not backgrounded children
+#  - binaries are NOT re-downloaded per boot (see section 5)
+#  - the /config argument is quoted; unquoted it was split on the space in
+#    "Application Data" and MT5 never received the config path
+#  - Mono/Gecko overrides set so a headless start cannot block on a dialog
+#  - "profiles" removed from the per-boot wipe: it holds chart and EA setup.
+#    Add it back to the for-loop below if wiping it was deliberate.
+###############################################################################
 cat > /etc/systemd/system/mt5.service << 'EOF'
 [Unit]
 Description=MetaTrader 5 Headless
-After=network-online.target
+After=network-online.target xvfb.service mt5-http.service
 Wants=network-online.target
+Requires=xvfb.service
 
 [Service]
 Type=simple
@@ -181,54 +220,28 @@ User=root
 Environment="DISPLAY=:99"
 Environment="WINEPREFIX=/root/.wine"
 Environment="WINEDEBUG=-all"
+Environment="WINEDLLOVERRIDES=mscoree,mshtml="
 WorkingDirectory=/root/mt5
 
-# --- Step 1: Flush MT5 working folders for a fresh start (case-insensitive) ---
-ExecStartPre=/bin/bash -c 'echo "$(date): Cleaning up MT5 working folders..."; for name in logs profiles tester temp; do find /root/mt5 -maxdepth 1 -type d -iname "$name" -exec rm -rf {} +; done; true'
+# Clear caches and stale logs, keep the install itself intact
+ExecStartPre=/bin/bash -c 'for d in logs tester temp; do find /root/mt5 -maxdepth 1 -type d -iname "$d" -exec rm -rf {} +; done; true'
+ExecStartPre=/bin/bash -c 'find /root/mt5 -maxdepth 1 -type d -iname bases -exec find {} -type f \( -iname "*.hcc" -o -iname "ticks.dat" \) -delete \; ; true'
 
-# --- Step 1b: Clean .hcc files and ticks.dat from bases/ folder and all subfolders ---
-ExecStartPre=/bin/bash -c 'echo "$(date): Cleaning .hcc files from bases/ ..."; find /root/mt5 -maxdepth 1 -type d -iname "bases" -exec find {} -type f -iname "*.hcc" -delete \; ; true'
-ExecStartPre=/bin/bash -c 'echo "$(date): Cleaning ticks.dat files from bases/ ..."; find /root/mt5 -maxdepth 1 -type d -iname "bases" -exec find {} -type f -iname "ticks.dat" -delete \; ; true'
-
-# --- Step 2: Recreate directories and download fresh files ---
+# Refresh the EA and its preset only
 ExecStartPre=/bin/bash -c 'mkdir -p /root/mt5/MQL5/Experts /root/mt5/MQL5/Profiles/Tester'
-ExecStartPre=/usr/bin/wget -O /root/mt5/MQL5/Experts/SNRC.ex5 https://sherifawzi.github.io/Tools/SNRC.ex5
-ExecStartPre=/usr/bin/wget -O /root/mt5/MQL5/Profiles/Tester/SNRC.set https://sherifawzi.github.io/Tools/SNRC.set
-ExecStartPre=/usr/bin/wget -O /root/mt5/terminal64.exe http://3.66.106.21/MT5/terminal64.exe
-ExecStartPre=/usr/bin/wget -O /root/mt5/metatester64.exe http://3.66.106.21/MT5/metatester64.exe
-ExecStartPre=/usr/bin/wget -O /root/mt5/MetaEditor64.exe http://3.66.106.21/MT5/MetaEditor64.exe
+ExecStartPre=-/usr/bin/wget -q -O /root/mt5/MQL5/Experts/SNRC.ex5 https://sherifawzi.github.io/Tools/SNRC.ex5
+ExecStartPre=-/usr/bin/wget -q -O /root/mt5/MQL5/Profiles/Tester/SNRC.set https://sherifawzi.github.io/Tools/SNRC.set
 
-# --- Step 3: Wait 15s, then start Xvfb ---
-ExecStartPre=/bin/bash -c 'echo "$(date): Downloads complete, waiting 15s..."; sleep 15'
+ExecStart=/usr/bin/wine terminal64.exe /portable "/config:C:\\users\\root\\Application Data\\MetaQuotes\\Terminal\\Common\\Files\\configur.txt"
 
-# --- Step 4: Start Xvfb and track its PID ---
-ExecStartPre=/bin/bash -c '/usr/bin/Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset & echo $! > /tmp/xvfb.pid && sleep 2'
-
-# --- Step 5: Wait 15s, then start HTTP server ---
-ExecStartPre=/bin/bash -c 'echo "$(date): Xvfb started, waiting 15s..."; sleep 15'
-
-# --- Step 6: Start Python HTTP server and track its PID ---
-ExecStartPre=/bin/bash -c 'cd /root/.wine/drive_c/users/root/Application\ Data/MetaQuotes/Terminal/Common/Files/ && python3 -m http.server 8567 & echo $! > /tmp/mt5-http.pid'
-
-# --- Step 7: Wait 15s, then launch MT5 ---
-ExecStartPre=/bin/bash -c 'echo "$(date): HTTP server started, waiting 15s..."; sleep 15'
-
-# --- Step 8: Main MT5 process ---
-ExecStart=/usr/bin/wine terminal64.exe /portable /config:C:\\users\\root\\Application Data\\MetaQuotes\\Terminal\\Common\\Files\\configur.txt
-
-# Allow generous time for downloads + 60s wait before MT5 itself starts
-TimeoutStartSec=900
-
-# Force kill everything with proper escalation
+TimeoutStartSec=180
 KillMode=mixed
 KillSignal=SIGTERM
-TimeoutStopSec=5
+TimeoutStopSec=10
 
-# Clean up tracked processes
-ExecStopPost=/bin/bash -c 'if [ -f /tmp/mt5-http.pid ]; then kill -9 $(cat /tmp/mt5-http.pid) 2>/dev/null; rm -f /tmp/mt5-http.pid; fi'
-ExecStopPost=/bin/bash -c 'if [ -f /tmp/xvfb.pid ]; then kill -9 $(cat /tmp/xvfb.pid) 2>/dev/null; rm -f /tmp/xvfb.pid; fi'
-ExecStopPost=/usr/bin/pkill -9 -f winedevice
-ExecStopPost=/usr/bin/pkill -9 wine
+ExecStopPost=-/usr/bin/pkill -9 -f winedevice
+ExecStopPost=-/usr/bin/pkill -9 -f wineserver
+ExecStopPost=-/usr/bin/pkill -9 wine
 
 Restart=always
 RestartSec=60
@@ -239,80 +252,30 @@ StandardError=journal
 WantedBy=multi-user.target
 EOF
 
-# Reload systemd and enable the service (but don't start it yet)
 systemctl daemon-reload
-systemctl enable mt5.service
+systemctl enable xvfb.service mt5-http.service mt5.service
 
-echo "MT5 systemd service installed and enabled"
-
-# Keep everything up to date before restart
-# (wine packages are held via apt-mark hold, so this will NOT pull Wine 11)
-   sudo -E apt-get clean && sudo -E apt-get update && sudo -E apt-get upgrade -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold
-
-###############################################################################
-# Installation Complete - Next Steps
 ###############################################################################
 echo ""
 echo "=============================================="
-echo "INSTALLATION COMPLETE!"
-echo "=============================================="
-echo ""
-echo "Installed Wine version (must be 10.0):"
+echo "DONE. Wine version below must read wine-10.0:"
 wine --version
+apt-mark showhold
+echo "=============================================="
 echo ""
-echo "NEXT STEPS:"
+echo "1. Reboot:  shutdown -r now"
 echo ""
-echo "1. REBOOT THE SERVER (required):"
-echo "   sudo shutdown -r now"
+echo "2. Optional manual check over RDP (virtual desktop mode avoids the"
+echo "   unclickable-window problem plain 'wine terminal64.exe' has under XRDP):"
+echo "     cd /root/mt5 && wine explorer /desktop=mt5,1600x900 terminal64.exe"
+echo "   Let MT5 finish completing its own install, log in, then close it."
 echo ""
-echo "2. After reboot, connect via RDP and run:"
-echo "   WINEDLLOVERRIDES=\"mscoree,mshtml=\" WINEARCH=win64 WINEPREFIX=\$HOME/.wine wineboot -u"
-echo "   # (the WINEDLLOVERRIDES skips the Wine Mono/Gecko installer dialogs -"
-echo "   #  MT5 needs neither; without this, wineboot silently waits on a dialog)"
-echo "   winecfg -v win10"
-echo "   cp /usr/share/fonts/truetype/msttcorefonts/*.ttf ~/.wine/drive_c/windows/Fonts/"
-echo "   # DO NOT run 'winetricks corefonts' or 'winetricks vcrun2015':"
-echo "   # corefonts hangs/crashes Wine helper processes (fonts are copied"
-echo "   # directly above instead), and vcrun2015 is not needed on Wine 10 and its"
-echo "   # DLL overrides can silently break MT5 startup"
+echo "3. Start it headless:"
+echo "     systemctl start mt5.service"
+echo "     journalctl -u mt5.service -f"
 echo ""
-echo "3. Run MT5 manually first time to initialize Wine prefix:"
-echo "   cd ~/mt5 && wine explorer /desktop=mt5,1600x900 terminal64.exe"
-echo "   # (virtual desktop mode - fixes unclickable/unfocusable MT5 windows"
-echo "   #  under XRDP; plain 'wine terminal64.exe' can appear frozen)"
-echo ""
-echo "   https://sherifawzi.github.io"
-echo "   https://t.me"
-echo "   https://api.telegram.org"
-echo "   https://dl.winehq.org"
-echo "   https://raw.githubusercontent.com"
-echo "   http://3.66.106.21"
-echo ""
-echo "4. After MT5 is configured and working, start the service:"
-echo "   sudo systemctl start mt5.service"
-echo "   sudo systemctl status mt5.service"
-echo ""
-echo "5. Access MT5 files via web browser:"
-echo "   http://YOUR_SERVER_IP:8567"
-echo ""
-echo "NOTES:"
-echo "- NEVER use SUDO with Wine commands!"
-echo "- Wine is PINNED and HELD at 10.0 stable (Wine 11 breaks MT5 with"
-echo "  'A debugger has been found running in your system')"
-echo "  To verify hold: apt-mark showhold"
-echo "- On EXISTING servers being upgraded from old Wine: delete ~/.wine"
-echo "  first, then redo step 2 (mixing a Wine 10 runtime with a Wine 6"
-echo "  prefix causes flaky failures)"
-echo "- Restart check script runs every 5 minutes via cron"
-echo "- mt5.service handles everything at every boot:"
-echo "    1. Flushes logs/profiles/Tester/Temp folders (case-insensitive)"
-echo "    2. Removes all .hcc files and ticks.dat from bases/ subtree"
-echo "    3. Re-downloads SNRC.ex5, SNRC.set, and 1/2/3.exe"
-echo "    4. Sleeps 15s -> starts Xvfb"
-echo "    5. Sleeps 15s -> starts Python HTTP server"
-echo "    6. Sleeps 15s -> launches MetaTrader"
-echo "- MT5 service auto-starts on boot"
-echo "- Logs available: sudo journalctl -u mt5.service -f"
-echo "- Improved shutdown handling ensures clean Wine process termination"
-echo ""
+echo "Notes:"
+echo " - Never run wine with sudo."
+echo " - Wine is held at 10.0; check with: apt-mark showhold"
+echo " - Files served at http://SERVER_IP:8567"
 echo "=============================================="
