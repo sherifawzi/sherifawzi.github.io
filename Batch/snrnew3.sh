@@ -7,12 +7,26 @@
    # sudo chmod +x snrnew.sh
    # sudo ./snrnew.sh
 
+###############################################################################
+# Suppress all interactive prompts (pink debconf/needrestart screens)
+# - DEBIAN_FRONTEND=noninteractive : debconf picks defaults silently
+# - NEEDRESTART_MODE=a + conf edit : auto-restart services, no dialogs
+# - force-confdef/confold (on upgrade lines below) : keep local config files
+# NOTE: sudo strips env vars, so all apt calls below use "sudo -E"
+###############################################################################
+   export DEBIAN_FRONTEND=noninteractive
+   export NEEDRESTART_MODE=a
+   export NEEDRESTART_SUSPEND=1
+   sudo sed -i "s/^#\?\$nrconf{restart}.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf 2>/dev/null || true
+   sudo sed -i "s/^#\?\$nrconf{kernelhints}.*/\$nrconf{kernelhints} = -1;/" /etc/needrestart/needrestart.conf 2>/dev/null || true
+   echo "lightdm shared/default-x-display-manager select lightdm" | sudo debconf-set-selections
+
 # Install Desktop Environment (XFCE - lightweight and good for RDP)
-   sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
-   sudo apt install -y xfce4 xfce4-goodies
+   sudo -E apt-get clean && sudo -E apt-get update && sudo -E apt-get upgrade -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold
+   sudo -E apt install -y xfce4 xfce4-goodies
 
 # Install XRDP for Remote Desktop
-   sudo apt install -y xrdp
+   sudo -E apt install -y xrdp
    sudo systemctl enable xrdp
    sudo systemctl start xrdp
 
@@ -36,8 +50,8 @@
    sudo mkdir -pm755 /etc/apt/keyrings
    wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key
    sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
-   sudo apt update
-   sudo apt install -y --install-recommends \
+   sudo -E apt update
+   sudo -E apt install -y --install-recommends \
        winehq-stable=10.0.0.0~jammy-1 \
        wine-stable=10.0.0.0~jammy-1 \
        wine-stable-amd64=10.0.0.0~jammy-1 \
@@ -51,7 +65,8 @@
    sudo chmod +x /usr/local/bin/winetricks
 
 # Runtime libs + Xvfb for headless operation
-   sudo apt install -y libgl1-mesa-glx xvfb
+# (cabextract is required by winetricks corefonts)
+   sudo -E apt install -y libgl1-mesa-glx xvfb cabextract
 
 # Set Wine to Windows 10 mode & Disable debug messages
    export WINEPREFIX="$HOME/.wine"
@@ -223,7 +238,7 @@ echo "MT5 systemd service installed and enabled"
 
 # Keep everything up to date before restart
 # (wine packages are held via apt-mark hold, so this will NOT pull Wine 11)
-   sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
+   sudo -E apt-get clean && sudo -E apt-get update && sudo -E apt-get upgrade -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold
 
 ###############################################################################
 # Installation Complete - Next Steps
@@ -242,10 +257,11 @@ echo "1. REBOOT THE SERVER (required):"
 echo "   sudo shutdown -r now"
 echo ""
 echo "2. After reboot, connect via RDP and run:"
+echo "   WINEARCH=win64 WINEPREFIX=\$HOME/.wine wineboot -u   # init prefix, wait for it to finish"
 echo "   winecfg -v win10"
 echo "   winetricks corefonts"
-echo "   wineserver -k"
-echo "   winetricks vcrun2015"
+echo "   # DO NOT run 'winetricks vcrun2015' - not needed on Wine 10 and its"
+echo "   # DLL overrides can silently break MT5 startup"
 echo ""
 echo "3. Run MT5 manually first time to initialize Wine prefix:"
 echo "   cd ~/mt5 && wine terminal64.exe"
