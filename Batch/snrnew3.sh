@@ -22,6 +22,13 @@
    echo "lightdm shared/default-x-display-manager select lightdm" | sudo debconf-set-selections
    echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | sudo debconf-set-selections
 
+# Wait for any competing apt/dpkg process (cloud-init / unattended-upgrades
+# on first boot) to release the lock before we touch apt
+   while sudo fuser /var/lib/dpkg/lock-frontend /var/lib/apt/lists/lock /var/lib/dpkg/lock >/dev/null 2>&1; do
+       echo "Waiting for another apt/dpkg process to finish..."
+       sleep 5
+   done
+
 # Install Desktop Environment (XFCE - lightweight and good for RDP)
    sudo -E apt-get clean && sudo -E apt-get update && sudo -E apt-get upgrade -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold
    sudo -E apt install -y xfce4 xfce4-goodies
@@ -88,8 +95,8 @@
    cd ~/mt5/MQL5/Profiles/Tester
    wget https://sherifawzi.github.io/Tools/SNRC.set
 
-# Turn off wine logging permanently
-   echo 'export WINEDEBUG=-all' >> ~/.bashrc
+# Turn off wine logging permanently (idempotent)
+   grep -q "WINEDEBUG=-all" ~/.bashrc || echo 'export WINEDEBUG=-all' >> ~/.bashrc
 
 ###############################################################################
 # Setup Restart Check Script (Flow 1)
@@ -147,8 +154,8 @@ EOF
 # Make it executable
 chmod +x /usr/local/bin/check_restart.sh
 
-# Add to root's crontab
-(crontab -l 2>/dev/null; echo "*/5 * * * * /usr/local/bin/check_restart.sh >> /var/log/restart_check.log 2>&1") | crontab -
+# Add to root's crontab (idempotent - removes any existing entry first)
+(crontab -l 2>/dev/null | grep -v check_restart.sh; echo "*/5 * * * * /usr/local/bin/check_restart.sh >> /var/log/restart_check.log 2>&1") | crontab -
 
 echo "Restart check script installed and cron job configured"
 
