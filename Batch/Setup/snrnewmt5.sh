@@ -1,13 +1,25 @@
 #!/bin/bash
 
-   # >>> RUN ON UBUNTU 24.04 (noble)
+   # >>> RUN ON UBUNTU 24.04 (noble)   [snrnew_final_v2 - stock MT5 path]
    # OS base + RDP + Xvfb + MT5 automation ONLY. Wine and MT5 are installed
    # afterwards by MetaQuotes' own mt5linux.sh. Prefix ~/.mt5, non-portable.
+   #
+   # KEY LESSONS BAKED IN (see NEXT STEPS + inline notes):
+   #  - Wine/MT5 installed by mt5linux.sh, NOT here (matches working box).
+   #  - Everything MUST use WINEPREFIX=~/.mt5. A bare 'wine terminal64.exe'
+   #    silently uses the default ~/.wine and scatters the EA's 8 output
+   #    files (restart.txt etc.) into the wrong prefix. This caused a long
+   #    "files missing" hunt - they were in ~/.wine all along.
+   #  - Service does NOT flush 'profiles' (holds saved login + SNRC chart).
+   #  - Config launch (/config:...configur.txt) kept for headless; dropped
+   #    /portable (stock MT5 is non-portable).
+   #  - Two items still need live confirmation before snapshot: login
+   #    persistence across restart, and a full service test/restart cycle.
 
    # sudo -i
    # sudo passwd
-   # sudo chmod +x snrnew_final.sh
-   # sudo ./snrnew_final.sh
+   # sudo chmod +x snrnew_final_v2.sh
+   # sudo ./snrnew_final_v2.sh
 
 # Install Desktop Environment (XFCE - lightweight and good for RDP)
    sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
@@ -104,7 +116,10 @@ Environment="WINEDEBUG=-all"
 WorkingDirectory=/root/.mt5/drive_c/Program Files/MetaTrader 5
 
 # --- Step 1: Flush MT5 working folders for a fresh start (case-insensitive) ---
-ExecStartPre=/bin/bash -c 'echo "$(date): Cleaning up MT5 working folders..."; BASE="/root/.mt5/drive_c/Program Files/MetaTrader 5"; for name in logs profiles tester temp; do find "$BASE" -maxdepth 1 -type d -iname "$name" -exec rm -rf {} +; done; true'
+# NOTE: 'profiles' is intentionally NOT flushed - it holds the saved login
+# (auto-connect to 853300) and the SNRC chart setup. Flushing it wiped the
+# login every boot. Keep logs/tester/temp cleanup only.
+ExecStartPre=/bin/bash -c 'echo "$(date): Cleaning up MT5 working folders..."; BASE="/root/.mt5/drive_c/Program Files/MetaTrader 5"; for name in logs tester temp; do find "$BASE" -maxdepth 1 -type d -iname "$name" -exec rm -rf {} +; done; true'
 
 # --- Step 1b: Clean .hcc files and ticks.dat from bases/ subtree ---
 ExecStartPre=/bin/bash -c 'BASE="/root/.mt5/drive_c/Program Files/MetaTrader 5"; echo "$(date): Cleaning .hcc from bases/ ..."; find "$BASE" -maxdepth 1 -type d -iname "bases" -exec find {} -type f -iname "*.hcc" -delete \; ; true'
@@ -177,20 +192,41 @@ echo "2. After reboot, connect via RDP. Run MetaQuotes' own install script"
 echo "   (mt5linux.sh) as a NORMAL user - it installs Wine AND MetaTrader 5"
 echo "   into ~/.mt5, exactly as on the working box. Do NOT use sudo."
 echo ""
-echo "3. When MT5 opens: log into account 853300, attach SNRC to a chart,"
-echo "   save the profile, confirm it runs in the GUI."
+echo "3. CRITICAL - prefix discipline. When you launch MT5 by hand for"
+echo "   configuration, ALWAYS set the prefix, or Wine uses the default"
+echo "   ~/.wine and your 8 EA files (restart.txt etc.) get written to the"
+echo "   WRONG prefix where the service can't see them:"
 echo ""
-echo "4. Verify the headless service:"
+echo "     cd ~/.mt5/drive_c/Program\\ Files/MetaTrader\\ 5"
+echo "     WINEPREFIX=~/.mt5 wine terminal64.exe"
+echo ""
+echo "   Never run a bare 'wine terminal64.exe'. If a stray ~/.wine appears,"
+echo "   delete it:  rm -rf ~/.wine"
+echo ""
+echo "4. In MT5: log into account 853300 with 'Save account information'"
+echo "   CHECKED (or it won't auto-login headless), attach SNRC to a chart,"
+echo "   save the profile. Confirm the 8 EA files land in:"
+echo "     ~/.mt5/drive_c/users/root/AppData/Roaming/MetaQuotes/Terminal/Common/Files/"
+echo ""
+echo "5. Verify the headless service:"
 echo "   sudo systemctl start mt5.service"
 echo "   sudo systemctl status mt5.service"
 echo "   sudo journalctl -u mt5.service -f"
 echo ""
-echo "5. MT5 files via browser:  http://YOUR_SERVER_IP:8567"
+echo "   >>> CONFIRM BEFORE SNAPSHOT (not yet verified as of this script):"
+echo "       (a) Login PERSISTS across a service restart (auto-connects to"
+echo "           853300 with no manual login). If not, check 'Save account"
+echo "           information' was ticked and that profiles isn't being wiped."
+echo "       (b) A FULL service cycle completes: Xvfb -> login -> tester run"
+echo "           -> writes restart.txt -> restart loop fires."
 echo ""
-echo "6. GOLDEN SNAPSHOT (once configured and confirmed working):"
+echo "6. MT5 files via browser:  http://YOUR_SERVER_IP:8567"
+echo ""
+echo "7. GOLDEN SNAPSHOT (only after 5a + 5b confirmed):"
 echo "   Take a Contabo panel snapshot of this VPS. Deploy new machines"
 echo "   from it for instant redeploy - prefix + MT5 + login + SNRC all"
-echo "   preserved, no reinstall."
+echo "   preserved, no reinstall. NOTE: prefix has /root absolute paths"
+echo "   baked in, so clones MUST also run as root with home /root."
 echo ""
 echo "NOTES:"
 echo "- Wine + MT5 are installed by mt5linux.sh, NOT by this script."
@@ -198,7 +234,8 @@ echo "- NEVER use SUDO with Wine commands."
 echo "- Prefix: /root/.mt5   MT5: '/root/.mt5/drive_c/Program Files/MetaTrader 5'"
 echo "- Common\\Files: /root/.mt5/drive_c/users/root/AppData/Roaming/MetaQuotes/Terminal/Common/Files"
 echo "- Restart check runs every 5 min via cron."
-echo "- mt5.service at every boot: flush logs/profiles/tester/temp, clean"
+echo "- mt5.service at every boot: flush logs/tester/temp (NOT profiles -"
+echo "  profiles holds saved login + SNRC chart, must persist), clean"
 echo "  .hcc + ticks.dat, re-download SNRC, start Xvfb -> HTTP server -> MT5."
 echo "- Logs: sudo journalctl -u mt5.service -f"
 echo ""
