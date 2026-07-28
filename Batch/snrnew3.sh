@@ -4,8 +4,8 @@
 
    # sudo -i
    # sudo passwd
-   # sudo chmod +x snrnew3.sh
-   # sudo ./snrnew3.sh
+   # sudo chmod +x snrnew4.sh
+   # sudo ./snrnew4.sh
 
 # Install Desktop Environment (XFCE - lightweight and good for RDP)
    sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
@@ -24,7 +24,7 @@
    sudo ufw allow 3389/tcp
    sudo ufw allow 8567/tcp
 
-# Install Wine 10 (staging) from the official WineHQ repository
+# Install Wine 10 (stable) from the official WineHQ repository
 # (distro wine on 24.04 is too old for the new MT5 build)
    sudo apt install -y wget gpg bc
    sudo dpkg --add-architecture i386
@@ -33,7 +33,7 @@
    sudo wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key -
    sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources
    sudo apt update
-   sudo apt install --install-recommends -y winehq-staging
+   sudo apt install --install-recommends -y winehq-stable
 
 # Install winetricks AFTER WineHQ (so it does not pull in distro wine)
    sudo apt install -y winetricks libgl1
@@ -231,10 +231,10 @@ echo "1. REBOOT THE SERVER (required):"
 echo "   sudo shutdown -r now"
 echo ""
 echo "2. After reboot, connect via RDP and run:"
-echo "   winecfg -v=win11"
+echo "   winecfg -v=win10"
+echo "   wine reg add \"HKCU\\Software\\Wine\\DllOverrides\" /v winhttp /d native,builtin /f"
 echo "   winetricks corefonts"
-echo "   wineserver -k"
-echo "   winetricks vcrun2015"
+echo "   winetricks -q renderer=gdi"
 echo ""
 echo "   NOTE: first wine command will prompt to install Wine Mono"
 echo "   and Gecko - click Install and let them finish (one time only)."
@@ -256,7 +256,7 @@ echo "   http://YOUR_SERVER_IP:8567"
 echo ""
 echo "NOTES:"
 echo "- NEVER use SUDO with Wine commands!"
-echo "- Wine 10 staging from WineHQ repo (required by new MT5 build)"
+echo "- Wine 10 stable from WineHQ repo (required by new MT5 build)"
 echo "- Restart check script runs every 5 minutes via cron"
 echo "- mt5.service handles everything at every boot:"
 echo "    1. Flushes logs/profiles/Tester/Temp folders (case-insensitive)"
