@@ -4,8 +4,8 @@
 
    # sudo -i
    # sudo passwd
-   # sudo chmod +x snrnew4.sh
-   # sudo ./snrnew4.sh
+   # sudo chmod +x snrnew5.sh
+   # sudo ./snrnew5.sh
 
 # Install Desktop Environment (XFCE - lightweight and good for RDP)
    sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
@@ -24,8 +24,9 @@
    sudo ufw allow 3389/tcp
    sudo ufw allow 8567/tcp
 
-# Install Wine 10 (stable) from the official WineHQ repository
-# (distro wine on 24.04 is too old for the new MT5 build)
+# Install Wine (staging) from the official WineHQ repository
+# New MT5 build needs Wine 11.3+ for WebView2; stable is only 11.0, so staging is required.
+# We pin+hold the installed version so apt upgrade cannot move it later.
    sudo apt install -y wget gpg bc
    sudo dpkg --add-architecture i386
    sudo mkdir -pm755 /etc/apt/keyrings
@@ -33,7 +34,16 @@
    sudo wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key -
    sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources
    sudo apt update
-   sudo apt install --install-recommends -y winehq-stable
+   sudo apt install --install-recommends -y winehq-staging
+
+# Pin the exact staging version that just installed, then hold it (stability)
+# Hold every installed wine-staging/winehq package so apt upgrade cannot move it.
+   WINE_PKG_VER=$(dpkg-query -W -f='${Version}' wine-staging-amd64 2>/dev/null)
+   echo "Installed Wine staging version: $WINE_PKG_VER"
+   HELD=$(dpkg-query -W -f='${Package}\n' 'winehq-*' 'wine-staging*' 2>/dev/null | sort -u)
+   if [ -n "$HELD" ]; then
+     sudo apt-mark hold $HELD
+   fi
 
 # Install winetricks AFTER WineHQ (so it does not pull in distro wine)
    sudo apt install -y winetricks libgl1
@@ -230,17 +240,23 @@ echo ""
 echo "1. REBOOT THE SERVER (required):"
 echo "   sudo shutdown -r now"
 echo ""
-echo "2. After reboot, connect via RDP and run:"
-echo "   winecfg -v=win10"
+echo "2. After reboot, connect via RDP and run (in this order):"
+echo "   wineboot"
+echo "   winecfg -v=win11"
 echo "   wine reg add \"HKCU\\Software\\Wine\\DllOverrides\" /v winhttp /d native,builtin /f"
 echo "   winetricks corefonts"
 echo "   winetricks -q renderer=gdi"
 echo ""
-echo "   NOTE: first wine command will prompt to install Wine Mono"
-echo "   and Gecko - click Install and let them finish (one time only)."
+echo "   NOTE: 'wineboot' will pop up Wine Mono and Gecko installers."
+echo "   Click Install on BOTH and let them finish (one time only)."
+echo "   Do NOT run any DLL overrides to suppress them - that corrupts the prefix."
 echo ""
 echo "3. Run MT5 manually first time to configure account + parameters:"
 echo "   cd ~/mt5 && wine terminal64.exe"
+echo ""
+echo "   NOTE: on first launch MT5 installs WebView2 itself in the background."
+echo "   The UI may be blank or freeze for a few minutes - let it sit, then"
+echo "   close and relaunch. Do NOT install WebView2 by hand."
 echo ""
 echo "   https://sherifawzi.github.io"
 echo "   https://t.me"
@@ -256,7 +272,8 @@ echo "   http://YOUR_SERVER_IP:8567"
 echo ""
 echo "NOTES:"
 echo "- NEVER use SUDO with Wine commands!"
-echo "- Wine 10 stable from WineHQ repo (required by new MT5 build)"
+echo "- Wine staging (pinned + held) from WineHQ repo - new MT5 needs 11.3+"
+echo "- Prefix runs in win11 mode (required by new MT5 WebView2)"
 echo "- Restart check script runs every 5 minutes via cron"
 echo "- mt5.service handles everything at every boot:"
 echo "    1. Flushes logs/profiles/Tester/Temp folders (case-insensitive)"
