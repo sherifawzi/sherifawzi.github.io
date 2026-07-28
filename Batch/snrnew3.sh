@@ -24,26 +24,10 @@
    sudo ufw allow 3389/tcp
    sudo ufw allow 8567/tcp
 
-# Install Wine 10.0 from WineHQ for MetaTrader 5
-# (jammy's stock wine is 6.0.3, too old for current MT5; Wine 11 trips MT5's
-#  debugger-detection check. So pin 10.0 and hold it against upgrades.)
+# Install Wine for MetaTrader 5
    sudo dpkg --add-architecture i386
-   sudo mkdir -pm755 /etc/apt/keyrings
-   wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key
-   sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
    sudo apt update
-   sudo apt install -y --install-recommends \
-       winehq-stable=10.0.0.0~jammy-1 \
-       wine-stable=10.0.0.0~jammy-1 \
-       wine-stable-amd64=10.0.0.0~jammy-1 \
-       wine-stable-i386:i386=10.0.0.0~jammy-1
-   sudo apt-mark hold winehq-stable wine-stable wine-stable-amd64 wine-stable-i386
-   sudo apt install -y winetricks libgl1-mesa-glx
-
-# Replace jammy's 2021 winetricks (its corefonts/vcrun download URLs are dead) with current one
-   sudo wget -O /usr/local/bin/winetricks https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
-   sudo chmod +x /usr/local/bin/winetricks
-   sudo apt install -y cabextract
+   sudo apt install -y wine64 wine32 winetricks libgl1-mesa-glx
 
 # Install Xvfb for headless operation
    sudo apt-get install -y xvfb
@@ -233,23 +217,13 @@ echo "1. REBOOT THE SERVER (required):"
 echo "   sudo shutdown -r now"
 echo ""
 echo "2. After reboot, connect via RDP and run:"
-echo "   # Build the prefix from clean. The full kill + rm is required -"
-echo "   # a plain 'wineboot -u' can hang and leave a broken prefix (c0000135)."
-echo "   wineserver -k 2>/dev/null; pkill -9 -f wineserver; pkill -9 -f wine; sleep 3"
-echo "   rm -rf ~/.wine"
-echo "   WINEDLLOVERRIDES=\"mscoree=,mshtml=\" WINEARCH=win64 wineboot -u"
-echo "   wine cmd /c echo ok      # must print 'ok' before continuing"
 echo "   winetricks corefonts"
-echo "   winecfg -v win10"
-echo "   # NOTE: do NOT run 'winetricks vcrun2015' - it errors on Wine 10"
-echo "   # (regedit c0000135) and MT5 does not need it."
+echo "   wineserver -k"
+echo "   winetricks vcrun2015"
+echo "   winecfg"
 echo ""
-echo "3. Run MT5 first time in a virtual desktop (fixes unclickable windows under RDP):"
-echo "   cd ~/mt5 && wine explorer /desktop=mt5,1600x900 terminal64.exe"
-echo "   # First launch on a fresh prefix crashes on Wine 10"
-echo "   # (RtlLeaveCriticalSection). If it exits, run:"
-echo "   #     wineserver -k"
-echo "   # then launch the SAME command again - it comes up clean the 2nd time."
+echo "3. Run MT5 manually first time to initialize Wine prefix:"
+echo "   cd ~/mt5 && wine terminal64.exe"
 echo ""
 echo "   https://sherifawzi.github.io"
 echo "   https://t.me"
