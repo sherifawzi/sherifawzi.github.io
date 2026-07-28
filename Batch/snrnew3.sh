@@ -1,11 +1,11 @@
 #!/bin/bash
 
-   # >>> RUN ON UBUNTU 22.04 and NOT above 
+   # >>> RUN ON UBUNTU 24.04 (noble) and NOT above
 
    # sudo -i
    # sudo passwd
-   # sudo chmod +x snrnew.sh
-   # sudo ./snrnew.sh
+   # sudo chmod +x snrnew3.sh
+   # sudo ./snrnew3.sh
 
 # Install Desktop Environment (XFCE - lightweight and good for RDP)
    sudo apt clean -y && sudo apt-get update && sudo apt-get upgrade -y
@@ -24,15 +24,25 @@
    sudo ufw allow 3389/tcp
    sudo ufw allow 8567/tcp
 
-# Install Wine for MetaTrader 5
+# Install Wine 10 (staging) from the official WineHQ repository
+# (distro wine on 24.04 is too old for the new MT5 build)
+   sudo apt install -y wget gpg bc
    sudo dpkg --add-architecture i386
+   sudo mkdir -pm755 /etc/apt/keyrings
+   sudo rm -f /etc/apt/sources.list.d/winehq*
+   sudo wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key -
+   sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources
    sudo apt update
-   sudo apt install -y wine64 wine32 winetricks libgl1-mesa-glx
+   sudo apt install --install-recommends -y winehq-staging
+
+# Install winetricks AFTER WineHQ (so it does not pull in distro wine)
+   sudo apt install -y winetricks libgl1
 
 # Install Xvfb for headless operation
    sudo apt-get install -y xvfb
 
-# Set Wine to Windows 10 mode & Disable debug messages
+# Set Wine to Windows mode & Disable debug messages
+# (prefix is initialized on first manual GUI run; set win11 there - see NEXT STEPS)
    export WINEPREFIX="$HOME/.wine"
    export WINEARCH=win64
    export WINEDEBUG=-all
@@ -41,15 +51,15 @@
    mkdir -p ~/mt5
    cd ~/mt5
    wget https://www.snrobotix.com/MT5/terminal64.exe
-   
+
 # Create necessary directories for MT5
    mkdir -p ~/mt5/MQL5/Experts
    cd ~/mt5/MQL5/Experts
-   wget https://sherifawzi.github.io/Tools/SNRC.ex5   
-   
+   wget https://sherifawzi.github.io/Tools/SNRC.ex5
+
    mkdir -p ~/mt5/MQL5/Profiles/Tester
    cd ~/mt5/MQL5/Profiles/Tester
-   wget https://sherifawzi.github.io/Tools/SNRC.set   
+   wget https://sherifawzi.github.io/Tools/SNRC.set
 
 # Turn off wine logging permanently
    echo 'export WINEDEBUG=-all' >> ~/.bashrc
@@ -86,7 +96,7 @@ send_telegram() {
 # Check if the file exists
 if [ -f "$FILE_PATH" ]; then
     echo "$(date): Found $CHECK_FILE - Initiating restart sequence"
-    
+
     # Delete the file
     rm -f "$FILE_PATH"
     echo "$(date): Deleted $CHECK_FILE"
@@ -95,10 +105,10 @@ if [ -f "$FILE_PATH" ]; then
     HOSTNAME=$(hostname)
     send_telegram "<b>UB0X Server Restart</b>"
     echo "$(date): Telegram notification sent"
-    
+
     # Wait 2 minutes then restart
     # Note: MT5 working folders will be flushed and files re-downloaded
-    # at boot time by mt5-prepare.service (runs before mt5.service)
+    # at boot time by mt5.service
     echo "$(date): System will restart in 2 minutes..."
     sleep $RESTART_DELAY
 
@@ -136,6 +146,7 @@ Type=simple
 User=root
 Environment="DISPLAY=:99"
 Environment="WINEPREFIX=/root/.wine"
+Environment="WINEDEBUG=-all"
 WorkingDirectory=/root/mt5
 
 # --- Step 1: Flush MT5 working folders for a fresh start (case-insensitive) ---
@@ -211,18 +222,24 @@ echo "=============================================="
 echo "INSTALLATION COMPLETE!"
 echo "=============================================="
 echo ""
+echo "Wine version installed:"
+wine --version
+echo ""
 echo "NEXT STEPS:"
 echo ""
 echo "1. REBOOT THE SERVER (required):"
 echo "   sudo shutdown -r now"
 echo ""
 echo "2. After reboot, connect via RDP and run:"
+echo "   winecfg -v=win11"
 echo "   winetricks corefonts"
 echo "   wineserver -k"
 echo "   winetricks vcrun2015"
-echo "   winecfg"
 echo ""
-echo "3. Run MT5 manually first time to initialize Wine prefix:"
+echo "   NOTE: first wine command will prompt to install Wine Mono"
+echo "   and Gecko - click Install and let them finish (one time only)."
+echo ""
+echo "3. Run MT5 manually first time to configure account + parameters:"
 echo "   cd ~/mt5 && wine terminal64.exe"
 echo ""
 echo "   https://sherifawzi.github.io"
@@ -239,6 +256,7 @@ echo "   http://YOUR_SERVER_IP:8567"
 echo ""
 echo "NOTES:"
 echo "- NEVER use SUDO with Wine commands!"
+echo "- Wine 10 staging from WineHQ repo (required by new MT5 build)"
 echo "- Restart check script runs every 5 minutes via cron"
 echo "- mt5.service handles everything at every boot:"
 echo "    1. Flushes logs/profiles/Tester/Temp folders (case-insensitive)"
