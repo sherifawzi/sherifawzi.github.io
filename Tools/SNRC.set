@@ -1,11 +1,11 @@
-; saved on 2026.07.03 20:49:23
+; saved on 2026.07.29 14:34:00
 ; this file contains input parameters for testing/optimizing SNRC expert advisor
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
 ; Test Parameters:
 tst_MaxDrawdownPerc=18||0||1||10||N
-tst_GainPerMonth=1.5||0||0.000000||0.000000||N
-tst_DurationMinutes=55||0||1||10||N
+tst_GainPerMonth=2||0||0.000000||0.000000||N
+tst_DurationMinutes=355||0||1||10||N
 ; Sizing Parameters:
 inp_StaticLotSize=false||false||0||true||N
 inp_ScalingAmount=0||0||1||10||N
