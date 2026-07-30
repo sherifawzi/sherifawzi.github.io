@@ -68,7 +68,7 @@ CHECK_FILE="restart.txt"
 RESTART_DELAY=120  # 2 minutes in seconds
 
 # Telegram credentials
-BOT_ID="8450507003:AAHhqJg_6x_ajStvx2_eoZRHnVIRpexzQc4"
+BOT_ID="8663510120:AAFGc3-F3mk5prPiFD3YEoFXdKnkGeO7H88"
 CHANNEL_ID="-1003285305833"
 
 # Full path to the file
