@@ -149,9 +149,9 @@ ExecStartPre=/bin/bash -c 'echo "$(date): Cleaning ticks.dat files from bases/ .
 ExecStartPre=/bin/bash -c 'mkdir -p /root/mt5/MQL5/Experts /root/mt5/MQL5/Profiles/Tester'
 ExecStartPre=/usr/bin/wget -O /root/mt5/MQL5/Experts/SNRC.ex5 https://sherifawzi.github.io/Tools/SNRC.ex5
 ExecStartPre=/usr/bin/wget -O /root/mt5/MQL5/Profiles/Tester/SNRC.set https://sherifawzi.github.io/Tools/SNRC.set
-ExecStartPre=/usr/bin/wget -O /root/mt5/terminal64.exe http://3.66.106.21/MT5/terminal64.exe
-ExecStartPre=/usr/bin/wget -O /root/mt5/metatester64.exe http://3.66.106.21/MT5/metatester64.exe
-ExecStartPre=/usr/bin/wget -O /root/mt5/MetaEditor64.exe http://3.66.106.21/MT5/MetaEditor64.exe
+ExecStartPre=/usr/bin/wget -O /root/mt5/terminal64.exe https://snrobotix.com/MT5/terminal64.exe
+ExecStartPre=/usr/bin/wget -O /root/mt5/metatester64.exe https://snrobotix.com/MT5/metatester64.exe
+ExecStartPre=/usr/bin/wget -O /root/mt5/MetaEditor64.exe https://snrobotix.com/MT5/MetaEditor64.exe
 
 # --- Step 3: Wait 15s, then start Xvfb ---
 ExecStartPre=/bin/bash -c 'echo "$(date): Downloads complete, waiting 15s..."; sleep 15'
@@ -228,7 +228,7 @@ echo ""
 echo "   https://sherifawzi.github.io"
 echo "   https://t.me"
 echo "   https://api.telegram.org"
-echo "   http://3.66.106.21"
+echo "   https://snrobotix.com"
 echo ""
 echo "4. After MT5 is configured and working, start the service:"
 echo "   sudo systemctl start mt5.service"
