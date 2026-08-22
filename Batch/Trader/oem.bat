@@ -4,7 +4,7 @@ setlocal
    :: https://sherifawzi.github.io
    :: https://t.me
    :: https://api.telegram.org
-   :: http://3.66.106.21
+   :: https://snrobotix.com
 
    :: ------------------------------ Create MT5 Folders
    ping -n 3 127.0.0.1 >nul
