@@ -64,6 +64,7 @@ for /L %%i in (2,1,%INSTANCE_COUNT%) do (
     for %%b in (%BOT_FILES%) do (
         set "bot=%%b"
         set "bot=!bot: =!"
+        echo Copying !bot! to instance !num! ...
         copy "%source_experts%\!bot!" "!target_experts!" >nul
         timeout /t %DELAY_SHORT% /nobreak >nul
     )
@@ -78,16 +79,16 @@ for /L %%i in (1,1,%INSTANCE_COUNT%) do (
     set "instance_path=%BASE_DIR%\!num!"
     cd /d "!instance_path!" 2>nul
 
-    :: Delete clean-up folders
+    echo Cleaning instance !num! ...
     for %%f in (%CLEAN_FOLDERS%) do (
         rmdir /S /Q "%%f" 2>nul
     )
+    
+    timeout /t %DELAY_SHORT% /nobreak >nul
 
-    :: Launch MT5
     echo Launching instance !num! ...
     %COMSPEC% /C start terminal64.exe /portable
 
-    :: Wait between launches, but NOT after the last one
     if %%i neq %INSTANCE_COUNT% (
         timeout /t %DELAY_LONG% /nobreak >nul
     )
