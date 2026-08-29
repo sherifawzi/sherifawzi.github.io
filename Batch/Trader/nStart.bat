@@ -5,7 +5,7 @@ setlocal enabledelayedexpansion
 ::                      USER CONFIGURATION
 :: ============================================================
 
-set INSTANCE_COUNT=10
+set INSTANCE_COUNT=4
 set BASE_DIR=%USERPROFILE%\Desktop
 set SOURCE_INSTANCE=001
 
@@ -14,8 +14,8 @@ set DOWNLOAD_URL=https://sherifawzi.github.io/Tools/
 
 set CLEAN_FOLDERS=logs, profiles, Tester
 
-set DELAY_SHORT=2
-set DELAY_LONG=5
+set DELAY_SHORT=5
+set DELAY_LONG=20
 
 :: ============================================================
 ::                      MAIN SCRIPT
