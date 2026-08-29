@@ -14,7 +14,7 @@ set DOWNLOAD_URL=https://sherifawzi.github.io/Tools/
 
 set CLEAN_FOLDERS=logs, profiles, Tester
 
-set DELAY_SHORT=3
+set DELAY_SHORT=5
 set DELAY_LONG=20
 
 :: ============================================================
