@@ -9,7 +9,7 @@ set INSTANCE_COUNT=4
 set BASE_DIR=%USERPROFILE%\Desktop
 set SOURCE_INSTANCE=001
 
-set BOT_FILES=HISTORY.ex5, SNRL7.ex5, PriceRunner.ex5
+set BOT_FILES=HISTORY.ex5, SNRL3.ex5
 set DOWNLOAD_URL=https://sherifawzi.github.io/Tools/
 
 set CLEAN_FOLDERS=logs, profiles, Tester
@@ -33,10 +33,8 @@ for /L %%i in (1,1,%INSTANCE_COUNT%) do (
     set "instance_path=%BASE_DIR%\!num!"
     set "experts_path=!instance_path!\MQL5\Experts"
 
-    :: Create Experts folder
     md "!experts_path!" 2>nul
 
-    :: For instances other than the source, check for terminal64.exe and copy if missing
     if %%i neq 1 (
         if not exist "!instance_path!\terminal64.exe" (
             echo Copying terminal64.exe to !num! ...
@@ -81,12 +79,10 @@ for /L %%i in (1,1,%INSTANCE_COUNT%) do (
     set "instance_path=%BASE_DIR%\!num!"
     cd /d "!instance_path!" 2>nul
 
-    :: Delete clean-up folders
     for %%f in (%CLEAN_FOLDERS%) do (
         rmdir /S /Q "%%f" 2>nul
     )
 
-    :: Launch MT5
     %COMSPEC% /C start terminal64.exe /portable
 )
 
