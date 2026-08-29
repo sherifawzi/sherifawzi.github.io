@@ -14,7 +14,7 @@ set DOWNLOAD_URL=https://sherifawzi.github.io/Tools/
 
 set CLEAN_FOLDERS=logs, profiles, Tester
 
-set DELAY_SHORT=5
+set DELAY_SHORT=3
 set DELAY_LONG=20
 
 :: ============================================================
@@ -71,7 +71,6 @@ for /L %%i in (2,1,%INSTANCE_COUNT%) do (
 
 :: --- Start each MT5 instance (clean + launch) ---
 echo Starting MT5 instances...
-timeout /t %DELAY_LONG% /nobreak >nul
 
 for /L %%i in (1,1,%INSTANCE_COUNT%) do (
     set "num=00%%i"
@@ -79,11 +78,19 @@ for /L %%i in (1,1,%INSTANCE_COUNT%) do (
     set "instance_path=%BASE_DIR%\!num!"
     cd /d "!instance_path!" 2>nul
 
+    :: Delete clean-up folders
     for %%f in (%CLEAN_FOLDERS%) do (
         rmdir /S /Q "%%f" 2>nul
     )
 
+    :: Launch MT5
+    echo Launching instance !num! ...
     %COMSPEC% /C start terminal64.exe /portable
+
+    :: Wait between launches, but NOT after the last one
+    if %%i neq %INSTANCE_COUNT% (
+        timeout /t %DELAY_LONG% /nobreak >nul
+    )
 )
 
 endlocal
