@@ -9,7 +9,7 @@ set INSTANCE_COUNT=4
 set BASE_DIR=%USERPROFILE%\Desktop
 set SOURCE_INSTANCE=001
 
-set BOT_FILES=HISTORY.ex5, SNRL3.ex5
+set BOT_FILES=HISTORY.ex5, SNRL7.ex5, PriceRunner.ex5
 set DOWNLOAD_URL=https://sherifawzi.github.io/Tools/
 
 set CLEAN_FOLDERS=logs, profiles, Tester
