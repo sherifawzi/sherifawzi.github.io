@@ -1,43 +1,44 @@
-; saved on 2026.08.28 12:32:39
+; saved on 2026.07.29 14:34:00
 ; this file contains input parameters for testing/optimizing SNRC expert advisor
 ; to use it in the strategy tester, click Load in the context menu of the Inputs tab
 ;
 ; Test Parameters:
 tst_MaxDrawdownPerc=18||0||1||10||N
 tst_GainPerMonth=2||0||0.000000||0.000000||N
-tst_DurationMinutes=1440||0||1||10||N
+tst_DurationMinutes=1435||0||1||10||N
 ; Sizing Parameters:
 inp_StaticLotSize=false||false||0||true||N
-inp_AmountPerMinLot=2000||2000||1000||4000||Y
+inp_ScalingAmount=0||0||1||10||N
+inp_AmountPerMinLot=0||2000||1000||4000||Y
 ; Cooldown Parameters:
 inp_SecondsBetweenTrades=0||0||60||300||Y
 ; Hedge Parameters:
-inp_PercentOfDay=5||3||1||7||Y
-inp_HedgeExpandMode=1||1||1||2||Y
+inp_PercentOfDay=0||5||1||7||Y
+inp_HedgeExpandMode=0||1||0||2||Y
 ; Doubledown Parameters:
-inp_DoubledownMode=0||0||1||1||Y
-inp_DoubledownFactor=0.25||0.25||0.25||0.5||Y
+inp_DoubledownMode=0||0||0||1||Y
+inp_DoubledownFactor=0.0||0||0.25||0.5||Y
 ; Take Profit Parameters:
-inp_TakeProfitMode=1||1||1||2||Y
-inp_TakeProfitMethod=1||1||0||1||N
+inp_TakeProfitMode=0||1||0||2||Y
+inp_TakeProfitMethod=1||0||0||1||N
 ; Take Profit Factor Parameters:
-inp_TakeProfitMax=3||2.6||0.4||4.0||Y
-inp_TakeProfitMid=2||1.4||0.4||2.4||Y
+inp_TakeProfitMax=3||3||0.4||4.2||Y
+inp_TakeProfitMid=2||2||0.4||2.8||Y
 inp_TakeProfitMin=1.2||0.0||0.000000||0.000000||N
 inp_TradeCountMid=5||3||2||9||Y
-inp_TradeCountMin=10||2||2||17||Y
-inp_MarginMid=10000||6000||1000||10000||Y
-inp_MarginMin=7000||1000||1000||7000||Y
+inp_TradeCountMin=10||11||2||17||Y
+inp_MarginMid=10000||8000||1000||10000||Y
+inp_MarginMin=7000||4000||1000||7000||Y
 inp_DrawdownMid=2||2||1||5||Y
-inp_DrawdownMin=5||1||1||9||Y
-inp_AgeHoursMid=24||24||48||168||Y
-inp_AgeHoursMin=48||48||96||336||Y
+inp_DrawdownMin=5||6||1||9||Y
+inp_AgeHoursMid=0||0||1||10||N
+inp_AgeHoursMin=0||0||1||10||N
 ; Drawdown Trim Parameters:
-inp_DrawdownCutoff=12||9||1||18||Y
+inp_DrawdownCutoff=0||12||2||16||Y
 inp_DrawdownBuffer=0.5||0||0.000000||0.000000||N
 ; Margin Trim Parameters:
-inp_MarginCutoff=2000||2000||1000||4000||Y
-inp_MarginBuffer=200||200||100||400||Y
+inp_MarginCutoff=0||2000||1000||3000||Y
+inp_MarginBuffer=0||200||100||400||Y
 ; Ageing Trim Parameters:
 inp_AgeMidFactor=0||0||1||10||N
 inp_AgeMinFactor=0||0||1||10||N
