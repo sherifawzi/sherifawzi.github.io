@@ -37,7 +37,7 @@ inp_AgeHoursMin=0||0||1||10||N
 inp_DrawdownCutoff=0||12||2||16||Y
 inp_DrawdownBuffer=0.5||0||0.000000||0.000000||N
 ; Margin Trim Parameters:
-inp_MarginCutoff=0||2000||1000||3000||Y
+inp_MarginCutoff=0||2000||1000||4000||Y
 inp_MarginBuffer=0||200||100||400||Y
 ; Ageing Trim Parameters:
 inp_AgeMidFactor=0||0||1||10||N
