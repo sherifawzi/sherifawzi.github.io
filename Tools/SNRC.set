@@ -7,7 +7,7 @@ tst_MaxDrawdownPerc=18||0||1||10||N
 tst_GainPerMonth=2||0||0.000000||0.000000||N
 tst_DurationMinutes=99999||0||1||10||N
 ; Sizing Parameters:
-inp_StaticLotSize=false||false||0||true||Y
+inp_StaticLotSize=false||false||0||true||N
 inp_AmountPerMinLot=2000||2000||1000||4000||Y
 ; Cooldown Parameters:
 inp_SecondsBetweenTrades=0||0||60||300||Y
