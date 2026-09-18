@@ -4,7 +4,7 @@
 ;
 ; Test Parameters:
 tst_MaxDrawdownPerc=18||0||1||10||N
-tst_GainPerMonth=2||0||0.000000||0.000000||N
+tst_GainPerMonth=2||0||0||0||N
 tst_DurationMinutes=1435||0||1||10||N
 ; Sizing Parameters:
 inp_StaticLotSize=false||false||0||true||N
@@ -24,7 +24,7 @@ inp_TakeProfitMethod=1||0||0||1||N
 ; Take Profit Factor Parameters:
 inp_TakeProfitMax=3||3||0.4||4.2||Y
 inp_TakeProfitMid=2||2||0.4||2.8||Y
-inp_TakeProfitMin=1.2||0.0||0.000000||0.000000||N
+inp_TakeProfitMin=1.2||0.0||0||0||N
 inp_TradeCountMid=5||3||2||9||Y
 inp_TradeCountMin=10||11||2||17||Y
 inp_MarginMid=10000||8000||1000||10000||Y
@@ -35,7 +35,7 @@ inp_AgeHoursMid=0||0||1||10||N
 inp_AgeHoursMin=0||0||1||10||N
 ; Drawdown Trim Parameters:
 inp_DrawdownCutoff=0||12||2||16||N
-inp_DrawdownBuffer=0||0||0.000000||0.000000||N
+inp_DrawdownBuffer=0||0||0||0||N
 ; Margin Trim Parameters:
 inp_MarginCutoff=2000||2000||1000||4000||N
 inp_MarginBuffer=300||200||100||400||N
