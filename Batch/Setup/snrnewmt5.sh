@@ -102,8 +102,8 @@ ExecStartPre=/bin/bash -c 'BASE="/root/.mt5/drive_c/Program Files/MetaTrader 5";
 
 # --- Step 2: Recreate MQL5 dirs and download fresh SNRC files ---
 ExecStartPre=/bin/bash -c 'BASE="/root/.mt5/drive_c/Program Files/MetaTrader 5"; mkdir -p "$BASE/MQL5/Experts" "$BASE/MQL5/Profiles/Tester"'
-ExecStartPre=/bin/bash -c '/usr/bin/wget -O "/root/.mt5/drive_c/Program Files/MetaTrader 5/MQL5/Experts/SNRC.ex5" https://sherifawzi.github.io/Tools/SNRC.ex5'
-ExecStartPre=/bin/bash -c '/usr/bin/wget -O "/root/.mt5/drive_c/Program Files/MetaTrader 5/MQL5/Profiles/Tester/SNRC.set" https://sherifawzi.github.io/Tools/SNRC.set'
+ExecStartPre=/bin/bash -c '/usr/bin/wget -O "/root/.mt5/drive_c/Program Files/MetaTrader 5/MQL5/Experts/SNRC-T8.ex5" https://sherifawzi.github.io/Tools/SNRC-T8.ex5'
+ExecStartPre=/bin/bash -c '/usr/bin/wget -O "/root/.mt5/drive_c/Program Files/MetaTrader 5/MQL5/Profiles/Tester/SNRCv08.set" https://sherifawzi.github.io/Tools/SNRCv08.set'
 
 # --- Step 3: Wait 15s, then start Xvfb ---
 ExecStartPre=/bin/bash -c 'echo "$(date): Prep complete, waiting 15s..."; sleep 15'
@@ -121,7 +121,7 @@ ExecStartPre=/bin/bash -c 'cd "/root/.mt5/drive_c/users/root/AppData/Roaming/Met
 ExecStartPre=/bin/bash -c 'echo "$(date): HTTP server started, waiting 15s..."; sleep 15'
 
 # --- Step 8: Main MT5 process (non-portable, config launch retained) ---
-ExecStart=/usr/bin/wine "C:\\Program Files\\MetaTrader 5\\terminal64.exe" /config:C:\\users\\root\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files\\configur.txt
+ExecStart=/usr/bin/wine "C:\\Program Files\\MetaTrader 5\\terminal64.exe" /config:C:\\users\\root\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files\\configurv08.txt
 
 TimeoutStartSec=900
 
