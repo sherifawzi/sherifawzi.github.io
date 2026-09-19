@@ -1,12 +1,12 @@
 [SNRC]
-Flow=|1b|EURUSD...|50000|1:500|30|USD|SNRC.set|snrv07_50k_500.txt|
+Flow=|1b|EURUSD...|50000|1:500|30|USD|SNRCv08.set|snrv08_50k_500.txt|
 [Common]
 NewsEnable=0
 CertInstall=0
 ExpertsFilesAccess=2
 [Tester]
-Expert=SNRC
-ExpertParameters=SNRC.set
+Expert=SNRC-T8
+ExpertParameters=SNRCv08.set
 Symbol=EURUSD...
 Period=M1
 Model=4
