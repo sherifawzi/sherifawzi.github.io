@@ -17,22 +17,22 @@ inp_BufferPeriod=0||0||60||240||N
 ; Dynamic Factor:
 inp_TPMode=0||0||0||2||Y
 inp_HedgePairing=false||false||0||true||N
-inp_FactorMin=1.2||1.2||0.1||2||Y
-inp_FactorMidAddon=0.8||0.5||0.1||2||Y
-inp_FactorMaxAddon=1.0||0.5||0.100000||2||Y
+inp_FactorMin=1.2||1.2||0.3||1.8||Y
+inp_FactorMidAddon=0.5||0.5||0.1||2||N
+inp_FactorMaxAddon=0.5||0.5||0.100000||2||N
 ; Dynamic Factor Thresholds:
-inp_TradesBase=5||10||1||20||Y
-inp_TradesAddon=5||5||1||20||Y
-inp_DDBase=5.0||0||2||10||Y
-inp_DDAddon=10.0||2||2||10||Y
+inp_TradesBase=5||10||5||20||Y
+inp_TradesAddon=5||5||5||20||Y
+inp_DDBase=5.0||0||4||8||Y
+inp_DDAddon=10.0||2||4||10||Y
 inp_MarginBase=500.0||7000||1000||10000||Y
 inp_MarginSubtract=300.0||1000||1000||5000||Y
 ; Trim Factor:
 inp_TrimMode=0||0||0||1||Y
 inp_TrimOverride=0.0||0.0||1.1||1.1||Y
 ; Friday Factor:
-inp_FridayMode=0||0||0||1||Y
-inp_FridayFactor=0||0||1.2||2.4||Y
+inp_FridayMode=0||0||0||1||N
+inp_FridayFactor=0||0||1.2||2.4||N
 ; Trimmers:
 inp_MarginTrim=1500||2000||1000||4000||N
 inp_DDTrim=0||0||5||25||N
